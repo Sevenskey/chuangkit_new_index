@@ -1,0 +1,8 @@
+@keyframes changeColor {
+    50% {
+        color: black;
+    }
+    100% {
+        color: grey;
+    }
+}

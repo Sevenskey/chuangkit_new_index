@@ -1,0 +1,20 @@
+[
+    {
+        "logo" : "http://sta.36krcnd.com/common-module/common-header/images/logo.png",
+        "title" : "我是标题1",
+        "content" : "我是一个内容。",
+        "mediumName" : "名字名字！"
+    },
+    {
+        "logo" : "",
+        "title" : "我是标题2",
+        "content" : "喵喵喵",
+        "mediumName" : "啊啊啊"
+    },
+    {
+        "logo" : "http://static.fanfou.com/img/fanfou.gif?1.gif",
+        "title" : "我是标题3",
+        "content" : "喵喵喵",
+        "mediumName" : "啊啊啊"
+    }
+]

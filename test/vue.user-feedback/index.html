@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.user-feedback</title>
+
+    <link href="../../bin/style.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <ul id="user_feedback" class="user_feedback">
+        <li v-for="item in items" :class="{
+            uf_align_left: item.position,
+            uf_align_right: !item.position
+            }"> 
+            <div class="user_feedback_avatar" :style="{backgroundImage:'url('+item.avatar+')'}"></div>
+            <div class="user_feedback_section1" :class="{
+                uf_left_float: item.position,
+                uf_right_float: !item.position
+                }">
+                <h5 class="user_feedback_identity">{{ item.identity }}</h5>
+                <p class="user_feedback_content">{{ item.content }}</p>
+            </div>
+        </li>   
+    </ul>
+
+    <script src="./test.bundle.js" type="text/javascript"></script>
+
+</body>
+</html>

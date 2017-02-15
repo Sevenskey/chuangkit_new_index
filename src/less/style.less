@@ -1,0 +1,292 @@
+/*user feedback abbr to uf*/
+/*medium feedback abbr to mf*/
+
+@import "config";
+@import "animation";
+
+/***** Basic Style *****/
+* {
+    box-sizing: border-box;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+html,p,h1,h2,h3,h4,h5,h6,a,ul,li,button,input,span,div,header,section,article,footer,nav {
+    font-family: @default_font_family;
+}
+a {
+    text-decoration: none;
+}
+
+/***** Start *****/
+
+html {
+    font-size: 16px;
+}
+
+/*** Page Turn ****/
+
+.page_turn {
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    li {
+        list-style: none;
+        width: 10px;
+        height: 10px;
+        border: 1px solid;
+        border-radius: 50%
+
+    }
+    .active_circle {
+        position: absolute;
+        transition: all .3s
+
+    }
+
+}
+
+/**** Active Background ****/
+
+.active_background {
+    background-image: url(../bg.jpg);
+    height: 500px;
+    background-position: 50px 10px;
+    transition: all .3s
+
+}
+
+/**** User Feedback ****/
+
+.user_feedback {
+    padding: 0;
+    margin: 0;
+
+    li {
+        list-style: none;
+        padding: 1.6rem .6rem;
+        display: inline-block;
+        width: 48%;
+        position: relative;
+
+        &:after {
+            content: "";
+            clear: both;
+            display: block
+
+        }
+        &:nth-child(even) {
+            top: 1.9rem;
+            padding-left: 1rem
+
+        }
+        &:nth-child(odd) {
+            padding-right: 1rem
+
+        }
+    }
+    .user_feedback_avatar {
+        width: @uf_avatar_size;
+        height: @uf_avatar_size;
+        border-radius: 50%;
+        background-size: cover;
+        display: inline-block;
+
+    }
+    .user_feedback_identity {
+        font-size: @uf_identity_size;
+        color: @uf_identity_color;
+        margin-top: .4rem;
+        text-align: left
+
+    }
+    .user_feedback_content {
+        color: @uf_content_color;
+        text-align: left;
+        font-size: @uf_content_size;
+
+    }
+    .user_feedback_section1 {
+        background-color: #fff;
+        padding: .6rem 1.6rem;
+        margin: 0 1.3rem;
+        width: 54%;
+        position: relative;
+
+        .public_shadow;
+    }
+    .uf_left_float {
+        float: left;
+        margin-right: 2.5rem;
+
+        &:before {
+            content: "";
+            display: block;
+            background-color: #fff;
+            width: 40px;
+            height: 30px;
+            position: absolute;
+            right: -20px;
+            top: 0
+
+        }
+    }
+    .uf_right_float {
+        float: right;
+        margin-left: 2.5rem;
+
+        &:before {
+            content: "";
+            display: block;
+            background-color: #fff;
+            width: 40px;
+            height: 30px;
+            position: absolute;
+            left: -20px;
+            top: 0
+
+        }
+    }
+}
+
+.uf_align_left {
+    text-align: left
+
+}
+.uf_align_right {
+    text-align: right
+
+}
+
+/**** Medium Feedback ****/
+
+.medium_feedback {
+    height: @mf_height;
+    width: @mf_width;
+    padding: 3.5rem 2.9rem;
+    position: relative;
+    box-sizing: content-box;
+
+    .public_shadow;
+
+    .mf_next_button {
+        position: absolute;
+        bottom: 2.6rem;
+        right: 2.9rem;
+        background-color: @mf_next_button_color;
+        padding: .3rem .6rem;
+        cursor: pointer;
+
+        .mf_next_button_triangle {
+            width: 0px;
+            height: 0px;
+            border-top: .8rem solid transparent;
+            border-bottom: .8rem solid transparent;
+            border-left: 1rem solid #fff;
+            border-right: 0;
+        }
+    }
+    .mf_page_turn {
+        overflow: hidden;
+
+        li {
+            float: left;
+            width: 9px; // 单位待商榷
+            height: 9px;
+            margin: 4px;
+        }
+    }
+
+    .medium_feedback_block {
+        height: @mf_height - 1rem;
+
+        li {
+            list-style: none;
+            position: absolute;
+
+            .medium_feedback_logo {
+                max-width: @mf_logo_size;
+            }
+
+            .medium_feedback_title {
+                font-size: @mf_title_size;
+                color: @mf_title_color;
+            }
+
+            .medium_feedback_content {
+                font-size: @mf_content_size;
+                color: @mf_content_color;
+            }
+
+            .medium_feedback_section1 {
+                /*padding-top: 3rem;*/
+
+                &:before {
+                    content: "“";
+                    font-size: @mf_content_size * 4;
+                    font-family: @mf_quotation_font_family;
+                    position: relative; 
+                    top: 3rem;
+                    left: 0 - ( @mf_content_size * 4 * @mf_quotation_width );
+                    color: @mf_quotation_color;
+                }
+                &:after {
+                    content: "”";
+                    display: block;
+                    font-size: @mf_content_size * 4;
+                    font-family: @mf_quotation_font_family;
+                    color: @mf_quotation_color;
+                }
+            }
+        }
+    }
+
+}
+
+.medium_logo_fade-enter-active,.medium_logo_fade-leave-active {
+    transition: all .7s;
+}
+.medium_logo_fade-enter,.medium_logo_fade-leave-to {
+    transform: translateX(50px);
+    opacity: 0;
+}
+.medium_content_fade-enter-active,.medium_content_fade-leave-active {
+    transition: all 1s;
+}
+.medium_content_fade-enter,.medium_content_fade-leave-to {
+    transform: translateX(50px);
+    opacity: 0;
+}
+
+@media screen and (max-width: 1080px) {
+    html {
+        font-size: 23px;
+    }
+
+    .user_feedback {
+        li {
+            width: 100%;
+            padding: .5rem .6rem;
+
+            &:nth-child(even) {
+                top: 0
+            }
+            &:nth-child(even) {
+                .user_feedback_avatar,
+                .user_feedback_section1 {
+                    float: right;
+                }
+            }
+            &:nth-child(odd) {
+                .user_feedback_avatar,
+                .user_feedback_section1 {
+                    float: left;
+                }
+            }
+        }
+    }
+}
+
+
