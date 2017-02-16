@@ -1,23 +1,23 @@
-const AnimationGroup = require( '../../src/js/animation-group.js' );
+//const AnimationGroup = require( '../../src/js/animation-group.js' );
 
 var ag_one = new AnimationGroup ({
         prev : {
-            'test1' : {
+            '.test1' : {
                 'transition' : 'all 2s',
             },
-            'test2' : ['blue_class'],
+            '#test2' : ['blue_class'],
         },
         next : {
-            'test1' : {
+            '.test1' : {
                 'border' : '5px solid #000',
                 'color' : 'blue',
                 classList : ['large_font'],
                 hide : true,
             },
-            'test2' : {
+            '#test2' : {
                 'font-size' : '20px',
             },
-            'test3' : ['green_class'],
+            '#test3' : ['green_class'],
         },
         transition : 'all .5s',
     });

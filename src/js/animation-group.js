@@ -108,18 +108,22 @@
 
         // show & hide 帮助函数
         showOrHidehelper ( value, id, mode ) {
-            var config = {
-                elemObj : this.objList[id],
-                mode : mode,
-            };
-            var elemStyleObj = getComputedStyle( this.objList[id] );
+            var config;
 
-            if ( typeof value == 'number' )
-                config.delay = value;
-            else if ( value ) {
-                config.delay = parseFloat( elemStyleObj.getPropertyValue('transition-delay') ) + parseFloat( elemStyleObj.getPropertyValue('transition-duration') );
-            }
-            new FadeInOrOut( config );
+            this.objDict[id].forEach( ( obj ) => {
+                config = {
+                    elemObj : obj,
+                    mode : mode,
+                };
+                var elemStyleObj = getComputedStyle( obj );
+
+                if ( typeof value == 'number' )
+                    config.delay = value;
+                else if ( value ) {
+                    config.delay = parseFloat( elemStyleObj.getPropertyValue('transition-delay') ) + parseFloat( elemStyleObj.getPropertyValue('transition-duration') );
+                }
+                new FadeInOrOut( config );
+            } )
         }
     }
     
@@ -185,30 +189,29 @@
         /*
          * Data Structure:
          *
-         * this.objList:
+         * this.objDict:
          * {
-         *   id1 : element object(Object),
-         *   id2 : element object,
+         *   id1 : [element object](Array),
+         *   id2 : [element object, element object],
          * }
          */
         // 根据 next 生成待操作的对象的列表
         genObjList () {
-            this.objList = {};
+            this.objDict = {};
 
             for ( var el in this.next )
-                this.objList[el] = document.getElementById(el);
+                this.objDict[el] = Array.prototype.slice.call( document.querySelectorAll(el) );
+            console.log( this.objDict )
         }
 
         // 挂载 transition
         mountTransition () {
-            var obj, temp;
-
-            for ( var el in this.next ) {
-                obj = this.objList[el];
-
-                // 注意：关于 transition 的默认值( 'all 0s ease 0s' )可能只适用于Chrome，暂未测试
-                if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition' ) == 'all 0s ease 0s' ) )
-                    obj.style.transition = this.transition;
+            for ( var id in this.next ) {
+                this.objDict[id].forEach( ( obj ) => {
+                    // 注意：关于 transition 的默认值( 'all 0s ease 0s' )可能只适用于Chrome，暂未测试
+                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition' ) == 'all 0s ease 0s' ) )
+                        obj.style.transition = this.transition;
+                } );
             }
         }
 
@@ -332,34 +335,36 @@
 
         // 挂载样式类，同时去掉指定的样式类
         mountClass ( classSet, removed ) {
-            var el, elem;
-
-            for ( el in classSet ) {
-                elem = this.objList[el];
-                classSet[el].forEach( ( className ) => {
-                    if ( elem.className.indexOf( className ) == -1 )
-                        elem.className += ( ' ' + className );
+            Object.keys( classSet ).forEach( ( id ) => {
+                this.objDict[id].forEach( ( elem ) => {
+                    classSet[id].forEach( ( className ) => {
+                        if ( elem.className.indexOf( className ) == -1 )
+                            elem.className += ( ' ' + className );
+                    } );
                 } );
-            }
+            } );
 
             if ( removed )
-                Object.keys( removed ).forEach( ( el ) => {
-                    elem = this.objList[el];
-                    removed[el].forEach( function ( className ) {
-                        elem.className = elem.className.replace( className, '' );
+                Object.keys( removed ).forEach( ( id ) => {
+                    this.objDict[id].forEach( ( elem ) => {
+                        removed[id].forEach( function ( className ) {
+                            elem.className = elem.className.replace( className, '' );
+                        } );
                     } );
                 } );
         }
 
         // 挂载样式
         mountStyle ( styleSet ) {
-            var obj;
+            var objArr;
 
             this.twoLeveTraverse( styleSet,
                 function( id ) {
-                    obj = this.objList[id];
+                    objArr = this.objDict[id];
                 }, function( property, style ) {
-                    obj.style[property] = style[property];
+                    objArr.forEach( function( obj ) {
+                        obj.style[property] = style[property];
+                    } );
                 } );
         }
 
@@ -384,25 +389,25 @@
 
         // 备份旧的样式类
         backupOldClass () {
-            var temp, i;
             this.oldClassSet = {};
 
-            Object.keys( this.classSet ).forEach( (tagName) => {
-                temp = this.oldClassSet[tagName] = this.objList[tagName].className.split(' ');
+            Object.keys( this.classSet ).forEach( ( id ) => {
+                this.oldClassSet[id] = this.objDict[id][0].className.split(' ');
             } );
         }
 
         // 备份旧的样式
         backupOldStyle () {
-            var temp;
+            var temp, obj;
             this.oldStyleSet = {};
 
             this.twoLeveTraverse( this.styleSet,
                 function( tagName ) {
                     temp = this.oldStyleSet[tagName] = {};
+                    obj = this.objDict[tagName][0];
                 }, function( property, styleObj, tagName ) {
                     if ( property != 'transition' )
-                        temp[property] = getComputedStyle( this.objList[tagName], null ).getPropertyValue( property );
+                        temp[property] = getComputedStyle( obj, null ).getPropertyValue( property );
                 } );
         }
 
@@ -470,7 +475,7 @@
     class AnimationStatusCtrl {
     }
 
-    if ( module )
+    if ( typeof module != 'undefined' )
         module.exports = AnimationGroup;
     else
         window.AnimationGroup = AnimationGroup;
