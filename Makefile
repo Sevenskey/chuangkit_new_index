@@ -1,7 +1,7 @@
 CC := lessc
 DIR := ./src/less/
-SOURCE := style.less
-OBJ := ./bin/style.min.css
+SOURCE := main.less
+OBJ := ./bin/chuangkit.index.style.min.css
 PLUGIN := clean-css
 
 compile:
