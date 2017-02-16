@@ -32,8 +32,6 @@
             var header = new this.Vue({
                 el : el,
             });
-
-            console.log( header )
         }
 
         launch () {

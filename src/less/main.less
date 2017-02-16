@@ -14,5 +14,94 @@ html {
     font-size: 16px;
 }
 
+button {
+    cursor: pointer;
 
+    &:focus {
+        outline: none;
+    }
+}
+
+.page_turn_index {
+    z-index: 20;
+    position: fixed;
+    right: 0;
+    top: 300px;
+}
+
+.page1 {
+    .blue_banner {
+        transform: translateY(-200px);
+        transition: all .7s;
+    }
+    h1 {
+        transform: translateY(40px);
+        opacity: 0;
+        transition: all .7s;
+    }
+    h2 {
+        transform: translateY(30px);
+        opacity: 0;
+        transition: all .9s;
+    }
+    .start_btn {
+        transform: translateY(40px);
+        opacity: 0;
+        transition: all 1.3s;
+    }
+    .page1_icons {
+        opacity: 0;
+        transition: all 1.1s;
+    }
+}
+
+.page1 {
+    .blue_banner {
+        background-image: url(../img/1/blue_banner.svg);
+        height: 13rem;
+        background-size: 86rem;
+    }
+
+    .slogan {
+        text-align: center;
+
+        h1 {
+            font-size: 2.8rem;
+            color: @page1_h1_color;
+            letter-spacing: .2rem;
+            margin: 2.3rem 0 .8rem 0;
+        }
+        h2 {
+            font-size: .8rem;
+            color: @page1_h2_color;
+            letter-spacing: .5rem;
+            margin-bottom: 1.8rem;
+        }
+        button {
+            border: 1px solid @page1_button_color;
+            color: @page1_button_color;
+            background-color: white;
+            font-size: .8rem;
+            padding: .6rem 5rem;
+            transition: all 1s;
+
+            &:hover {
+                color: white;
+                background-color: @page1_button_color;
+            }
+        }
+    }
+
+    .page1_icons {
+        text-align: center;
+        padding-top: 2.4rem;
+
+        img {
+            max-height: 150px;
+            height: 6rem;
+            margin: 0 2rem;
+        }
+    }
+    
+}
 

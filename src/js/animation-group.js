@@ -160,6 +160,7 @@
             this.dualShortcut = shortcut.getDualShortList();
 
             this.init();
+
         }
 
         init () {
@@ -177,9 +178,11 @@
                 // 挂载默认 transition
                 this.mountTransition();
 
-                // 挂载原有样式和类
-                this.backupOldStyle();
-                this.backupOldClass();
+                // 备份原有样式和类
+                setTimeout( () => {
+                    this.backupOldStyle();
+                    this.backupOldClass();
+                },1000 );
 
                 // 备份与 next 中对偶的 shortcut
                 this.backupShortcut();
@@ -201,7 +204,6 @@
 
             for ( var el in this.next )
                 this.objDict[el] = Array.prototype.slice.call( document.querySelectorAll(el) );
-            console.log( this.objDict )
         }
 
         // 挂载 transition

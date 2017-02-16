@@ -13,6 +13,7 @@ const Vue = require( './node_modules/vue/dist/vue.min.js' );
 // 请求模块
 const ActiveBackground = requireModules( './active-background.js' );
 const AnimationGroup = requireModules('./animation-group.js');
+const vue_Header = requireModules( './vue.header.js' );
 const vue_MediumFeedback = requireModules( './vue.medium-feedback.js' );
 const vue_PageTurn = requireModules( './vue.page-turn.js' );
 const vue_UserFeedback = requireModules( './vue.user-feedback.js' );
@@ -20,8 +21,19 @@ const tools = requireModules( './tools.js' );
 
 const beAPlugin = tools.beAPlugin;
 
+// 请求数据
+const animationConfig = requireModules( './animation-config.js' );
+
 
 /***** 部署页面 *****/
+
+// 导航
+Vue.use( beAPlugin( vue_Header ), {
+    el : 'header',
+} );
+
+// 动画
+var frame1 = new AnimationGroup( animationConfig.frame1 );
 
 // PageTurn
 Vue.use( vue_PageTurn, {
@@ -34,7 +46,11 @@ Vue.use( vue_PageTurn, {
     pixel : 10,
     fnList : {
         0 : function() {
+            frame1.rollback();
             console.log('I\'m 0!');
+        },
+        1 : function() {
+            frame1.mountNextStyle();
         },
         2 : function() {
             console.log('I\'m 2!')

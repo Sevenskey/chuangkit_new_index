@@ -7,9 +7,35 @@
     <link href="./bin/chuangkit.index.style.min.css" rel="stylesheet">
 </head>
 <body>
-    <ul id="page_turn" class="page_turn"></ul>
+    <header>
+        <component is="header-comp">
 
+        </component>
+    </header>
+
+    <ul id="page_turn" class="page_turn page_turn_index"></ul>
+
+    <section class="page1">
+        <div id="blue_banner" class="blue_banner"></div>
+
+        <div id="slogan" class="slogan">
+            <h1>极简的平面设计工具</h1>
+            <h2>Minimalist graphic design tools</h2>
+            <div id="start_btn" class="start_btn">
+                <button>开启设计</button>
+            </div>
+        </div>
+        
+        <div id="page1_icons" class="page1_icons">
+            <img src="./img/1/icon1.svg" alt="">
+            <img src="./img/1/icon2.svg" alt="">
+            <img src="./img/1/icon3.svg" alt="">
+        </div>
+        
+    </section>
+    
     <div id="active_background" class="active_background">喵qwq</div>
+
     
     <ul id="user_feedback" class="user_feedback">
         <li v-for="item in items" :class="{

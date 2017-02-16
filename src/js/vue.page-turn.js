@@ -29,6 +29,7 @@
             auto = false, // 是否自动播放
             interval = 1000, // 自动播放时间间隔
             direction = 'top', 
+            autoExecuteFirst = false, //是否自动执行第一个函数
         } = {}, Vue) {
             this.num = pageNum;
             this.color = color;
@@ -106,7 +107,7 @@
                     });
 
                     // 默认自动调用第一个用户函数
-                    if ( self.fnList[0] )
+                    if ( self.fnList[0] && self.autoExecuteFirst )
                         self.fnList[0]();
                     else if ( self.fn )
                         self.fn();
