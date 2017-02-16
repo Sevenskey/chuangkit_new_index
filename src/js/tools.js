@@ -1,4 +1,4 @@
-;(function() {
+;(function( window ) {
     var tools = {
         getData : getData,
         ajax : ajax,
@@ -64,16 +64,19 @@
                 return ;
             else {
                 plugin.installed = true;
-                new plugin ( config, externalVue );
+                if ( config )
+                    new plugin ( config, externalVue );
+                else
+                    new plugin ( externalVue );
             }
         }
 
         return plugin;
     }
 
-    if ( module )
+    if ( typeof module != 'undefined' )
         module.exports = tools;
     else
         window.tools = tools;
-})()
+})( window )
 

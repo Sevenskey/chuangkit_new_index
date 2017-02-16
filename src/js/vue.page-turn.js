@@ -197,7 +197,7 @@
         new PageTurn ( config, externalVue );
     }
 
-    if ( module )
+    if ( typeof module != 'undefined' )
         module.exports = PageTurn;
     else
         window.PageTurn = PageTurn;

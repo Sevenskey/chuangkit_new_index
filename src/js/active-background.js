@@ -57,7 +57,7 @@
         }
     }
 
-    if ( module )
+    if ( typeof module != 'undefined' )
         module.exports = ActiveBackground;
     else
         window.ActiveBackground = ActiveBackground;

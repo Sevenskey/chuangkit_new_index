@@ -29,10 +29,10 @@
     var getData = tools.getData;
 
     class MediumFeedback_page {
-        constructor ({
+        constructor ( {
             data = {},
             el = '#medium_feedback',
-        } = {}, Vue) {
+        } = {}, Vue ) {
             this.el = el;
             this.Vue = Vue;
             this.data = data;
@@ -136,7 +136,7 @@
         }
     }
 
-    if ( module )
+    if ( typeof module != 'undefined' )
         module.exports = MediumFeedback;
     else
         window.MediumFeedback = MediumFeedback;
