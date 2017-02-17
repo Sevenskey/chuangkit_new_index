@@ -40,13 +40,15 @@
         }
 
         launch () {
-            if ( this.mode == 'hide')
-                this.hide();
-            else if ( this.mode == 'show' )
-                this.show();
+            switch ( this.mode ) {
+                case 'hide' : this.hide(); break;
+                case 'show' : this.show(); break;
+                case 'delete' : this.delete(); break;
+                case 'retrieve' : this.retrieve(); break;
+            }
         }
 
-        hide () {
+        delete () {
             this.helper( function() {
                     this.elemObj.style.opacity = 0;
                 }, function() {
@@ -54,9 +56,27 @@
                 } );
         }
 
-        show () {
+        retrieve () {
             this.helper( function() {
                     this.elemObj.style.display = 'block';
+                    this.elemObj.style.opacity = 0;
+                    setTimeout ( () => {
+                        this.elemObj.style.opacity = 1;
+                    }, 20 );
+                }, null );
+        }
+
+        hide () {
+            this.helper( function() {
+                    this.elemObj.style.opacity = 0;
+                }, function() {
+                    this.elemObj.style.visibility = 'hidden';
+                } );
+        }
+
+        show () {
+            this.helper( function() {
+                    this.elemObj.style.visibility = 'visible';
                     this.elemObj.style.opacity = 0;
                     setTimeout ( () => {
                         this.elemObj.style.opacity = 1;
@@ -88,6 +108,12 @@
                 hide : function ( value, id, all, styleSet, classSet ) {
                     self.showOrHidehelper.call( this, value, id, 'hide' );
                 },
+                delete : function ( value, id, all, styleSet, classSet ) {
+                    self.showOrHidehelper.call( this, value, id, 'delete' );
+                },
+                retrieve : function ( value, id, all, styleSet, classSet ) {
+                    self.showOrHidehelper.call( this, value, id, 'retrieve' );
+                },
                 classList : function( value, id, all, styleSet, classSet ) {
                     if ( Array.isArray( value ) )
                         classSet[id] = value;
@@ -103,6 +129,8 @@
             return {
                 show : 'hide',
                 hide : 'show',
+                delete : 'retrieve',
+                retrieve : 'delete',
             };
         }
 
@@ -137,8 +165,8 @@
             this.next = next;
             this.transition = transition;
 
-            this.isMounted = false;
-            this.isRollbacked = false;
+            //this.isMounted = false;
+            //this.isRollbacked = false;
             this.isBackuped_sc = false;
 
             /*
@@ -364,9 +392,10 @@
                 function( id ) {
                     objArr = this.objDict[id];
                 }, function( property, style ) {
-                    objArr.forEach( function( obj ) {
-                        obj.style[property] = style[property];
-                    } );
+                    if ( objArr )
+                        objArr.forEach( function( obj ) {
+                            obj.style[property] = style[property];
+                        } );
                 } );
         }
 
@@ -379,14 +408,14 @@
 
         // 变身！
         mountNextStyle () {
-            if ( ! this.isMounted ) {
+            //if ( ! this.isMounted ) {
                 this.mountStyle( this.styleSet );
                 this.executeShortcut( this.shortcutSet );
                 this.mountClass( this.classSet );
-            }
+            //}
 
-            this.isMounted = true;
-            this.isRollbacked = false;
+            //this.isMounted = true;
+            //this.isRollbacked = false;
         }
 
         // 备份旧的样式类
@@ -431,7 +460,7 @@
 
         // 回滚！
         rollback () {
-            if ( ! this.isRollbacked ) {
+            //if ( ! this.isRollbacked ) {
                 this.executeShortcut ( this.dscBackupSet );
 
                 // 由于当元素的 display 为非 none 时，即元素已经出现在页面中时， transition 才起作用，故该处设置一个定时器，使 transition 起作用
@@ -439,10 +468,10 @@
                     this.mountStyle( this.oldStyleSet );
                     this.mountClass( this.classSetPrev, this.classSet );
                 }, 0 );
-            }
+            //}
 
-            this.isMounted = false;
-            this.isRollbacked = true;
+            //this.isMounted = false;
+            //this.isRollbacked = true;
         }
 
         // 遍历一个多层键值对组的一二层内容

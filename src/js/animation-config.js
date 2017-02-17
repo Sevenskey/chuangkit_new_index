@@ -12,16 +12,18 @@
                 '#slogan h2' : {
                     transform : 'translateY(0px)',
                     opacity : 1,
-                    transition : 'all 1s',
                 },
                 '#slogan #start_btn' : {
                     transform : 'translateY(0px)',
                     opacity : 1,
-                    transition : 'all 1s',
                 },
                 '#page1_icons' : {
                     opacity : 1
-                }
+                },
+                '#mouse' : {
+                    transform : 'translateY(0px)',
+                    opacity : 1,
+                },
             },
             next : {
                 '#blue_banner' : {
@@ -43,9 +45,49 @@
                 '#page1_icons' : {
                     transform : 'translateY(-300px)',
                     hide : true,
-                }
+                },
+                '#mouse' : {
+                },
+                '.page1' : {
+                    delete : true,
+                },
+                '#active_background_w' : {
+                    delete : true,
+                },
             },
-            transition : 'all .4s'
+            transition : 'all .7s'
+        },
+        frame2 : {
+            prev : {
+                '.card' : {
+                    hide : true,
+                },
+            },
+            next : {
+                '.card' : {
+                    transform : 'translateY(0px)',
+                    show : true,
+                },
+                '#active_background_b' : {
+                    retrieve : true,
+                },
+                '.page2' : {
+                    show : true,
+                },
+            },
+        },
+        frame3 : {
+            prev : {
+            },
+            next : {
+                '.card' : {
+                    transform : 'translateY(-150px)',
+                    hide : false,
+                },
+                '.page2' : {
+                    hide : false,
+                },
+            },
         },
     };
 

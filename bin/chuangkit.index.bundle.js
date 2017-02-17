@@ -290,12 +290,13 @@
                             return {
                                 color : self.color,
                                 myclass : self.activeCircleClass,
-                                pixel : self.pixel,
+                                pixel : parseFloat( self.pixel ),
+                                dim : typeof self.pixel == 'number' ? self.pixel : self.pixel.replace( /\d*\.\d+|\d+/, '' ),
                             }
                         },
                         computed : {
                             style : function() {
-                                return 'background-color:' + this.color + '; border-color:' + this.color + ';' + self.direction + ':' + this.current * this.pixel + 'px;';
+                                return 'background-color:' + this.color + '; border-color:' + this.color + ';' + self.direction + ':' + this.current * this.pixel + this.dim;
                             }
                         }
                     },
@@ -527,16 +528,18 @@ module.exports = g;
                 '#slogan h2' : {
                     transform : 'translateY(0px)',
                     opacity : 1,
-                    transition : 'all 1s',
                 },
                 '#slogan #start_btn' : {
                     transform : 'translateY(0px)',
                     opacity : 1,
-                    transition : 'all 1s',
                 },
                 '#page1_icons' : {
                     opacity : 1
-                }
+                },
+                '#mouse' : {
+                    transform : 'translateY(0px)',
+                    opacity : 1,
+                },
             },
             next : {
                 '#blue_banner' : {
@@ -558,9 +561,49 @@ module.exports = g;
                 '#page1_icons' : {
                     transform : 'translateY(-300px)',
                     hide : true,
-                }
+                },
+                '#mouse' : {
+                },
+                '.page1' : {
+                    delete : true,
+                },
+                '#active_background_w' : {
+                    delete : true,
+                },
             },
-            transition : 'all .4s'
+            transition : 'all .7s'
+        },
+        frame2 : {
+            prev : {
+                '.card' : {
+                    hide : true,
+                },
+            },
+            next : {
+                '.card' : {
+                    transform : 'translateY(0px)',
+                    show : true,
+                },
+                '#active_background_b' : {
+                    retrieve : true,
+                },
+                '.page2' : {
+                    show : true,
+                },
+            },
+        },
+        frame3 : {
+            prev : {
+            },
+            next : {
+                '.card' : {
+                    transform : 'translateY(-150px)',
+                    hide : false,
+                },
+                '.page2' : {
+                    hide : false,
+                },
+            },
         },
     };
 
@@ -618,13 +661,15 @@ module.exports = g;
         }
 
         launch () {
-            if ( this.mode == 'hide')
-                this.hide();
-            else if ( this.mode == 'show' )
-                this.show();
+            switch ( this.mode ) {
+                case 'hide' : this.hide(); break;
+                case 'show' : this.show(); break;
+                case 'delete' : this.delete(); break;
+                case 'retrieve' : this.retrieve(); break;
+            }
         }
 
-        hide () {
+        delete () {
             this.helper( function() {
                     this.elemObj.style.opacity = 0;
                 }, function() {
@@ -632,9 +677,27 @@ module.exports = g;
                 } );
         }
 
-        show () {
+        retrieve () {
             this.helper( function() {
                     this.elemObj.style.display = 'block';
+                    this.elemObj.style.opacity = 0;
+                    setTimeout ( () => {
+                        this.elemObj.style.opacity = 1;
+                    }, 20 );
+                }, null );
+        }
+
+        hide () {
+            this.helper( function() {
+                    this.elemObj.style.opacity = 0;
+                }, function() {
+                    this.elemObj.style.visibility = 'hidden';
+                } );
+        }
+
+        show () {
+            this.helper( function() {
+                    this.elemObj.style.visibility = 'visible';
                     this.elemObj.style.opacity = 0;
                     setTimeout ( () => {
                         this.elemObj.style.opacity = 1;
@@ -666,6 +729,12 @@ module.exports = g;
                 hide : function ( value, id, all, styleSet, classSet ) {
                     self.showOrHidehelper.call( this, value, id, 'hide' );
                 },
+                delete : function ( value, id, all, styleSet, classSet ) {
+                    self.showOrHidehelper.call( this, value, id, 'delete' );
+                },
+                retrieve : function ( value, id, all, styleSet, classSet ) {
+                    self.showOrHidehelper.call( this, value, id, 'retrieve' );
+                },
                 classList : function( value, id, all, styleSet, classSet ) {
                     if ( Array.isArray( value ) )
                         classSet[id] = value;
@@ -681,6 +750,8 @@ module.exports = g;
             return {
                 show : 'hide',
                 hide : 'show',
+                delete : 'retrieve',
+                retrieve : 'delete',
             };
         }
 
@@ -715,8 +786,8 @@ module.exports = g;
             this.next = next;
             this.transition = transition;
 
-            this.isMounted = false;
-            this.isRollbacked = false;
+            //this.isMounted = false;
+            //this.isRollbacked = false;
             this.isBackuped_sc = false;
 
             /*
@@ -942,9 +1013,10 @@ module.exports = g;
                 function( id ) {
                     objArr = this.objDict[id];
                 }, function( property, style ) {
-                    objArr.forEach( function( obj ) {
-                        obj.style[property] = style[property];
-                    } );
+                    if ( objArr )
+                        objArr.forEach( function( obj ) {
+                            obj.style[property] = style[property];
+                        } );
                 } );
         }
 
@@ -957,14 +1029,14 @@ module.exports = g;
 
         // 变身！
         mountNextStyle () {
-            if ( ! this.isMounted ) {
+            //if ( ! this.isMounted ) {
                 this.mountStyle( this.styleSet );
                 this.executeShortcut( this.shortcutSet );
                 this.mountClass( this.classSet );
-            }
+            //}
 
-            this.isMounted = true;
-            this.isRollbacked = false;
+            //this.isMounted = true;
+            //this.isRollbacked = false;
         }
 
         // 备份旧的样式类
@@ -1009,7 +1081,7 @@ module.exports = g;
 
         // 回滚！
         rollback () {
-            if ( ! this.isRollbacked ) {
+            //if ( ! this.isRollbacked ) {
                 this.executeShortcut ( this.dscBackupSet );
 
                 // 由于当元素的 display 为非 none 时，即元素已经出现在页面中时， transition 才起作用，故该处设置一个定时器，使 transition 起作用
@@ -1017,10 +1089,10 @@ module.exports = g;
                     this.mountStyle( this.oldStyleSet );
                     this.mountClass( this.classSetPrev, this.classSet );
                 }, 0 );
-            }
+            //}
 
-            this.isMounted = false;
-            this.isRollbacked = true;
+            //this.isMounted = false;
+            //this.isRollbacked = true;
         }
 
         // 遍历一个多层键值对组的一二层内容
@@ -1609,53 +1681,61 @@ Vue.use( beAPlugin( vue_Header ), {
 } );
 
 // 动画
+var header = document.getElementById('header');
 var frame1 = new AnimationGroup( animationConfig.frame1 );
+var frame2 = new AnimationGroup( animationConfig.frame2 );
+var frame3 = new AnimationGroup( animationConfig.frame3 );
 
-// PageTurn
+// 翻页
 Vue.use( vue_PageTurn, {
     el : '#page_turn',
-    pageNum : 5,
+    pageNum : 7,
     color : '#00CCCD',
     staticCircleClass : 'static_circle',
     activeCircleClass : 'active_circle',
     speed : 200,
-    pixel : 10,
+    pixel : '0.9rem',
     fnList : {
         0 : function() {
+            header.className = 'transparent_header';
             frame1.rollback();
-            console.log('I\'m 0!');
+            frame2.rollback();
         },
         1 : function() {
+            header.className = '';
             frame1.mountNextStyle();
+            frame2.mountNextStyle();
         },
         2 : function() {
+            frame3.mountNextStyle();
             console.log('I\'m 2!')
         }
     },
 } );
 
 // ActiveBackground
-new ActiveBackground({
-    el : 'active_background',
-    sensitivity : 50,
-    scope : 10,
-});
+// 不能用，待改进
+//new ActiveBackground({
+    //el : 'active_background_w',
+    //sensitivity : 50,
+    //scope : 10,
+//});
 
 // UserFeedback
-Vue.use( beAPlugin(vue_UserFeedback), {
-    url : './test_data/vue.user-feedback.json',
-    el : '#user_feedback',
-});
+//Vue.use( beAPlugin(vue_UserFeedback), {
+    //url : './test_data/vue.user-feedback.json',
+    //el : '#user_feedback',
+//});
 
-// MediumFeedback
-Vue.use( beAPlugin(vue_MediumFeedback), {
-    url : './test_data/vue.medium-feedback.json',
-    mf_el : '#medium_feedback_main', // medium feedback 主体
-    nextButton : '#mf_next_button', // 下一页按钮
-    pt_el : '#mf_page_turn', // 下方圆点
-    interval : 3000, // 自动切换间隔时间
-    pixel : 17, // 活动圆点移动长度
-} );
+//// MediumFeedback
+//Vue.use( beAPlugin(vue_MediumFeedback), {
+    //url : './test_data/vue.medium-feedback.json',
+    //mf_el : '#medium_feedback_main', // medium feedback 主体
+    //nextButton : '#mf_next_button', // 下一页按钮
+    //pt_el : '#mf_page_turn', // 下方圆点
+    //interval : 3000, // 自动切换间隔时间
+    //pixel : 17, // 活动圆点移动长度
+//} );
 
 
 /***/ })

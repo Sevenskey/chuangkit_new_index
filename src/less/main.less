@@ -12,6 +12,12 @@
 
 html {
     font-size: 16px;
+    height: 100%;
+    overflow: hidden;
+}
+
+body, section {
+    height: 100%;
 }
 
 button {
@@ -27,9 +33,47 @@ button {
     position: fixed;
     right: 0;
     top: 300px;
+    margin-right: 2.2rem;
+
+    li {
+        width: .5rem;
+        height: .5rem;
+        border-width: 0.1rem;
+        margin: .4rem 0;
+    }
 }
 
+.mouse {
+    text-align: center;
+    z-index: 20;
+    position: fixed;
+    bottom: 2rem;
+    width: 100%;
+
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all 1.3s;
+
+    img {
+        max-height: 50px;
+        height: 2.3rem;
+    }
+}
+
+.active_background_w {
+    background-image: @white_stone;
+    background-position: center;
+}
+.active_background_b {
+    background-image: @black_stone;
+    background-position: center;
+    display: none;
+}
+
+/** 动画初始帧 **/
+
 .page1 {
+    transition: opacity .3s;
     .blue_banner {
         transform: translateY(-200px);
         transition: all .7s;
@@ -53,6 +97,43 @@ button {
         opacity: 0;
         transition: all 1.1s;
     }
+}
+
+.page2 {
+    transition: opacity .9s;
+    .card {
+        transform: translateY(150px);
+        opacity: 0;
+    }
+    .card1 {
+        transition: all .6s;
+    }
+    .card2 {
+        transition: all .7s;
+    }
+    .card3 {
+        transition: all .8s;
+    }
+    .card4 {
+        transition: all .9s;
+    }
+    .card5 {
+        transition: all 1s;
+    }
+}
+
+/** 页面样式 **/
+
+.page1, .page2 {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+.page1 {
+    z-index: 8;
+}
+.page2 {
+    z-index: 7;
 }
 
 .page1 {
@@ -94,7 +175,7 @@ button {
 
     .page1_icons {
         text-align: center;
-        padding-top: 2.4rem;
+        padding: 2.4rem 0 1.8rem 0;
 
         img {
             max-height: 150px;
@@ -102,6 +183,101 @@ button {
             margin: 0 2rem;
         }
     }
-    
 }
 
+.page2 {
+    background-position: center;
+
+    .card_seq {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        .card {
+            overflow: hidden;
+            display: inline-block;
+            width: 13rem;
+            height: 19.5rem;
+            border-radius: 3px;
+            margin: 0 1rem;
+            cursor: pointer;
+            background-repeat: no-repeat;
+            background-image: @white_stone;
+            background-size: 100rem;
+            background-color: white;
+
+            .card_shadow;
+
+            &:hover {
+                .below {
+                    transform: translateX(2rem);
+                }
+            }
+        }
+
+        .card_header {
+            position: relative;
+            height: 30%;
+
+            .card_title {
+                position: absolute;
+                z-index: 5;
+                margin: 1.2rem;
+            
+                h1 {
+                    color: white;
+                    font-size: @page2_card_title_size_z;
+                    margin-bottom: .2rem;
+                }
+                h2 {
+                    color: white;
+                    font-size: @page2_card_title_size_e;
+                }
+            }
+
+            .card_image {
+                position: relative;
+                left: -4.9rem;
+                top: -3.5rem;
+                height: 100%;
+
+                img {
+                    position: absolute;
+                    width: 168%;
+                }
+                .above {
+                    left: -.8rem;
+                    top: -.7rem;
+                }
+                .below {
+                    transition: all .5s;
+                }
+            }
+        }
+
+        .card_tail {
+            height: 70%;
+            position: relative;
+            padding: 1.5rem;
+
+            p {
+                line-height: 160%;
+                color: @page2_detail_color;
+                font-size: @page2_card_title_size_z;
+            }
+
+            img {
+                opacity: .5;
+                width: 50%;
+                position: absolute;
+                bottom: -1.4rem;
+                right: -1rem;
+            }
+        }
+    }
+}
+
+.page3 {
+
+}

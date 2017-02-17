@@ -130,12 +130,13 @@
                             return {
                                 color : self.color,
                                 myclass : self.activeCircleClass,
-                                pixel : self.pixel,
+                                pixel : parseFloat( self.pixel ),
+                                dim : typeof self.pixel == 'number' ? self.pixel : self.pixel.replace( /\d*\.\d+|\d+/, '' ),
                             }
                         },
                         computed : {
                             style : function() {
-                                return 'background-color:' + this.color + '; border-color:' + this.color + ';' + self.direction + ':' + this.current * this.pixel + 'px;';
+                                return 'background-color:' + this.color + '; border-color:' + this.color + ';' + self.direction + ':' + this.current * this.pixel + this.dim;
                             }
                         }
                     },

@@ -33,50 +33,58 @@ Vue.use( beAPlugin( vue_Header ), {
 } );
 
 // 动画
+var header = document.getElementById('header');
 var frame1 = new AnimationGroup( animationConfig.frame1 );
+var frame2 = new AnimationGroup( animationConfig.frame2 );
+var frame3 = new AnimationGroup( animationConfig.frame3 );
 
-// PageTurn
+// 翻页
 Vue.use( vue_PageTurn, {
     el : '#page_turn',
-    pageNum : 5,
+    pageNum : 7,
     color : '#00CCCD',
     staticCircleClass : 'static_circle',
     activeCircleClass : 'active_circle',
     speed : 200,
-    pixel : 10,
+    pixel : '0.9rem',
     fnList : {
         0 : function() {
+            header.className = 'transparent_header';
             frame1.rollback();
-            console.log('I\'m 0!');
+            frame2.rollback();
         },
         1 : function() {
+            header.className = '';
             frame1.mountNextStyle();
+            frame2.mountNextStyle();
         },
         2 : function() {
+            frame3.mountNextStyle();
             console.log('I\'m 2!')
         }
     },
 } );
 
 // ActiveBackground
-new ActiveBackground({
-    el : 'active_background',
-    sensitivity : 50,
-    scope : 10,
-});
+// 不能用，待改进
+//new ActiveBackground({
+    //el : 'active_background_w',
+    //sensitivity : 50,
+    //scope : 10,
+//});
 
 // UserFeedback
-Vue.use( beAPlugin(vue_UserFeedback), {
-    url : './test_data/vue.user-feedback.json',
-    el : '#user_feedback',
-});
+//Vue.use( beAPlugin(vue_UserFeedback), {
+    //url : './test_data/vue.user-feedback.json',
+    //el : '#user_feedback',
+//});
 
-// MediumFeedback
-Vue.use( beAPlugin(vue_MediumFeedback), {
-    url : './test_data/vue.medium-feedback.json',
-    mf_el : '#medium_feedback_main', // medium feedback 主体
-    nextButton : '#mf_next_button', // 下一页按钮
-    pt_el : '#mf_page_turn', // 下方圆点
-    interval : 3000, // 自动切换间隔时间
-    pixel : 17, // 活动圆点移动长度
-} );
+//// MediumFeedback
+//Vue.use( beAPlugin(vue_MediumFeedback), {
+    //url : './test_data/vue.medium-feedback.json',
+    //mf_el : '#medium_feedback_main', // medium feedback 主体
+    //nextButton : '#mf_next_button', // 下一页按钮
+    //pt_el : '#mf_page_turn', // 下方圆点
+    //interval : 3000, // 自动切换间隔时间
+    //pixel : 17, // 活动圆点移动长度
+//} );
