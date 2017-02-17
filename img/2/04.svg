@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="178px" height="150px" viewBox="0 0 178 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>04</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M67.453125,80.828125 C67.1718736,91.1875518 62.3672341,96.414062 53.0390625,96.5078125 C43.6640156,96.414062 38.8828134,91.1875518 38.6953125,80.828125 L38.6953125,37.375 C38.8828134,27.1093237 43.6640156,21.8828134 53.0390625,21.6953125 C62.3672341,21.8828134 67.1718736,27.1093237 67.453125,37.375 L67.453125,80.828125 Z M24,81.671875 C24.0937505,91.0937971 27.1171577,98.3593495 33.0703125,103.46875 C38.6484654,108.531275 45.3046488,111.109375 53.0390625,111.203125 C61.0078523,111.109375 67.7812221,108.531275 73.359375,103.46875 C79.0312784,98.3593495 81.9609366,91.0937971 82.1484375,81.671875 L82.1484375,36.4609375 C81.9609366,26.9921402 79.0312784,19.7031505 73.359375,14.59375 C67.7812221,9.53122469 61.0078523,7 53.0390625,7 C45.3046488,7 38.6484654,9.53122469 33.0703125,14.59375 C27.1171577,19.7031505 24.0937505,26.9921402 24,36.4609375 L24,81.671875 Z M89.390625,95.1015625 L132.140625,95.1015625 L132.140625,110.359375 L146.835938,110.359375 L146.835938,95.1015625 L154.992188,95.1015625 L154.992188,81.25 L146.835938,81.25 L146.835938,51.7890625 L132.140625,51.7890625 L132.140625,81.25 L105.351562,81.25 L140.015625,7.84375 L123.632812,7.84375 L89.390625,81.25 L89.390625,95.1015625 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="16" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="12" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2403476 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="04">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

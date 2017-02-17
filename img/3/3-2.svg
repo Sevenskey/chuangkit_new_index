@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="181px" height="181px" viewBox="0 0 181 181" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>首页3-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="100%" x2="0%" y2="5.28317065%" id="linearGradient-1">
+            <stop stop-color="#FBDA61" offset="0%"></stop>
+            <stop stop-color="#FCA243" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="145" height="145"></rect>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.601163903   0 0 0 0 0.373891355   0 0 0 0 0.000272781916  0 0 0 0.321105072 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <circle id="path-4" cx="29.5" cy="29.5" r="29.5"></circle>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.601163903   0 0 0 0 0.373891355   0 0 0 0 0.000272781916  0 0 0 0.321105072 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页3-2" transform="translate(18.000000, 14.000000)">
+            <g id="Rectangle">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </g>
+            <g id="Group-4" transform="translate(45.000000, 42.000000)">
+                <g id="Oval-2">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-4"></use>
+                </g>
+                <g id="关闭" transform="translate(29.820762, 29.686910) rotate(-315.000000) translate(-29.820762, -29.686910) translate(18.320762, 18.186910)" fill="#FFFFFF">
+                    <path d="M22.1323945,20.4023664 L13.2180042,11.3740077 L21.8987212,2.44094842 C22.4481022,1.88670751 22.4481022,0.991395276 21.8987212,0.437154389 C21.3493402,-0.117086497 20.8496769,-0.117086526 20.3002959,0.437154389 L11.3436456,9.47554454 L2.41931171,0.437154389 C1.8699307,-0.117086526 0.98246909,-0.117086526 0.433088112,0.437154389 C-0.116292866,0.991395305 -0.116292895,1.88670754 0.433088112,2.44094842 L9.37482316,11.4617834 L0.435573989,20.4826185 C-0.113807018,21.0368594 -0.113807018,21.9321716 0.435573989,22.4864125 C0.984954996,23.0406534 1.87241661,23.0406534 2.42179758,22.4864125 L11.2715548,13.3778018 L20.3002959,22.4864125 C20.8496769,23.0406534 21.5830136,22.9604013 22.1299087,22.4086683 C22.6768038,21.8569353 22.6817755,20.9566073 22.1323945,20.4023664 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

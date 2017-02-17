@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="162px" height="158px" viewBox="0 0 162 158" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>首页3-01</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M71.453125,76.828125 C71.1718736,87.1875518 66.3672341,92.414062 57.0390625,92.5078125 C47.6640156,92.414062 42.8828134,87.1875518 42.6953125,76.828125 L42.6953125,33.375 C42.8828134,23.1093237 47.6640156,17.8828134 57.0390625,17.6953125 C66.3672341,17.8828134 71.1718736,23.1093237 71.453125,33.375 L71.453125,76.828125 Z M28,77.671875 C28.0937505,87.0937971 31.1171577,94.3593495 37.0703125,99.46875 C42.6484654,104.531275 49.3046488,107.109375 57.0390625,107.203125 C65.0078523,107.109375 71.7812221,104.531275 77.359375,99.46875 C83.0312784,94.3593495 85.9609366,87.0937971 86.1484375,77.671875 L86.1484375,32.4609375 C85.9609366,22.9921402 83.0312784,15.7031505 77.359375,10.59375 C71.7812221,5.53122469 65.0078523,3 57.0390625,3 C49.3046488,3 42.6484654,5.53122469 37.0703125,10.59375 C31.1171577,15.7031505 28.0937505,22.9921402 28,32.4609375 L28,77.671875 Z M119.546875,19.3828125 L119.546875,106.359375 L134.242188,106.359375 L134.242188,3.84375 L119.546875,3.84375 L104.992187,14.4609375 L104.992187,30.0703125 L119.546875,19.3828125 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="24" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="14" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2403476 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页3-01">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use fill="#626262" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
