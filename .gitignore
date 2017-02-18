@@ -1,9 +1,6 @@
 *.swp
 node_modules
 vue_practice
-img
-svg
-*.png
-*.svg
 *.jpg
 *.gif
+*.zip

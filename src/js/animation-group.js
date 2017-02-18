@@ -40,7 +40,6 @@
         }
 
         clear () {
-            console.log( this.timerSet );
             this.timerSet.forEach( function( id ) {
                 clearTimeout ( id );
             } );

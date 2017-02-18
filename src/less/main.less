@@ -6,6 +6,7 @@
 @import "config";
 @import "modules";
 @import "animation";
+@import "imageconfig";
 
 
 /***** Start *****/
@@ -70,70 +71,35 @@ button {
     display: none;
 }
 
-/** 动画初始帧 **/
-
-.page1 {
-    transition: opacity .3s;
-    .blue_banner {
-        transform: translateY(-200px);
-        transition: all .7s;
-    }
-    h1 {
-        transform: translateY(40px);
-        opacity: 0;
-        transition: all .7s;
-    }
-    h2 {
-        transform: translateY(30px);
-        opacity: 0;
-        transition: all .9s;
-    }
-    .start_btn {
-        transform: translateY(40px);
-        opacity: 0;
-        transition: all 1.3s;
-    }
-    .page1_icons {
-        opacity: 0;
-        transition: all 1.1s;
-    }
-}
-
-.page2 {
-    transition: opacity .9s;
-    .card {
-        transform: translateY(150px);
-        opacity: 0;
-    }
-    .card1 {
-        transition: all .6s;
-    }
-    .card2 {
-        transition: all .7s;
-    }
-    .card3 {
-        transition: all .8s;
-    }
-    .card4 {
-        transition: all .9s;
-    }
-    .card5 {
-        transition: all 1s;
-    }
-}
 
 /** 页面样式 **/
 
-.page1, .page2 {
+.page1, .page2, .page3, .page4, .page5, .page6 {
     width: 100%;
+    height: 100%;
     overflow: hidden;
     position: absolute;
 }
 .page1 {
     z-index: 8;
+    /*display: none;*/
 }
 .page2 {
     z-index: 7;
+    /*display: none;*/
+}
+.page3 {
+    z-index: 6;
+    /*display: none;*/
+}
+.page4 {
+    z-index: 5;
+}
+.page5 {
+    z-index: 4;
+}
+.page6 {
+    z-index: 3;
 }
 
 .page1 {
@@ -187,6 +153,16 @@ button {
 
 .page2 {
     background-position: center;
+    font-size: 1rem;
+
+    .card_num_b {
+        img {
+            width: 7em;
+            z-index: 12;
+            visibility: hidden;
+            position: absolute;
+        }
+    }
 
     .card_seq {
         display: flex;
@@ -212,6 +188,9 @@ button {
             &:hover {
                 .below {
                     transform: translateX(2rem);
+                }
+                .card_tail img {
+                    opacity: 1;
                 }
             }
         }
@@ -273,11 +252,83 @@ button {
                 position: absolute;
                 bottom: -1.4rem;
                 right: -1rem;
+                transition: all .5s;
             }
         }
     }
 }
 
-.page3 {
+.animation_page_image {
+    position: absolute;
+    text-align: center;
+    background-color: white;
+    .image_shadow;
 
+    p {
+        font-size: 12px;
+        color: #ccc;
+    }
+}
+
+.page4_image_a {
+    .page4_image_a_ !important;
+}
+.page4_image_p {
+    .page4_image_p_ !important;
+}
+.page4_image_v {
+    .page4_image_v_ !important;
+}
+.page4_image_t {
+    .page4_image_t_ !important;
+}
+
+.page3 {
+    /*.gradient1;*/
+    
+    font-size: 10px;
+
+    .image {
+        .animation_page_image;
+    }
+
+    .image_a {
+        .page3_image_a_;
+    }
+    .image_c {
+        .page3_image_c_;
+    }
+    .image_s {
+        .page3_image_s_;
+    }
+    .image_w {
+        .page3_image_w_;
+    }
+    .image_l {
+        .page3_image_l_;
+    }
+}
+
+.page4 {
+    /*.gradient1;*/
+    visibility: hidden;
+    
+    font-size: 10px;
+
+    .image {
+        .animation_page_image;
+    }
+
+    .image_v {
+        .page4_image_v_;
+    }
+    .image_p {
+        .page4_image_p_;
+    }
+    .image_t {
+        .page4_image_t_;
+    }
+    .image_a {
+        .page4_image_a_;
+    }
 }

@@ -37,6 +37,7 @@ var header = document.getElementById('header');
 var frame1 = new AnimationGroup( animationConfig.frame1 );
 var frame2 = new AnimationGroup( animationConfig.frame2 );
 var frame3 = new AnimationGroup( animationConfig.frame3 );
+var frame4 = new AnimationGroup( animationConfig.frame4 );
 
 // 翻页
 Vue.use( vue_PageTurn, {
@@ -47,21 +48,47 @@ Vue.use( vue_PageTurn, {
     activeCircleClass : 'active_circle',
     speed : 200,
     pixel : '0.9rem',
-    fnList : {
+    fn : {
         0 : function() {
             header.className = 'transparent_header';
+            frame1.clearTimer();
             frame1.rollback();
             frame2.rollback();
         },
-        1 : function() {
-            header.className = '';
-            frame1.mountNextStyle();
-            frame2.mountNextStyle();
-        },
-        2 : function() {
-            frame3.mountNextStyle();
-            console.log('I\'m 2!')
-        }
+        1 :[
+            function() { // 上翻到达
+                frame3.clearTimer();
+                frame3.rollback();
+            },
+            function() { //下翻到达
+                header.className = '';
+                frame2.clearTimer();
+                frame1.mountNextStyle();
+                frame2.mountNextStyle();
+            }
+        ],
+        2 : [
+            function() {
+                frame4.rollback();
+                frame4.clearTimer();
+            },
+            function() {
+                frame3.backupOldStyle();
+                frame3.clearTimer();
+                frame3.mountNextStyle();
+
+            }
+        ],
+        3 : [
+            function() {
+            },
+            function() {
+                frame4.mountPrevStyle();
+                frame4.backupOldStyle();
+                frame4.clearTimer();
+                frame4.mountNextStyle();
+            }
+        ]
     },
 } );
 

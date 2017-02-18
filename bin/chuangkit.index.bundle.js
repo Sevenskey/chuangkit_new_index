@@ -178,8 +178,7 @@
             speed = 300, // 翻页延迟（建议不要低于150）
             staticCircleClass = 'static_circle', // 如果要为标识添加样式则在该处注册样式所在的class
             activeCircleClass = 'active_circle', // 活动标识
-            fnList = [], // 翻页所触发的函数列表，数组或对象都可以，但是要注意如果是对象则属性名称须为数字
-            fn = null, // 
+            fn = null, // 翻页所触发的函数，数组或对象都可以，但是要注意如果是对象则属性名称须为数字 
             pixel = 12, // 每次活动标识滑动的距离
             keyboard = true, // 是否开启键盘监听
             wheel = true, // 是否开启鼠标滚轮监听
@@ -196,7 +195,6 @@
             this.speed = speed;
             this.el = el;
             this.Vue = Vue;
-            this.fnList = fnList;
             this.fn = fn;
             this.pixel = pixel;
             this.keyboard = keyboard;
@@ -219,6 +217,26 @@
             console.log('Page-turn works >w<');
         }
 
+        invokeFunction ( fun, num, flag ) {
+            var type = typeof fun;
+            
+            if ( type == 'object' )
+                switch ( typeof fun[num] ) {
+                    case 'object': 
+                        if ( flag > 0 )
+                            fun[num][1]();
+                        else
+                            fun[num][0]();
+                        break;
+                    case 'function': fun[num](); break;
+                    default: console.log( '第' + num + '页没有可执行的函数qwq' );
+                }
+            else if ( type == 'function' )
+                fun();
+            else
+                console.log( '没有可执行的函数qwq' );
+        }
+
         generate () {
             var self = this;
             new self.Vue ({
@@ -234,11 +252,8 @@
 
                 watch : {
                     // 一旦current发生改变则调用改变后的值对应的用户函数
-                    current : function ( newCurrent ) {
-                        if ( self.fnList[newCurrent] )
-                            self.fnList[newCurrent]();
-                        else if ( self.fn )
-                            self.fn();
+                    current : function ( newCurrent,oldCurrent ) {
+                        self.invokeFunction( self.fn, newCurrent, newCurrent - oldCurrent );
                     }
                 },
 
@@ -267,10 +282,8 @@
                     });
 
                     // 默认自动调用第一个用户函数
-                    if ( self.fnList[0] && self.autoExecuteFirst )
-                        self.fnList[0]();
-                    else if ( self.fn )
-                        self.fn();
+                    if ( self.fn && self.autoExecuteFirst )
+                        self.invokeFunction( self.fn, 0, 1 );
                 },
 
                 components : {
@@ -576,7 +589,7 @@ module.exports = g;
         frame2 : {
             prev : {
                 '.card' : {
-                    hide : true,
+                    transform : 'translateY(250px)',
                 },
             },
             next : {
@@ -594,16 +607,137 @@ module.exports = g;
         },
         frame3 : {
             prev : {
+                '.page3 .image_c' : {
+                    top : '10em',
+                    left : '18em',
+                },
+                '.page3 .image_a' : {
+                    top : '27em',
+                    left : '27em',
+                },
+                '.page3 .image_w' : {
+                    top : '26em',
+                    left : '65.5em',
+                },
+                '.page3 .image_s' : {
+                    top : '8.5em',
+                    left : '35em',
+                },
+                '.page3 .image_l' : {
+                    top : '6em',
+                    left : '69em',
+                },
+                '#card_num_b_1' : {
+                    transform : 'translate(18em, 34em)',
+                },
             },
             next : {
-                '.card' : {
-                    transform : 'translateY(-150px)',
-                    hide : false,
+                '#active_background_b' : {
+                    delete : true,
                 },
-                '.page2' : {
-                    hide : false,
+                '.card2,.card3,.card4,.card5' : {
+                    transform : 'translateY(-250px)',
+                    hide : true,
+                },
+                '.card1' : {
+                    transform : 'translate(3em, 9em)',
+                    height : '250px',
+                    classList : ['image_shadow'],
+                },
+                '.card1 .card_tail img' : {
+                    opacity : 0,
+                },
+                '#card_num_b_1' : {
+                    show : true,
+                    transform : 'translate(18em, 32em)',
+                },
+                '.page3 .image' : {
+                    show : true,
+                },
+                '.page3 .title' : {
+                    transform : 'translateY(0px)',
+                    show : true,
+                },
+                '.page3' : ['gradient1'],
+            },
+            transition : 'all .8s',
+        },
+        frame4 : {
+            prev : {
+                '.page4 .image_v' : {
+                    top : '7em',
+                    left : '40em',
+                },
+                '.page4 .image_p' : {
+                    top : '9em',
+                    left : '23em',
+                },
+                '.page4 .image_t' : {
+                    top : '10em',
+                    left : '78em',
+                },
+                '.page4 .image_a' : {
+                    top : '9em',
+                    left : '58em',
+                },
+                '#card_num_b_2' : {
+                    transform : 'translate(18em, 34em)',
                 },
             },
+            next : {
+                '.page3 .key1' : {
+                    top : '9em',
+                    left : '23em',
+                    classList : ['page4_image_p'],
+                },
+                '.page3 .key2' : {
+                    top : '7em',
+                    left : '40em',
+                    classList :['page4_image_v'], 
+                },
+                '.page3 .key3' : {
+                    top : '9em',
+                    left : '58em',
+                    classList :['page4_image_a'], 
+                },
+                '.page3 .key4' : {
+                    top : '10em',
+                    left : '78em',
+                    classList :['page4_image_t'], 
+                },
+                '.page3 .image' : {
+                    opacity : 0,
+                },
+                '.page3' : {
+                    hide : true,
+                },
+                '.page4' : {
+                    show : true,
+                    classList : ['gradient2'],
+                },
+                '.card1' : {
+                    transform : 'translate(3em, 6em)',
+                    hide : true,
+                },
+                '#card_num_b_1' : {
+                    transform : 'translate(18em, 30em)',
+                    hide : true,
+                },
+                '.card2' : {
+                    transform : 'translate(-11em, 7em)',
+                    height : '250px',
+                    show : true,
+                    classList : ['image_shadow'],
+                },
+                '.card2 .card_tail img' : {
+                    opacity : 0,
+                },
+                '#card_num_b_2' : {
+                    show : true,
+                    transform : 'translate(18em, 32em)',
+                },
+            },
+            transition : 'all .8s',
         },
     };
 
@@ -646,16 +780,41 @@ module.exports = g;
 */
 ;(function( window ){
 
+    // 定时器管理器
+    class TimerHandler {
+        constructor () {
+            this.timerSet = new Array();
+        }
+
+        push ( id ) {
+            this.timerSet.push( id );
+        }
+
+        empty () {
+            this.timerSet = new Array();
+        }
+
+        clear () {
+            this.timerSet.forEach( function( id ) {
+                clearTimeout ( id );
+            } );
+
+            this.empty();
+        }
+    }
+
     // 渐显或渐隐
     class FadeInOrOut {
         constructor ({
             elemObj = null, // 所要操作的元素对象
             delay = 1, // 元素的 dispaly 置为 none 前延迟的时间
             mode = 'hide', // 模式，hide 或 show
+            timerHandler = null, // 定时器管理器，用于收集一个帧中参与样式处理的定时器，意在于必要的时候清除它们
         }) {
             this.elemObj = elemObj;
             this.delay = delay * 1000;
             this.mode = mode;
+            this.timerHandler = timerHandler;
 
             this.launch();
         }
@@ -666,6 +825,7 @@ module.exports = g;
                 case 'show' : this.show(); break;
                 case 'delete' : this.delete(); break;
                 case 'retrieve' : this.retrieve(); break;
+                default: console.log( '找不到该模式QAQ' );
             }
         }
 
@@ -708,9 +868,9 @@ module.exports = g;
         helper ( cbOutside, cbInside, delay ) {
             cbOutside.call( this );
             if ( cbInside )
-                setTimeout( () => {
+                this.timerHandler.push( setTimeout( () => {
                     cbInside.call( this );
-                }, delay | this.delay );
+                }, delay | this.delay ) );
         }
     }
     
@@ -758,11 +918,13 @@ module.exports = g;
         // show & hide 帮助函数
         showOrHidehelper ( value, id, mode ) {
             var config;
+            var self = this;
 
             this.objDict[id].forEach( ( obj ) => {
                 config = {
                     elemObj : obj,
                     mode : mode,
+                    timerHandler : self.timerHandler,
                 };
                 var elemStyleObj = getComputedStyle( obj );
 
@@ -770,9 +932,15 @@ module.exports = g;
                     config.delay = value;
                 else if ( value ) {
                     config.delay = parseFloat( elemStyleObj.getPropertyValue('transition-delay') ) + parseFloat( elemStyleObj.getPropertyValue('transition-duration') );
+                } else {
+                    return;
                 }
                 new FadeInOrOut( config );
             } )
+        }
+
+        getTimerHandler ( arg ) {
+            this.timerHandler = arg;
         }
     }
     
@@ -804,9 +972,16 @@ module.exports = g;
              *   shortcut_m : shortcut_n(String),
              * }
              */
+            // 获得快捷选项列表
             var shortcut = new Shortcut();
             this.shortcut = shortcut.getShortcutList();
+            // 快捷选项对偶表
             this.dualShortcut = shortcut.getDualShortList();
+
+            // 获得一个定时器管理器
+            this.timerHandler = new TimerHandler();
+            // 将该定时器管理器传递给shortcut
+            shortcut.getTimerHandler( this.timerHandler );
 
             this.init();
 
@@ -815,7 +990,7 @@ module.exports = g;
         init () {
             if ( this.next ) {
                 // 生成元素对象字典
-                this.genObjList();
+                this.genObjDict();
 
                 // 分离母数据结构
                 this.separateNext();
@@ -838,6 +1013,10 @@ module.exports = g;
             }
         }
 
+        clearTimer () {
+            this.timerHandler.clear();
+        }
+
         /*
          * Data Structure:
          *
@@ -848,11 +1027,14 @@ module.exports = g;
          * }
          */
         // 根据 next 生成待操作的对象的列表
-        genObjList () {
+        genObjDict () {
             this.objDict = {};
 
             for ( var el in this.next )
                 this.objDict[el] = Array.prototype.slice.call( document.querySelectorAll(el) );
+            for ( el in this.prev )
+                if ( ! this.objDict[el] )
+                    this.objDict[el] = Array.prototype.slice.call( document.querySelectorAll(el) );
         }
 
         // 挂载 transition
@@ -1685,6 +1867,7 @@ var header = document.getElementById('header');
 var frame1 = new AnimationGroup( animationConfig.frame1 );
 var frame2 = new AnimationGroup( animationConfig.frame2 );
 var frame3 = new AnimationGroup( animationConfig.frame3 );
+var frame4 = new AnimationGroup( animationConfig.frame4 );
 
 // 翻页
 Vue.use( vue_PageTurn, {
@@ -1695,21 +1878,47 @@ Vue.use( vue_PageTurn, {
     activeCircleClass : 'active_circle',
     speed : 200,
     pixel : '0.9rem',
-    fnList : {
+    fn : {
         0 : function() {
             header.className = 'transparent_header';
+            frame1.clearTimer();
             frame1.rollback();
             frame2.rollback();
         },
-        1 : function() {
-            header.className = '';
-            frame1.mountNextStyle();
-            frame2.mountNextStyle();
-        },
-        2 : function() {
-            frame3.mountNextStyle();
-            console.log('I\'m 2!')
-        }
+        1 :[
+            function() { // 上翻到达
+                frame3.clearTimer();
+                frame3.rollback();
+            },
+            function() { //下翻到达
+                header.className = '';
+                frame2.clearTimer();
+                frame1.mountNextStyle();
+                frame2.mountNextStyle();
+            }
+        ],
+        2 : [
+            function() {
+                frame4.rollback();
+                frame4.clearTimer();
+            },
+            function() {
+                frame3.backupOldStyle();
+                frame3.clearTimer();
+                frame3.mountNextStyle();
+
+            }
+        ],
+        3 : [
+            function() {
+            },
+            function() {
+                frame4.mountPrevStyle();
+                frame4.backupOldStyle();
+                frame4.clearTimer();
+                frame4.mountNextStyle();
+            }
+        ]
     },
 } );
 
