@@ -18,8 +18,7 @@
             speed = 300, // 翻页延迟（建议不要低于150）
             staticCircleClass = 'static_circle', // 如果要为标识添加样式则在该处注册样式所在的class
             activeCircleClass = 'active_circle', // 活动标识
-            fnList = [], // 翻页所触发的函数列表，数组或对象都可以，但是要注意如果是对象则属性名称须为数字
-            fn = null, // 
+            fn = null, // 翻页所触发的函数，数组或对象都可以，但是要注意如果是对象则属性名称须为数字 
             pixel = 12, // 每次活动标识滑动的距离
             keyboard = true, // 是否开启键盘监听
             wheel = true, // 是否开启鼠标滚轮监听
@@ -36,7 +35,6 @@
             this.speed = speed;
             this.el = el;
             this.Vue = Vue;
-            this.fnList = fnList;
             this.fn = fn;
             this.pixel = pixel;
             this.keyboard = keyboard;
@@ -59,6 +57,26 @@
             console.log('Page-turn works >w<');
         }
 
+        invokeFunction ( fun, num, flag ) {
+            var type = typeof fun;
+            
+            if ( type == 'object' )
+                switch ( typeof fun[num] ) {
+                    case 'object': 
+                        if ( flag > 0 )
+                            fun[num][1]();
+                        else
+                            fun[num][0]();
+                        break;
+                    case 'function': fun[num](); break;
+                    default: console.log( '第' + num + '页没有可执行的函数qwq' );
+                }
+            else if ( type == 'function' )
+                fun();
+            else
+                console.log( '没有可执行的函数qwq' );
+        }
+
         generate () {
             var self = this;
             new self.Vue ({
@@ -74,11 +92,8 @@
 
                 watch : {
                     // 一旦current发生改变则调用改变后的值对应的用户函数
-                    current : function ( newCurrent ) {
-                        if ( self.fnList[newCurrent] )
-                            self.fnList[newCurrent]();
-                        else if ( self.fn )
-                            self.fn();
+                    current : function ( newCurrent,oldCurrent ) {
+                        self.invokeFunction( self.fn, newCurrent, newCurrent - oldCurrent );
                     }
                 },
 
@@ -107,10 +122,8 @@
                     });
 
                     // 默认自动调用第一个用户函数
-                    if ( self.fnList[0] && self.autoExecuteFirst )
-                        self.fnList[0]();
-                    else if ( self.fn )
-                        self.fn();
+                    if ( self.fn && self.autoExecuteFirst )
+                        self.invokeFunction( self.fn, 0, 1 );
                 },
 
                 components : {

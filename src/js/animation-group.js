@@ -25,16 +25,42 @@
 */
 ;(function( window ){
 
+    // 定时器管理器
+    class TimerHandler {
+        constructor () {
+            this.timerSet = new Array();
+        }
+
+        push ( id ) {
+            this.timerSet.push( id );
+        }
+
+        empty () {
+            this.timerSet = new Array();
+        }
+
+        clear () {
+            console.log( this.timerSet );
+            this.timerSet.forEach( function( id ) {
+                clearTimeout ( id );
+            } );
+
+            this.empty();
+        }
+    }
+
     // 渐显或渐隐
     class FadeInOrOut {
         constructor ({
             elemObj = null, // 所要操作的元素对象
             delay = 1, // 元素的 dispaly 置为 none 前延迟的时间
             mode = 'hide', // 模式，hide 或 show
+            timerHandler = null, // 定时器管理器，用于收集一个帧中参与样式处理的定时器，意在于必要的时候清除它们
         }) {
             this.elemObj = elemObj;
             this.delay = delay * 1000;
             this.mode = mode;
+            this.timerHandler = timerHandler;
 
             this.launch();
         }
@@ -45,6 +71,7 @@
                 case 'show' : this.show(); break;
                 case 'delete' : this.delete(); break;
                 case 'retrieve' : this.retrieve(); break;
+                default: console.log( '找不到该模式QAQ' );
             }
         }
 
@@ -87,9 +114,9 @@
         helper ( cbOutside, cbInside, delay ) {
             cbOutside.call( this );
             if ( cbInside )
-                setTimeout( () => {
+                this.timerHandler.push( setTimeout( () => {
                     cbInside.call( this );
-                }, delay | this.delay );
+                }, delay | this.delay ) );
         }
     }
     
@@ -137,11 +164,13 @@
         // show & hide 帮助函数
         showOrHidehelper ( value, id, mode ) {
             var config;
+            var self = this;
 
             this.objDict[id].forEach( ( obj ) => {
                 config = {
                     elemObj : obj,
                     mode : mode,
+                    timerHandler : self.timerHandler,
                 };
                 var elemStyleObj = getComputedStyle( obj );
 
@@ -149,9 +178,15 @@
                     config.delay = value;
                 else if ( value ) {
                     config.delay = parseFloat( elemStyleObj.getPropertyValue('transition-delay') ) + parseFloat( elemStyleObj.getPropertyValue('transition-duration') );
+                } else {
+                    return;
                 }
                 new FadeInOrOut( config );
             } )
+        }
+
+        getTimerHandler ( arg ) {
+            this.timerHandler = arg;
         }
     }
     
@@ -183,9 +218,16 @@
              *   shortcut_m : shortcut_n(String),
              * }
              */
+            // 获得快捷选项列表
             var shortcut = new Shortcut();
             this.shortcut = shortcut.getShortcutList();
+            // 快捷选项对偶表
             this.dualShortcut = shortcut.getDualShortList();
+
+            // 获得一个定时器管理器
+            this.timerHandler = new TimerHandler();
+            // 将该定时器管理器传递给shortcut
+            shortcut.getTimerHandler( this.timerHandler );
 
             this.init();
 
@@ -194,7 +236,7 @@
         init () {
             if ( this.next ) {
                 // 生成元素对象字典
-                this.genObjList();
+                this.genObjDict();
 
                 // 分离母数据结构
                 this.separateNext();
@@ -217,6 +259,10 @@
             }
         }
 
+        clearTimer () {
+            this.timerHandler.clear();
+        }
+
         /*
          * Data Structure:
          *
@@ -227,11 +273,14 @@
          * }
          */
         // 根据 next 生成待操作的对象的列表
-        genObjList () {
+        genObjDict () {
             this.objDict = {};
 
             for ( var el in this.next )
                 this.objDict[el] = Array.prototype.slice.call( document.querySelectorAll(el) );
+            for ( el in this.prev )
+                if ( ! this.objDict[el] )
+                    this.objDict[el] = Array.prototype.slice.call( document.querySelectorAll(el) );
         }
 
         // 挂载 transition

@@ -9,7 +9,7 @@ Vue.use( Test, {
     activeCircleClass : 'active_circle',
     speed : 200,
     pixel : 10,
-    fnList : {
+    fn : {
         0 : function() {
             console.log('I\'m 0!');
         },
