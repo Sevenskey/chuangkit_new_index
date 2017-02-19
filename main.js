@@ -1,7 +1,7 @@
 /***** 请求依赖 *****/
 
 // 设置库请求目录
-// 这样写会报错，我猜是因为node_modules目录分支众多递归搜索的空间复杂度过大导致的
+// 这样写会报错，猜测是因为node_modules目录分支众多递归搜索的空间复杂度过大导致的
 //const requireLib = require.context( './node_modules', true, /^.*\.js$/ );
 
 // 设置模块请求目录
@@ -37,7 +37,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.card.json',
     el : '#card_seq',
 });
-// 卡片2
+// 卡片2 （用于4～7页的动画中）
 Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.card.json',
     el : '#card_seq2',
@@ -61,14 +61,15 @@ Vue.use( beAPlugin( vue_DataFiller ), {
 var header, frame1, frame2, frame3, frame4;
 // 动画
 // 等待vue将页面渲染完毕
-// vue渲染页面难道是异步的？
+// vue渲染是异步，JS的事件循环机制会使在vue还未渲染好模板时就执行下面的 new AnimationGroup 语句，导致出错。故在此引入定时器，以使该语句在下一个事件循环中（或队尾）被执行。但是依然不能绝对确保在vue渲染完毕模板后再执行。
+// 但至少在我这里是work的。。
 setTimeout(function() {
     header = document.getElementById('header');
     frame1 = new AnimationGroup( animationConfig.frame1 );
     frame2 = new AnimationGroup( animationConfig.frame2 );
     frame3 = new AnimationGroup( animationConfig.frame3 );
     frame4 = new AnimationGroup( animationConfig.frame4 );
-}, 100)
+});
 
 // 翻页
 Vue.use( vue_PageTurn, {

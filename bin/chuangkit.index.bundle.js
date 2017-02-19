@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -404,10 +404,9 @@ var map = {
 	"./animation-group.js": 7,
 	"./config.js": 8,
 	"./tools.js": 0,
-	"./vue.card.js": 9,
-	"./vue.data-filler.js": 10,
-	"./vue.header.js": 11,
-	"./vue.medium-feedback.js": 12,
+	"./vue.data-filler.js": 9,
+	"./vue.header.js": 10,
+	"./vue.medium-feedback.js": 11,
 	"./vue.page-turn.js": 1
 };
 function webpackContext(req) {
@@ -576,29 +575,6 @@ module.exports = g;
         },
         frame3 : {
             prev : {
-                '#page3 .image_c' : {
-                    top : '10em',
-                    left : '18em',
-                },
-                '#page3 .image_a' : {
-                    top : '27em',
-                    left : '27em',
-                },
-                '#page3 .image_w' : {
-                    top : '26em',
-                    left : '65.5em',
-                },
-                '#page3 .image_s' : {
-                    top : '8.5em',
-                    left : '35em',
-                },
-                '#page3 .image_l' : {
-                    top : '6em',
-                    left : '69em',
-                },
-                '#card_num_b_1' : {
-                    transform : 'translate(18em, 34em)',
-                },
             },
             next : {
                 '#active_background_b' : {
@@ -618,7 +594,7 @@ module.exports = g;
                 },
                 '#card_num_b_1' : {
                     show : true,
-                    transform : 'translate(18em, 32em)',
+                    transform : 'translateY(-2em)',
                 },
                 '#page3 .image' : {
                     show : true,
@@ -633,77 +609,48 @@ module.exports = g;
         },
         frame4 : {
             prev : {
-                '#page4 .image_v' : {
-                    top : '7em',
-                    left : '40em',
-                },
-                '#page4 .image_p' : {
-                    top : '9em',
-                    left : '23em',
-                },
-                '#page4 .image_t' : {
-                    top : '10em',
-                    left : '78em',
-                },
-                '#page4 .image_a' : {
-                    top : '9em',
-                    left : '58em',
-                },
-                '#card_num_b_2' : {
-                    transform : 'translate(18em, 34em)',
-                },
             },
             next : {
                 '#page3 .key1' : {
-                    top : '9em',
-                    left : '23em',
                     classList : ['page4_image_p'],
                 },
                 '#page3 .key2' : {
-                    top : '7em',
-                    left : '40em',
                     classList :['page4_image_v'], 
                 },
                 '#page3 .key3' : {
-                    top : '9em',
-                    left : '58em',
                     classList :['page4_image_a'], 
                 },
                 '#page3 .key4' : {
-                    top : '10em',
-                    left : '78em',
                     classList :['page4_image_t'], 
                 },
-                '#page3 .image' : {
-                    opacity : 0,
-                },
-                '#page3' : {
+                '#page3, #page3 .image' : {
                     hide : true,
                 },
                 '#page4' : {
                     show : true,
                     classList : ['gradient2'],
                 },
+                '#page4 .image, #page4 .title' : {
+                    show : true,
+                },
+                '#page4 .title' : {
+                    transform : 'translateY(0em)',
+                },
                 '#card_seq .card1' : {
                     transform : 'translate(3em, 6em)',
                     hide : true,
                 },
                 '#card_num_b_1' : {
-                    transform : 'translate(18em, 30em)',
+                    transform : 'translateY(-3em)',
                     hide : true,
                 },
-                '#card_seq .card2' : {
-                    transform : 'translate(-11em, 7em)',
-                    height : '250px',
+                '#card_seq2 .card2' : {
+                    transform : 'translateY(-4em)',
                     show : true,
-                    classList : ['image_shadow'],
-                },
-                '#card_seq .card2 .card_tail img' : {
-                    opacity : 0,
                 },
                 '#card_num_b_2' : {
                     show : true,
-                    transform : 'translate(18em, 32em)',
+                    transform : 'translateY(-3em)',
                 },
             },
             transition : 'all .8s',
@@ -1294,12 +1241,6 @@ module.exports = g;
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*DataFiller
@@ -1379,7 +1320,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1659,7 +1600,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Medium Feedback
@@ -1809,13 +1750,13 @@ module.exports = g;
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /***** 请求依赖 *****/
 
 // 设置库请求目录
-// 这样写会报错，我猜是因为node_modules目录分支众多递归搜索的空间复杂度过大导致的
+// 这样写会报错，猜测是因为node_modules目录分支众多递归搜索的空间复杂度过大导致的
 //const requireLib = require.context( './node_modules', true, /^.*\.js$/ );
 
 // 设置模块请求目录
@@ -1851,7 +1792,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.card.json',
     el : '#card_seq',
 });
-// 卡片2
+// 卡片2 （用于4～7页的动画中）
 Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.card.json',
     el : '#card_seq2',
@@ -1875,14 +1816,15 @@ Vue.use( beAPlugin( vue_DataFiller ), {
 var header, frame1, frame2, frame3, frame4;
 // 动画
 // 等待vue将页面渲染完毕
-// vue渲染页面难道是异步的？
+// vue渲染是异步，JS的事件循环机制会使在vue还未渲染好模板时就执行下面的 new AnimationGroup 语句，导致出错。故在此引入定时器，以使该语句在下一个事件循环中（或队尾）被执行。但是依然不能绝对确保在vue渲染完毕模板后再执行。
+// 但至少在我这里是work的。。
 setTimeout(function() {
     header = document.getElementById('header');
     frame1 = new AnimationGroup( animationConfig.frame1 );
     frame2 = new AnimationGroup( animationConfig.frame2 );
     frame3 = new AnimationGroup( animationConfig.frame3 );
     frame4 = new AnimationGroup( animationConfig.frame4 );
-}, 100)
+});
 
 // 翻页
 Vue.use( vue_PageTurn, {

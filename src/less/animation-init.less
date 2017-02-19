@@ -1,4 +1,4 @@
-/** 动画初始帧 **/
+/** 动画初始设置 **/
 
 .page1 {
     transition: opacity .3s;
@@ -30,8 +30,7 @@
 .page2 {
     transition: opacity .9s;
     .card {
-        /*transform: translateY(250px);*/
-        opacity: 0;
+        visibility: hidden;
     }
     .card1 {
         transition: all .6s;
@@ -47,6 +46,30 @@
     }
     .card5 {
         transition: all 1s;
+    }
+    .card_num_b {
+        img {
+            visibility: hidden;
+        }
+    }
+    .card_seq2 {
+        .card {
+            visibility: hidden;
+        }
+        .card1 {
+            display: none !important;
+        }
+    }
+}
+
+.image_init_status {
+    visibility: hidden;
+
+    .title {
+        transform: translateY(2rem);
+        visibility: hidden;
+        transition: all .6s;
+        transition-delay: .6s;
     }
 }
 
@@ -82,13 +105,12 @@
         }
     }
     .image {
-        opacity: 0;
-
-        .title {
-            transform: translateY(2rem);
-            opacity: 0;
-            transition-delay: .8s;
-        }
+        .image_init_status;
     }
 }
 
+.page4 {
+    .image {
+        .image_init_status;
+    }
+}

@@ -5,8 +5,9 @@
 @import "base";
 @import "config";
 @import "modules";
-@import "animation";
-@import "imageconfig";
+@import "animation-init";
+@import "image-size";
+@import "pc-initial-position";
 
 
 /***** Start *****/
@@ -153,19 +154,18 @@ button {
 
 .page2 {
     background-position: center;
-    font-size: 1rem;
+    font-size: 12px;
 
     .card_num_b {
         img {
-            width: 7em;
+            width: 11em;
             z-index: 12;
-            visibility: hidden;
             position: absolute;
         }
     }
 
     .card_seq2 {
-        display: block;
+        display: block !important;
         position: absolute;
         width: 100%;
 
@@ -183,21 +183,21 @@ button {
         .card {
             overflow: hidden;
             display: inline-block;
-            width: 13rem;
-            height: 19.5rem;
+            width: 17.3em;
+            height: 26em;
             border-radius: 3px;
-            margin: 0 1rem;
+            margin: 0 1.3em;
             cursor: pointer;
             background-repeat: no-repeat;
             background-image: @white_stone;
-            background-size: 100rem;
+            background-size: 133.3em;
             background-color: white;
 
             .card_shadow;
 
             &:hover {
                 .below {
-                    transform: translateX(2rem);
+                    transform: translateX(2.67em);
                 }
                 .card_tail img {
                     opacity: 1;
@@ -212,12 +212,12 @@ button {
             .card_title {
                 position: absolute;
                 z-index: 5;
-                margin: 1.2rem;
+                margin: 1.6em;
             
                 h1 {
                     color: white;
                     font-size: @page2_card_title_size_z;
-                    margin-bottom: .2rem;
+                    margin-bottom: .27em;
                 }
                 h2 {
                     color: white;
@@ -227,8 +227,8 @@ button {
 
             .card_image {
                 position: relative;
-                left: -4.9rem;
-                top: -3.5rem;
+                left: -6.53em;
+                top: -4.67em;
                 height: 100%;
 
                 img {
@@ -236,8 +236,8 @@ button {
                     width: 168%;
                 }
                 .above {
-                    left: -.8rem;
-                    top: -.7rem;
+                    left: -1.07em;
+                    top: -.93em;
                 }
                 .below {
                     transition: all .5s;
@@ -248,7 +248,7 @@ button {
         .card_tail {
             height: 70%;
             position: relative;
-            padding: 1.5rem;
+            padding: 2em;
 
             p {
                 line-height: 160%;
@@ -260,8 +260,8 @@ button {
                 opacity: .5;
                 width: 50%;
                 position: absolute;
-                bottom: -1.4rem;
-                right: -1rem;
+                bottom: -1.87em;
+                right: -1.33em;
                 transition: all .5s;
             }
         }
@@ -281,64 +281,67 @@ button {
 }
 
 .page4_image_a {
-    .page4_image_a_ !important;
+    .page4_image_a_size !important;
+    .page4 .image_a !important;
 }
 .page4_image_p {
-    .page4_image_p_ !important;
+    .page4_image_p_size !important;
+    .page4 .image_p !important;
 }
 .page4_image_v {
-    .page4_image_v_ !important;
+    .page4_image_v_size !important;
+    .page4 .image_v !important;
 }
 .page4_image_t {
-    .page4_image_t_ !important;
+    .page4_image_t_size !important;
+    .page4 .image_t !important;
 }
 
 .page3 {
     /*.gradient1;*/
     
-    font-size: 10px;
+    font-size: 12px;
 
     .image {
         .animation_page_image;
     }
 
     .image_a {
-        .page3_image_a_;
+        .page3_image_a_size;
     }
     .image_c {
-        .page3_image_c_;
+        .page3_image_c_size;
     }
     .image_s {
-        .page3_image_s_;
+        .page3_image_s_size;
     }
     .image_w {
-        .page3_image_w_;
+        .page3_image_w_size;
     }
     .image_l {
-        .page3_image_l_;
+        .page3_image_l_size;
     }
 }
 
 .page4 {
     /*.gradient1;*/
-    visibility: hidden;
     
-    font-size: 10px;
+    font-size: 12px;
 
     .image {
         .animation_page_image;
     }
 
     .image_v {
-        .page4_image_v_;
+        .page4_image_v_size;
     }
     .image_p {
-        .page4_image_p_;
+        .page4_image_p_size;
     }
     .image_t {
-        .page4_image_t_;
+        .page4_image_t_size;
     }
     .image_a {
-        .page4_image_a_;
+        .page4_image_a_size;
     }
 }

@@ -44,15 +44,15 @@
 
     <section id="page2" class="page2">
         <div class="card_num_b">
-            <img id="card_num_b_1" src="./img/3/3-01.svg" alt="">
-            <img id="card_num_b_2" src="./img/4/4-02.svg" alt="">
-            <img id="card_num_b_3" src="./img/5/5-03.svg" alt="">
-            <img id="card_num_b_4" src="./img/6/6-04.svg" alt="">
-            <!--<img id="card_num_b_5" src="./img/7/01.svg" alt="">-->
+            <img id="card_num_b_1" class="card_num_b_1" src="./img/3/3-01.svg" alt="">
+            <img id="card_num_b_2" class="card_num_b_2" src="./img/4/4-02.svg" alt="">
+            <img id="card_num_b_3" class="card_num_b_3" src="./img/5/5-03.svg" alt="">
+            <img id="card_num_b_4" class="card_num_b_4" src="./img/6/6-04.svg" alt="">
+            <!--<img id="card_num_b_5" class="card_num_b_5" src="./img/7/01.svg" alt="">-->
         </div>
 
         <ul id="card_seq2" class="card_seq card_seq2">
-            <li v-for="item in items" class="card" :class="item.identify">
+            <li v-for="item in items" class="card image_shadow" :class="item.identify">
                 <div class="card_header">
                     <div class="card_title">
                         <h1>{{item.title_z}}</h1>
@@ -67,7 +67,6 @@
                     <p class="card_detail">
                     {{ item.detail }}
                     </p>
-                    <img :src="item.tail_img" alt="">
                 </div>
             </li>
         </ul>
