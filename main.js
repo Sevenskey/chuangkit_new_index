@@ -16,7 +16,7 @@ const AnimationGroup = requireModules('./animation-group.js');
 const vue_Header = requireModules( './vue.header.js' );
 const vue_MediumFeedback = requireModules( './vue.medium-feedback.js' );
 const vue_PageTurn = requireModules( './vue.page-turn.js' );
-const vue_UserFeedback = requireModules( './vue.user-feedback.js' );
+const vue_DataFiller = requireModules( './vue.data-filler.js' );
 const tools = requireModules( './tools.js' );
 
 const beAPlugin = tools.beAPlugin;
@@ -32,12 +32,43 @@ Vue.use( beAPlugin( vue_Header ), {
     el : 'header',
 } );
 
+// 卡片
+Vue.use( beAPlugin( vue_DataFiller ), {
+    url : './data/vue.card.json',
+    el : '#card_seq',
+});
+// 卡片2
+Vue.use( beAPlugin( vue_DataFiller ), {
+    url : './data/vue.card.json',
+    el : '#card_seq2',
+});
+// UserFeedback
+//Vue.use( beAPlugin(vue_DataFiller), {
+    //url : './data/vue.user-feedback.json',
+    //el : '#user_feedback',
+//});
+
+//// MediumFeedback
+//Vue.use( beAPlugin(vue_MediumFeedback), {
+    //url : './data/vue.medium-feedback.json',
+    //mf_el : '#medium_feedback_main', // medium feedback 主体
+    //nextButton : '#mf_next_button', // 下一页按钮
+    //pt_el : '#mf_page_turn', // 下方圆点
+    //interval : 3000, // 自动切换间隔时间
+    //pixel : 17, // 活动圆点移动长度
+//} );
+
+var header, frame1, frame2, frame3, frame4;
 // 动画
-var header = document.getElementById('header');
-var frame1 = new AnimationGroup( animationConfig.frame1 );
-var frame2 = new AnimationGroup( animationConfig.frame2 );
-var frame3 = new AnimationGroup( animationConfig.frame3 );
-var frame4 = new AnimationGroup( animationConfig.frame4 );
+// 等待vue将页面渲染完毕
+// vue渲染页面难道是异步的？
+setTimeout(function() {
+    header = document.getElementById('header');
+    frame1 = new AnimationGroup( animationConfig.frame1 );
+    frame2 = new AnimationGroup( animationConfig.frame2 );
+    frame3 = new AnimationGroup( animationConfig.frame3 );
+    frame4 = new AnimationGroup( animationConfig.frame4 );
+}, 100)
 
 // 翻页
 Vue.use( vue_PageTurn, {
@@ -100,18 +131,3 @@ Vue.use( vue_PageTurn, {
     //scope : 10,
 //});
 
-// UserFeedback
-//Vue.use( beAPlugin(vue_UserFeedback), {
-    //url : './test_data/vue.user-feedback.json',
-    //el : '#user_feedback',
-//});
-
-//// MediumFeedback
-//Vue.use( beAPlugin(vue_MediumFeedback), {
-    //url : './test_data/vue.medium-feedback.json',
-    //mf_el : '#medium_feedback_main', // medium feedback 主体
-    //nextButton : '#mf_next_button', // 下一页按钮
-    //pt_el : '#mf_page_turn', // 下方圆点
-    //interval : 3000, // 自动切换间隔时间
-    //pixel : 17, // 活动圆点移动长度
-//} );

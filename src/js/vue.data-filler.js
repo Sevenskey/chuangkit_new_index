@@ -1,8 +1,10 @@
-/*User Feedback
+/*DataFiller
 * Coding by Sun
 * Email: sevenskey@163.com
 * Build since: 2017-1-24
-* Latest update: 2017-1-28
+* Latest update: 2017-2-19
+* ChangeLog:
+* 更名为DataFiller - 2017-2-19
 *
 * Dependency:
 * js/tools.js/getData
@@ -22,25 +24,32 @@
 */
 
 ;(function( window ) {
+    
+    if ( typeof module != 'undefined' ) {
+        var tools = require( './tools.js' );
+        var getData = tools.getData;
+    } else if ( window ) {
+        var getData = window.tools.getData;
+    } else {
+        throw( new Error( '当前可能不是浏览器环境qwq' ) );
+    }
 
-    var tools = require( './tools.js' );
-    var getData = tools.getData;
-
-    class UserFeedback {
+    class DataFiller {
         constructor ( {
             url = null,
-            el = '#user_feedback'
+            el = ''
 
         }, Vue ) {
             this.Vue = Vue;
             this.el = el;
 
-            getData({
-                url : url,
-            }, ( data ) => {
-                this.data = data;
-                this.generate();
-            });
+            if ( el )
+                getData({
+                    url : url,
+                }, ( data ) => {
+                    this.data = data;
+                    this.generate();
+                });
         }
 
         generate () {
@@ -58,8 +67,8 @@
     }
 
     if ( typeof module != 'undefined' )
-        module.exports = UserFeedback;
+        module.exports = DataFiller;
     else
-        window.UserFeedback = UserFeedback;
+        window.DataFiller = DataFiller;
 
 })( window )

@@ -1,0 +1,47 @@
+[
+    {
+        "identify" : "card1",
+        "title_z" : "丰富场景",
+        "title_e" : "Rich scene",
+        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "below_img" : "../../img/2/01-1.svg",
+        "above_img" : "../../img/2/01-2.svg",
+        "tail_img" : "../../img/2/01.svg"
+    },
+    {
+        "identify" : "card2",
+        "title_z" : "海量素材",
+        "title_e" : "Massive material",
+        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "below_img" : "../../img/2/02-1.svg",
+        "above_img" : "../../img/2/02-2.svg",
+        "tail_img" : "../../img/2/02.svg"
+    },
+    {
+        "identify" : "card3",
+        "title_z" : "精致模板",
+        "title_e" : "Fine template",
+        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "below_img" : "../../img/2/03-1.svg",
+        "above_img" : "../../img/2/03-2.svg",
+        "tail_img" : "../../img/2/03.svg"
+    },
+    {
+        "identify" : "card4",
+        "title_z" : "便捷操作",
+        "title_e" : "Easier to use",
+        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "below_img" : "../../img/2/04-1.svg",
+        "above_img" : "../../img/2/04-2.svg",
+        "tail_img" : "../../img/2/04.svg"
+    },
+    {
+        "identify" : "card5",
+        "title_z" : "多样输出",
+        "title_e" : "Multiple output formats",
+        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "below_img" : "../../img/2/05-1.svg",
+        "above_img" : "../../img/2/05-2.svg",
+        "tail_img" : "../../img/2/05.svg"
+    }
+]

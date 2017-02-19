@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -404,10 +404,11 @@ var map = {
 	"./animation-group.js": 7,
 	"./config.js": 8,
 	"./tools.js": 0,
-	"./vue.header.js": 9,
-	"./vue.medium-feedback.js": 10,
-	"./vue.page-turn.js": 1,
-	"./vue.user-feedback.js": 11
+	"./vue.card.js": 9,
+	"./vue.data-filler.js": 10,
+	"./vue.header.js": 11,
+	"./vue.medium-feedback.js": 12,
+	"./vue.page-turn.js": 1
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -531,53 +532,21 @@ module.exports = g;
     const animationConfig = {
         frame1 : {
             prev : {
+                '#slogan h1, #slogan h2, #slogan #start_btn, #page1_icons, #mouse' : {
+                    transform : 'translateY(0px)',
+                    opacity : 1,
+                },
                 '#blue_banner' : {
                     transform : 'translateY(-30px)',
-                },
-                '#slogan h1' : {
-                    transform : 'translateY(0px)',
-                    opacity : 1
-                },
-                '#slogan h2' : {
-                    transform : 'translateY(0px)',
-                    opacity : 1,
-                },
-                '#slogan #start_btn' : {
-                    transform : 'translateY(0px)',
-                    opacity : 1,
-                },
-                '#page1_icons' : {
-                    opacity : 1
-                },
-                '#mouse' : {
-                    transform : 'translateY(0px)',
                     opacity : 1,
                 },
             },
             next : {
-                '#blue_banner' : {
+                '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
                     transform : 'translateY(-300px)',
                     hide : true,
                 },
-                '#slogan h1' : {
-                    transform : 'translateY(-300px)',
-                    hide : true,
-                },
-                '#slogan h2' : {
-                    transform : 'translateY(-300px)',
-                    hide : true,
-                },
-                '#slogan #start_btn' : {
-                    transform : 'translateY(-300px)',
-                    hide : true,
-                },
-                '#page1_icons' : {
-                    transform : 'translateY(-300px)',
-                    hide : true,
-                },
-                '#mouse' : {
-                },
-                '.page1' : {
+                '#page1' : {
                     delete : true,
                 },
                 '#active_background_w' : {
@@ -588,42 +557,42 @@ module.exports = g;
         },
         frame2 : {
             prev : {
-                '.card' : {
+                '#card_seq .card' : {
                     transform : 'translateY(250px)',
                 },
             },
             next : {
-                '.card' : {
+                '#card_seq .card' : {
                     transform : 'translateY(0px)',
                     show : true,
                 },
                 '#active_background_b' : {
                     retrieve : true,
                 },
-                '.page2' : {
+                '#page2' : {
                     show : true,
                 },
             },
         },
         frame3 : {
             prev : {
-                '.page3 .image_c' : {
+                '#page3 .image_c' : {
                     top : '10em',
                     left : '18em',
                 },
-                '.page3 .image_a' : {
+                '#page3 .image_a' : {
                     top : '27em',
                     left : '27em',
                 },
-                '.page3 .image_w' : {
+                '#page3 .image_w' : {
                     top : '26em',
                     left : '65.5em',
                 },
-                '.page3 .image_s' : {
+                '#page3 .image_s' : {
                     top : '8.5em',
                     left : '35em',
                 },
-                '.page3 .image_l' : {
+                '#page3 .image_l' : {
                     top : '6em',
                     left : '69em',
                 },
@@ -635,48 +604,48 @@ module.exports = g;
                 '#active_background_b' : {
                     delete : true,
                 },
-                '.card2,.card3,.card4,.card5' : {
+                '#card_seq .card2, #card_seq .card3, #card_seq .card4, #card_seq .card5' : {
                     transform : 'translateY(-250px)',
                     hide : true,
                 },
-                '.card1' : {
+                ' #card_seq .card1' : {
                     transform : 'translate(3em, 9em)',
                     height : '250px',
                     classList : ['image_shadow'],
                 },
-                '.card1 .card_tail img' : {
+                ' #card_seq .card1 .card_tail img' : {
                     opacity : 0,
                 },
                 '#card_num_b_1' : {
                     show : true,
                     transform : 'translate(18em, 32em)',
                 },
-                '.page3 .image' : {
+                '#page3 .image' : {
                     show : true,
                 },
-                '.page3 .title' : {
+                '#page3 .title' : {
                     transform : 'translateY(0px)',
                     show : true,
                 },
-                '.page3' : ['gradient1'],
+                '#page3' : ['gradient1'],
             },
             transition : 'all .8s',
         },
         frame4 : {
             prev : {
-                '.page4 .image_v' : {
+                '#page4 .image_v' : {
                     top : '7em',
                     left : '40em',
                 },
-                '.page4 .image_p' : {
+                '#page4 .image_p' : {
                     top : '9em',
                     left : '23em',
                 },
-                '.page4 .image_t' : {
+                '#page4 .image_t' : {
                     top : '10em',
                     left : '78em',
                 },
-                '.page4 .image_a' : {
+                '#page4 .image_a' : {
                     top : '9em',
                     left : '58em',
                 },
@@ -685,37 +654,37 @@ module.exports = g;
                 },
             },
             next : {
-                '.page3 .key1' : {
+                '#page3 .key1' : {
                     top : '9em',
                     left : '23em',
                     classList : ['page4_image_p'],
                 },
-                '.page3 .key2' : {
+                '#page3 .key2' : {
                     top : '7em',
                     left : '40em',
                     classList :['page4_image_v'], 
                 },
-                '.page3 .key3' : {
+                '#page3 .key3' : {
                     top : '9em',
                     left : '58em',
                     classList :['page4_image_a'], 
                 },
-                '.page3 .key4' : {
+                '#page3 .key4' : {
                     top : '10em',
                     left : '78em',
                     classList :['page4_image_t'], 
                 },
-                '.page3 .image' : {
+                '#page3 .image' : {
                     opacity : 0,
                 },
-                '.page3' : {
+                '#page3' : {
                     hide : true,
                 },
-                '.page4' : {
+                '#page4' : {
                     show : true,
                     classList : ['gradient2'],
                 },
-                '.card1' : {
+                '#card_seq .card1' : {
                     transform : 'translate(3em, 6em)',
                     hide : true,
                 },
@@ -723,13 +692,13 @@ module.exports = g;
                     transform : 'translate(18em, 30em)',
                     hide : true,
                 },
-                '.card2' : {
+                '#card_seq .card2' : {
                     transform : 'translate(-11em, 7em)',
                     height : '250px',
                     show : true,
                     classList : ['image_shadow'],
                 },
-                '.card2 .card_tail img' : {
+                '#card_seq .card2 .card_tail img' : {
                     opacity : 0,
                 },
                 '#card_num_b_2' : {
@@ -1325,6 +1294,92 @@ module.exports = g;
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*DataFiller
+* Coding by Sun
+* Email: sevenskey@163.com
+* Build since: 2017-1-24
+* Latest update: 2017-2-19
+* ChangeLog:
+* 更名为DataFiller - 2017-2-19
+*
+* Dependency:
+* js/tools.js/getData
+*
+* Compatibility:
+* IE9
+*
+* Data format:
+* [
+*   //{
+*       //"avatar" : "img src",
+*       //"identity" : "",
+*       //"content" : "",
+*       //"position" : 0
+*   //}
+* ]
+*/
+
+;(function( window ) {
+    
+    if ( true ) {
+        var tools = __webpack_require__( 0 );
+        var getData = tools.getData;
+    } else if ( window ) {
+        var getData = window.tools.getData;
+    } else {
+        throw( new Error( '当前可能不是浏览器环境qwq' ) );
+    }
+
+    class DataFiller {
+        constructor ( {
+            url = null,
+            el = ''
+
+        }, Vue ) {
+            this.Vue = Vue;
+            this.el = el;
+
+            if ( el )
+                getData({
+                    url : url,
+                }, ( data ) => {
+                    this.data = data;
+                    this.generate();
+                });
+        }
+
+        generate () {
+            const self = this;
+
+            new self.Vue( {
+                el : self.el,
+
+                data : {
+                    items : self.data
+                }
+            } );
+
+        }
+    }
+
+    if ( true )
+        module.exports = DataFiller;
+    else
+        window.DataFiller = DataFiller;
+
+})( window )
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1604,7 +1659,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Medium Feedback
@@ -1754,78 +1809,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*User Feedback
-* Coding by Sun
-* Email: sevenskey@163.com
-* Build since: 2017-1-24
-* Latest update: 2017-1-28
-*
-* Dependency:
-* js/tools.js/getData
-*
-* Compatibility:
-* IE9
-*
-* Data format:
-* [
-*   //{
-*       //"avatar" : "img src",
-*       //"identity" : "",
-*       //"content" : "",
-*       //"position" : 0
-*   //}
-* ]
-*/
-
-;(function( window ) {
-
-    var tools = __webpack_require__( 0 );
-    var getData = tools.getData;
-
-    class UserFeedback {
-        constructor ( {
-            url = null,
-            el = '#user_feedback'
-
-        }, Vue ) {
-            this.Vue = Vue;
-            this.el = el;
-
-            getData({
-                url : url,
-            }, ( data ) => {
-                this.data = data;
-                this.generate();
-            });
-        }
-
-        generate () {
-            const self = this;
-
-            new self.Vue( {
-                el : self.el,
-
-                data : {
-                    items : self.data
-                }
-            } );
-
-        }
-    }
-
-    if ( true )
-        module.exports = UserFeedback;
-    else
-        window.UserFeedback = UserFeedback;
-
-})( window )
-
-
-/***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /***** 请求依赖 *****/
@@ -1846,7 +1830,7 @@ const AnimationGroup = requireModules('./animation-group.js');
 const vue_Header = requireModules( './vue.header.js' );
 const vue_MediumFeedback = requireModules( './vue.medium-feedback.js' );
 const vue_PageTurn = requireModules( './vue.page-turn.js' );
-const vue_UserFeedback = requireModules( './vue.user-feedback.js' );
+const vue_DataFiller = requireModules( './vue.data-filler.js' );
 const tools = requireModules( './tools.js' );
 
 const beAPlugin = tools.beAPlugin;
@@ -1862,12 +1846,43 @@ Vue.use( beAPlugin( vue_Header ), {
     el : 'header',
 } );
 
+// 卡片
+Vue.use( beAPlugin( vue_DataFiller ), {
+    url : './data/vue.card.json',
+    el : '#card_seq',
+});
+// 卡片2
+Vue.use( beAPlugin( vue_DataFiller ), {
+    url : './data/vue.card.json',
+    el : '#card_seq2',
+});
+// UserFeedback
+//Vue.use( beAPlugin(vue_DataFiller), {
+    //url : './data/vue.user-feedback.json',
+    //el : '#user_feedback',
+//});
+
+//// MediumFeedback
+//Vue.use( beAPlugin(vue_MediumFeedback), {
+    //url : './data/vue.medium-feedback.json',
+    //mf_el : '#medium_feedback_main', // medium feedback 主体
+    //nextButton : '#mf_next_button', // 下一页按钮
+    //pt_el : '#mf_page_turn', // 下方圆点
+    //interval : 3000, // 自动切换间隔时间
+    //pixel : 17, // 活动圆点移动长度
+//} );
+
+var header, frame1, frame2, frame3, frame4;
 // 动画
-var header = document.getElementById('header');
-var frame1 = new AnimationGroup( animationConfig.frame1 );
-var frame2 = new AnimationGroup( animationConfig.frame2 );
-var frame3 = new AnimationGroup( animationConfig.frame3 );
-var frame4 = new AnimationGroup( animationConfig.frame4 );
+// 等待vue将页面渲染完毕
+// vue渲染页面难道是异步的？
+setTimeout(function() {
+    header = document.getElementById('header');
+    frame1 = new AnimationGroup( animationConfig.frame1 );
+    frame2 = new AnimationGroup( animationConfig.frame2 );
+    frame3 = new AnimationGroup( animationConfig.frame3 );
+    frame4 = new AnimationGroup( animationConfig.frame4 );
+}, 100)
 
 // 翻页
 Vue.use( vue_PageTurn, {
@@ -1930,21 +1945,6 @@ Vue.use( vue_PageTurn, {
     //scope : 10,
 //});
 
-// UserFeedback
-//Vue.use( beAPlugin(vue_UserFeedback), {
-    //url : './test_data/vue.user-feedback.json',
-    //el : '#user_feedback',
-//});
-
-//// MediumFeedback
-//Vue.use( beAPlugin(vue_MediumFeedback), {
-    //url : './test_data/vue.medium-feedback.json',
-    //mf_el : '#medium_feedback_main', // medium feedback 主体
-    //nextButton : '#mf_next_button', // 下一页按钮
-    //pt_el : '#mf_page_turn', // 下方圆点
-    //interval : 3000, // 自动切换间隔时间
-    //pixel : 17, // 活动圆点移动长度
-//} );
 
 
 /***/ })

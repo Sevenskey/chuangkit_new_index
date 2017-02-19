@@ -2,53 +2,21 @@
     const animationConfig = {
         frame1 : {
             prev : {
+                '#slogan h1, #slogan h2, #slogan #start_btn, #page1_icons, #mouse' : {
+                    transform : 'translateY(0px)',
+                    opacity : 1,
+                },
                 '#blue_banner' : {
                     transform : 'translateY(-30px)',
-                },
-                '#slogan h1' : {
-                    transform : 'translateY(0px)',
-                    opacity : 1
-                },
-                '#slogan h2' : {
-                    transform : 'translateY(0px)',
-                    opacity : 1,
-                },
-                '#slogan #start_btn' : {
-                    transform : 'translateY(0px)',
-                    opacity : 1,
-                },
-                '#page1_icons' : {
-                    opacity : 1
-                },
-                '#mouse' : {
-                    transform : 'translateY(0px)',
                     opacity : 1,
                 },
             },
             next : {
-                '#blue_banner' : {
+                '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
                     transform : 'translateY(-300px)',
                     hide : true,
                 },
-                '#slogan h1' : {
-                    transform : 'translateY(-300px)',
-                    hide : true,
-                },
-                '#slogan h2' : {
-                    transform : 'translateY(-300px)',
-                    hide : true,
-                },
-                '#slogan #start_btn' : {
-                    transform : 'translateY(-300px)',
-                    hide : true,
-                },
-                '#page1_icons' : {
-                    transform : 'translateY(-300px)',
-                    hide : true,
-                },
-                '#mouse' : {
-                },
-                '.page1' : {
+                '#page1' : {
                     delete : true,
                 },
                 '#active_background_w' : {
@@ -59,42 +27,42 @@
         },
         frame2 : {
             prev : {
-                '.card' : {
+                '#card_seq .card' : {
                     transform : 'translateY(250px)',
                 },
             },
             next : {
-                '.card' : {
+                '#card_seq .card' : {
                     transform : 'translateY(0px)',
                     show : true,
                 },
                 '#active_background_b' : {
                     retrieve : true,
                 },
-                '.page2' : {
+                '#page2' : {
                     show : true,
                 },
             },
         },
         frame3 : {
             prev : {
-                '.page3 .image_c' : {
+                '#page3 .image_c' : {
                     top : '10em',
                     left : '18em',
                 },
-                '.page3 .image_a' : {
+                '#page3 .image_a' : {
                     top : '27em',
                     left : '27em',
                 },
-                '.page3 .image_w' : {
+                '#page3 .image_w' : {
                     top : '26em',
                     left : '65.5em',
                 },
-                '.page3 .image_s' : {
+                '#page3 .image_s' : {
                     top : '8.5em',
                     left : '35em',
                 },
-                '.page3 .image_l' : {
+                '#page3 .image_l' : {
                     top : '6em',
                     left : '69em',
                 },
@@ -106,48 +74,48 @@
                 '#active_background_b' : {
                     delete : true,
                 },
-                '.card2,.card3,.card4,.card5' : {
+                '#card_seq .card2, #card_seq .card3, #card_seq .card4, #card_seq .card5' : {
                     transform : 'translateY(-250px)',
                     hide : true,
                 },
-                '.card1' : {
+                ' #card_seq .card1' : {
                     transform : 'translate(3em, 9em)',
                     height : '250px',
                     classList : ['image_shadow'],
                 },
-                '.card1 .card_tail img' : {
+                ' #card_seq .card1 .card_tail img' : {
                     opacity : 0,
                 },
                 '#card_num_b_1' : {
                     show : true,
                     transform : 'translate(18em, 32em)',
                 },
-                '.page3 .image' : {
+                '#page3 .image' : {
                     show : true,
                 },
-                '.page3 .title' : {
+                '#page3 .title' : {
                     transform : 'translateY(0px)',
                     show : true,
                 },
-                '.page3' : ['gradient1'],
+                '#page3' : ['gradient1'],
             },
             transition : 'all .8s',
         },
         frame4 : {
             prev : {
-                '.page4 .image_v' : {
+                '#page4 .image_v' : {
                     top : '7em',
                     left : '40em',
                 },
-                '.page4 .image_p' : {
+                '#page4 .image_p' : {
                     top : '9em',
                     left : '23em',
                 },
-                '.page4 .image_t' : {
+                '#page4 .image_t' : {
                     top : '10em',
                     left : '78em',
                 },
-                '.page4 .image_a' : {
+                '#page4 .image_a' : {
                     top : '9em',
                     left : '58em',
                 },
@@ -156,37 +124,37 @@
                 },
             },
             next : {
-                '.page3 .key1' : {
+                '#page3 .key1' : {
                     top : '9em',
                     left : '23em',
                     classList : ['page4_image_p'],
                 },
-                '.page3 .key2' : {
+                '#page3 .key2' : {
                     top : '7em',
                     left : '40em',
                     classList :['page4_image_v'], 
                 },
-                '.page3 .key3' : {
+                '#page3 .key3' : {
                     top : '9em',
                     left : '58em',
                     classList :['page4_image_a'], 
                 },
-                '.page3 .key4' : {
+                '#page3 .key4' : {
                     top : '10em',
                     left : '78em',
                     classList :['page4_image_t'], 
                 },
-                '.page3 .image' : {
+                '#page3 .image' : {
                     opacity : 0,
                 },
-                '.page3' : {
+                '#page3' : {
                     hide : true,
                 },
-                '.page4' : {
+                '#page4' : {
                     show : true,
                     classList : ['gradient2'],
                 },
-                '.card1' : {
+                '#card_seq .card1' : {
                     transform : 'translate(3em, 6em)',
                     hide : true,
                 },
@@ -194,13 +162,13 @@
                     transform : 'translate(18em, 30em)',
                     hide : true,
                 },
-                '.card2' : {
+                '#card_seq .card2' : {
                     transform : 'translate(-11em, 7em)',
                     height : '250px',
                     show : true,
                     classList : ['image_shadow'],
                 },
-                '.card2 .card_tail img' : {
+                '#card_seq .card2 .card_tail img' : {
                     opacity : 0,
                 },
                 '#card_num_b_2' : {

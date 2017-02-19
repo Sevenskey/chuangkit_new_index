@@ -22,7 +22,7 @@
     <div id="active_background_w" class="active_background active_background_w"></div>
     <div id="active_background_b" class="active_background active_background_b"></div>
 
-    <section class="page1">
+    <section id="page1" class="page1">
         <div id="blue_banner" class="blue_banner"></div>
 
         <div id="slogan" class="slogan">
@@ -42,7 +42,7 @@
         
     </section>
 
-    <section class="page2">
+    <section id="page2" class="page2">
         <div class="card_num_b">
             <img id="card_num_b_1" src="./img/3/3-01.svg" alt="">
             <img id="card_num_b_2" src="./img/4/4-02.svg" alt="">
@@ -50,104 +50,51 @@
             <img id="card_num_b_4" src="./img/6/6-04.svg" alt="">
             <!--<img id="card_num_b_5" src="./img/7/01.svg" alt="">-->
         </div>
-        
-        <ul class="card_seq">
-            <li class="card card1">
+
+        <ul id="card_seq2" class="card_seq card_seq2">
+            <li v-for="item in items" class="card" :class="item.identify">
                 <div class="card_header">
                     <div class="card_title">
-                        <h1>丰富场景</h1>
-                        <h2>Rich scene</h2>
+                        <h1>{{item.title_z}}</h1>
+                        <h2>{{item.title_e}}</h2>
                     </div>
                     <div class="card_image">
-                        <img class="below" src="./img/2/01-1.svg" alt="">
-                        <img class="above" src="./img/2/01-2.svg" alt="">
+                        <img class="below" :src="item.below_img" alt="">
+                        <img class="above" :src="item.above_img" alt="">
                     </div>
                 </div>
                 <div class="card_tail">
                     <p class="card_detail">
-                    你想要的<br>以及你想不到的<br>这里都有
+                    {{ item.detail }}
                     </p>
-                    
-                    <img src="./img/2/01.svg" alt="">
-                </div>
-            </li>
-            <li class="card card2">
-                <div class="card_header">
-                    <div class="card_title">
-                        <h1>海量素材</h1>
-                        <h2>Massive material</h2>
-                    </div>
-                    <div class="card_image">
-                        <img class="below" src="./img/2/02-1.svg" alt="">
-                        <img class="above" src="./img/2/02-2.svg" alt="">
-                    </div>
-                </div>
-                <div class="card_tail">
-                    <p class="card_detail">
-                    你想要的<br>以及你想不到的<br>这里都有
-                    </p>
-                    <img src="./img/2/02.svg" alt="">
-                </div>
-            </li>
-            <li class="card card3">
-                <div class="card_header">
-                    <div class="card_title">
-                        <h1>精致模板</h1>
-                        <h2>Fine template</h2>
-                    </div>
-                    <div class="card_image">
-                        <img class="below" src="./img/2/03-1.svg" alt="">
-                        <img class="above" src="./img/2/03-2.svg" alt="">
-                    </div>
-                </div>
-                <div class="card_tail">
-                    <p class="card_detail">
-                    你想要的<br>以及你想不到的<br>这里都有
-                    </p>
-                    <img src="./img/2/03.svg" alt="">
-                </div>
-            </li>
-            <li class="card card4">
-                <div class="card_header">
-                    <div class="card_title">
-                        <h1>便捷操作</h1>
-                        <h2>Easier to use</h2>
-                    </div>
-                    <div class="card_image">
-                        <img class="below" src="./img/2/04-1.svg" alt="">
-                        <img class="above" src="./img/2/04-2.svg" alt="">
-                    </div>
-                </div>
-                <div class="card_tail">
-                    <p class="card_detail">
-                    你想要的<br>以及你想不到的<br>这里都有
-                    </p>
-                    <img src="./img/2/04.svg" alt="">
-                </div>
-            </li>
-            <li class="card card5">
-                <div class="card_header">
-                    <div class="card_title">
-                        <h1>多样输出</h1>
-                        <h2>Multiple output formats</h2>
-                    </div>
-                    <div class="card_image">
-                        <img class="below" src="./img/2/05-1.svg" alt="">
-                        <img class="above" src="./img/2/05-2.svg" alt="">
-                    </div>
-                </div>
-                <div class="card_tail">
-                    <p class="card_detail">
-                    你想要的<br>以及你想不到的<br>这里都有
-                    </p>
-                    <img src="./img/2/05.svg" alt="">
+                    <img :src="item.tail_img" alt="">
                 </div>
             </li>
         </ul>
         
+        <ul id="card_seq" class="card_seq">
+            <li v-for="item in items" class="card" :class="item.identify">
+                <div class="card_header">
+                    <div class="card_title">
+                        <h1>{{item.title_z}}</h1>
+                        <h2>{{item.title_e}}</h2>
+                    </div>
+                    <div class="card_image">
+                        <img class="below" :src="item.below_img" alt="">
+                        <img class="above" :src="item.above_img" alt="">
+                    </div>
+                </div>
+                <div class="card_tail">
+                    <p class="card_detail">
+                    {{ item.detail }}
+                    </p>
+                    <img :src="item.tail_img" alt="">
+                </div>
+            </li>
+        </ul>
     </section>
 
-    <div class="page3">
+    <div id="page3" class="page3">
         <div class="image image_c key1">
             <img src="./img/3/3-2.svg" alt="">
             <div class="title">
@@ -185,7 +132,7 @@
         </div>
     </div>
 
-    <div class="page4">
+    <div id="page4" class="page4">
         <div class="image image_v key2">
             <img src="./img/4/4-2.svg" alt="">
             <div class="title">
