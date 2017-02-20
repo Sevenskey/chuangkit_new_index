@@ -140,12 +140,24 @@
                 retrieve : function ( value, id, all, styleSet, classSet ) {
                     self.showOrHidehelper.call( this, value, id, 'retrieve' );
                 },
-                classList : function( value, id, all, styleSet, classSet ) {
+                classList : function ( value, id, all, styleSet, classSet ) {
                     if ( Array.isArray( value ) )
                         classSet[id] = value;
                 },
-                changeTo : function( value, id, all, styleSet, classSet ) {
+                changeTo : function ( value, id, all, styleSet, classSet ) {
                     // 待实现
+                },
+                up : function ( value, id, all, styleSet, classSet ) {
+                    self.moveHelper( value, this.objDict[id], 'Y', '-' );
+                },
+                down : function ( value, id, all, styleSet, classSet ) {
+                    self.moveHelper( value, this.objDict[id], 'Y', '' );
+                },
+                toLeft : function ( value, id, all, styleSet, classSet ) {
+                    self.moveHelper( value, this.objDict[id], 'X', '-' );
+                },
+                toRight : function ( value, id, all, styleSet, classSet ) {
+                    self.moveHelper( value, this.objDict[id], 'X', '' );
                 },
             };
         }
@@ -157,7 +169,22 @@
                 hide : 'show',
                 delete : 'retrieve',
                 retrieve : 'delete',
+                up : 'down',
+                down : 'up',
+                toLeft : 'toRight',
+                toRight : 'toLeft',
             };
+        }
+
+        // up, down, toLeft, toRight 帮助函数
+        moveHelper ( value, objList, direction, prefix ) {
+            value = typeof value == 'number' ? value + 'px' : value;
+            var transform;
+
+            objList.forEach( ( obj ) => {
+                transform = 'translate' + direction + '(' + prefix  + value + ')';
+                obj.style.transform += ' ' + transform;
+            } );
         }
 
         // show & hide 帮助函数
@@ -271,7 +298,7 @@
          *   id2 : [element object, element object],
          * }
          */
-        // 根据 next 生成待操作的对象的列表
+        // 根据 prev 和 next 生成待操作的对象的列表
         genObjDict () {
             this.objDict = {};
 
@@ -286,8 +313,7 @@
         mountTransition () {
             for ( var id in this.next ) {
                 this.objDict[id].forEach( ( obj ) => {
-                    // 注意：关于 transition 的默认值( 'all 0s ease 0s' )可能只适用于Chrome，暂未测试
-                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition' ) == 'all 0s ease 0s' ) )
+                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition-duration' ) == '0s' ) )
                         obj.style.transition = this.transition;
                 } );
             }
@@ -399,7 +425,7 @@
         }
 
         // 执行 shortcut
-        executeShortcut ( shortcutSet, isRollback ) {
+        executeShortcut ( shortcutSet ) {
             var id, scObj;
 
             this.twoLeveTraverse( shortcutSet,

@@ -16,4 +16,4 @@ module.exports = {
         path : _OBJ_PATH_,
         filename : _OBJ_
     },
-}
+};

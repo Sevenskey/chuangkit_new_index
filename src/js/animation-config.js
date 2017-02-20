@@ -13,6 +13,7 @@
             },
             next : {
                 '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
+                    //up : 300,
                     transform : 'translateY(-300px)',
                     hide : true,
                 },
@@ -42,6 +43,9 @@
                 '#page2' : {
                     show : true,
                 },
+                '#mouse' : {
+                    hide : true,
+                }
             },
         },
         frame3 : {
@@ -52,12 +56,13 @@
                     delete : true,
                 },
                 '#card_seq .card2, #card_seq .card3, #card_seq .card4, #card_seq .card5' : {
-                    transform : 'translateY(-250px)',
+                    up : '21em',
                     hide : true,
                 },
                 ' #card_seq .card1' : {
-                    transform : 'translate(3em, 9em)',
-                    height : '250px',
+                    down : '9em',
+                    toRight : '3em',
+                    height : '21em',
                     classList : ['image_shadow'],
                 },
                 ' #card_seq .card1 .card_tail img' : {
@@ -65,7 +70,7 @@
                 },
                 '#card_num_b_1' : {
                     show : true,
-                    transform : 'translateY(-2em)',
+                    up : '2em',
                 },
                 '#page3 .image' : {
                     show : true,
@@ -108,23 +113,25 @@
                     transform : 'translateY(0em)',
                 },
                 '#card_seq .card1' : {
-                    transform : 'translate(3em, 6em)',
+                    up : '6em',
                     hide : true,
                 },
                 '#card_num_b_1' : {
-                    transform : 'translateY(-3em)',
+                    up : '3em',
                     hide : true,
                 },
                 '#card_seq2 .card2' : {
-                    transform : 'translateY(-4em)',
+                    up : '4em',
                     show : true,
                 },
                 '#card_num_b_2' : {
+                    up : '3em',
                     show : true,
-                    transform : 'translateY(-3em)',
                 },
             },
             transition : 'all .8s',
+        },
+        frame5 : {
         },
     };
 

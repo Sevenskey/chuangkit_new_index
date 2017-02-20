@@ -542,6 +542,7 @@ module.exports = g;
             },
             next : {
                 '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
+                    //up : 300,
                     transform : 'translateY(-300px)',
                     hide : true,
                 },
@@ -571,6 +572,9 @@ module.exports = g;
                 '#page2' : {
                     show : true,
                 },
+                '#mouse' : {
+                    hide : true,
+                }
             },
         },
         frame3 : {
@@ -581,12 +585,13 @@ module.exports = g;
                     delete : true,
                 },
                 '#card_seq .card2, #card_seq .card3, #card_seq .card4, #card_seq .card5' : {
-                    transform : 'translateY(-250px)',
+                    up : '21em',
                     hide : true,
                 },
                 ' #card_seq .card1' : {
-                    transform : 'translate(3em, 9em)',
-                    height : '250px',
+                    down : '9em',
+                    toRight : '3em',
+                    height : '21em',
                     classList : ['image_shadow'],
                 },
                 ' #card_seq .card1 .card_tail img' : {
@@ -594,7 +599,7 @@ module.exports = g;
                 },
                 '#card_num_b_1' : {
                     show : true,
-                    transform : 'translateY(-2em)',
+                    up : '2em',
                 },
                 '#page3 .image' : {
                     show : true,
@@ -637,23 +642,28 @@ module.exports = g;
                     transform : 'translateY(0em)',
                 },
                 '#card_seq .card1' : {
-                    transform : 'translate(3em, 6em)',
+                    up : '6em',
                     hide : true,
                 },
                 '#card_num_b_1' : {
-                    transform : 'translateY(-3em)',
+                    //transform : 'translateY(-3em)',
+                    up : '3em',
                     hide : true,
                 },
                 '#card_seq2 .card2' : {
-                    transform : 'translateY(-4em)',
+                    //transform : 'translateY(-4em)',
+                    up : '4em',
                     show : true,
                 },
                 '#card_num_b_2' : {
+                    up : '3em',
                     show : true,
-                    transform : 'translateY(-3em)',
+                    //transform : 'translateY(-3em)',
                 },
             },
             transition : 'all .8s',
+        },
+        frame5 : {
         },
     };
 
@@ -811,12 +821,24 @@ module.exports = g;
                 retrieve : function ( value, id, all, styleSet, classSet ) {
                     self.showOrHidehelper.call( this, value, id, 'retrieve' );
                 },
-                classList : function( value, id, all, styleSet, classSet ) {
+                classList : function ( value, id, all, styleSet, classSet ) {
                     if ( Array.isArray( value ) )
                         classSet[id] = value;
                 },
-                changeTo : function( value, id, all, styleSet, classSet ) {
+                changeTo : function ( value, id, all, styleSet, classSet ) {
                     // 待实现
+                },
+                up : function ( value, id, all, styleSet, classSet ) {
+                    self.moveHelper( value, this.objDict[id], 'Y', '-' );
+                },
+                down : function ( value, id, all, styleSet, classSet ) {
+                    self.moveHelper( value, this.objDict[id], 'Y', '' );
+                },
+                toLeft : function ( value, id, all, styleSet, classSet ) {
+                    self.moveHelper( value, this.objDict[id], 'X', '-' );
+                },
+                toRight : function ( value, id, all, styleSet, classSet ) {
+                    self.moveHelper( value, this.objDict[id], 'X', '' );
                 },
             };
         }
@@ -828,7 +850,22 @@ module.exports = g;
                 hide : 'show',
                 delete : 'retrieve',
                 retrieve : 'delete',
+                up : 'down',
+                down : 'up',
+                toLeft : 'toRight',
+                toRight : 'toLeft',
             };
+        }
+
+        // up, down, toLeft, toRight 帮助函数
+        moveHelper ( value, objList, direction, prefix ) {
+            value = typeof value == 'number' ? value + 'px' : value;
+            var transform;
+
+            objList.forEach( ( obj ) => {
+                transform = 'translate' + direction + '(' + prefix  + value + ')';
+                obj.style.transform += ' ' + transform;
+            } );
         }
 
         // show & hide 帮助函数
@@ -942,7 +979,7 @@ module.exports = g;
          *   id2 : [element object, element object],
          * }
          */
-        // 根据 next 生成待操作的对象的列表
+        // 根据 prev 和 next 生成待操作的对象的列表
         genObjDict () {
             this.objDict = {};
 
@@ -957,8 +994,7 @@ module.exports = g;
         mountTransition () {
             for ( var id in this.next ) {
                 this.objDict[id].forEach( ( obj ) => {
-                    // 注意：关于 transition 的默认值( 'all 0s ease 0s' )可能只适用于Chrome，暂未测试
-                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition' ) == 'all 0s ease 0s' ) )
+                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition-duration' ) == '0s' ) )
                         obj.style.transition = this.transition;
                 } );
             }
@@ -1070,7 +1106,7 @@ module.exports = g;
         }
 
         // 执行 shortcut
-        executeShortcut ( shortcutSet, isRollback ) {
+        executeShortcut ( shortcutSet ) {
             var id, scObj;
 
             this.twoLeveTraverse( shortcutSet,
