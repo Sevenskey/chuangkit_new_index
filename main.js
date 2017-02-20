@@ -58,7 +58,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
     //pixel : 17, // 活动圆点移动长度
 //} );
 
-var header, frame1, frame2, frame3, frame4;
+var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7;
 // 动画
 // 等待vue将页面渲染完毕
 // vue渲染是异步，JS的事件循环机制会使在vue还未渲染好模板时就执行下面的 new AnimationGroup 语句，导致出错。故在此引入定时器，以使该语句在下一个事件循环中（或队尾）被执行。但是依然不能绝对确保在vue渲染完毕模板后再执行。
@@ -69,6 +69,7 @@ setTimeout(function() {
     frame2 = new AnimationGroup( animationConfig.frame2 );
     frame3 = new AnimationGroup( animationConfig.frame3 );
     frame4 = new AnimationGroup( animationConfig.frame4 );
+    frame5 = new AnimationGroup( animationConfig.frame5 );
 });
 
 // 翻页
@@ -101,8 +102,8 @@ Vue.use( vue_PageTurn, {
         ],
         2 : [
             function() {
-                frame4.rollback();
                 frame4.clearTimer();
+                frame4.rollback();
             },
             function() {
                 frame3.backupOldStyle();
@@ -113,12 +114,24 @@ Vue.use( vue_PageTurn, {
         ],
         3 : [
             function() {
+                frame5.clearTimer();
+                frame5.rollback();
             },
             function() {
                 frame4.mountPrevStyle();
                 frame4.backupOldStyle();
                 frame4.clearTimer();
                 frame4.mountNextStyle();
+            }
+        ],
+        4 : [
+            function() {
+            },
+            function() {
+                frame5.mountPrevStyle();
+                frame5.backupOldStyle();
+                frame5.clearTimer();
+                frame5.mountNextStyle();
             }
         ]
     },

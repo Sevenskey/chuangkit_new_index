@@ -132,6 +132,60 @@
             transition : 'all .8s',
         },
         frame5 : {
+            prev : {
+                '#page5 .key1' : {
+                    toLeft : 50,
+                },
+                '#page5 .key2' : {
+                    toLeft : 80,
+                }
+            },
+            next : {
+                //隐藏
+                '#page4 .key1' : {
+                    transition : 'all .8s',
+                    classList :['page5_image_2'], 
+                },
+                '#page4 .key2' : {
+                    transition : 'all .8',
+                    classList :['page5_image_3'], 
+                },
+                '#page4, #page4 .image img' : {
+                    hide : true,
+                },
+                '#card_seq2 .card2' : {
+                    up : '6em',
+                    hide : true,
+                },
+                '#card_num_b_2' : {
+                    up : '3em',
+                    hide : true,
+                },
+                //出现
+                '#page5' : {
+                    show : true,
+                    classList : ['gradient3'],
+                },
+                '#page5 .key1' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '#page5 .key2' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '#page5 .image' : {
+                    show : true,
+                },
+                '#card_seq2 .card3' : {
+                    up : '4em',
+                    show : true,
+                    height : '22em',
+                },
+                '#card_num_b_3' : {
+                    up : '4em',
+                    show : true,
+                },
+            },
+            transition: 'all .8s',
         },
     };
 
