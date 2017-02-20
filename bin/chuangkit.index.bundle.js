@@ -553,7 +553,7 @@ module.exports = g;
                     delete : true,
                 },
             },
-            transition : 'all .7s'
+            transitionDuration : '.7s'
         },
         frame2 : {
             prev : {
@@ -581,6 +581,7 @@ module.exports = g;
             prev : {
             },
             next : {
+                //隐藏
                 '#active_background_b' : {
                     delete : true,
                 },
@@ -588,15 +589,17 @@ module.exports = g;
                     up : '21em',
                     hide : true,
                 },
-                ' #card_seq .card1' : {
+                '#card_seq .card1 .card_tail img' : {
+                    opacity : 0,
+                },
+                //变形
+                '#card_seq .card1' : {
                     down : '9em',
                     toRight : '3em',
                     height : '21em',
                     classList : ['image_shadow'],
                 },
-                ' #card_seq .card1 .card_tail img' : {
-                    opacity : 0,
-                },
+                //出现
                 '#card_num_b_1' : {
                     show : true,
                     up : '2em',
@@ -608,38 +611,22 @@ module.exports = g;
                     transform : 'translateY(0px)',
                     show : true,
                 },
-                '#page3' : ['gradient1'],
+                '#page3' : {
+                    show : true,
+                },
+                '#gradient1' : {
+                    show : true,
+                },
             },
-            transition : 'all .8s',
+            transitionDuration : '.8s',
         },
         frame4 : {
             prev : {
             },
             next : {
-                '#page3 .key1' : {
-                    classList : ['page4_image_p'],
-                },
-                '#page3 .key2' : {
-                    classList :['page4_image_v'], 
-                },
-                '#page3 .key3' : {
-                    classList :['page4_image_a'], 
-                },
-                '#page3 .key4' : {
-                    classList :['page4_image_t'], 
-                },
-                '#page3, #page3 .image' : {
+                //隐藏
+                '#page3 .image_a' : {
                     hide : true,
-                },
-                '#page4' : {
-                    show : true,
-                    classList : ['gradient2'],
-                },
-                '#page4 .image, #page4 .title' : {
-                    show : true,
-                },
-                '#page4 .title' : {
-                    transform : 'translateY(0em)',
                 },
                 '#card_seq .card1' : {
                     up : '6em',
@@ -649,6 +636,36 @@ module.exports = g;
                     up : '3em',
                     hide : true,
                 },
+                '#page3 .image img, #page3 .image .title' : {
+                    hide : true,
+                },
+                '#gradient1' : {
+                    hide : true,
+                },
+                //变形
+                '#page3 .key1' : {
+                    classList : ['page4_image_p'],
+                },
+                '#page3 .key2' : {
+                    classList : ['page4_image_v'], 
+                },
+                '#page3 .key3' : {
+                    classList : ['page4_image_a'], 
+                },
+                '#page3 .key4' : {
+                    classList : ['page4_image_t'], 
+                },
+                //出现
+                '#page4' : {
+                    show : true,
+                    //classList : ['gradient2'],
+                },
+                '#page4 .image, #page4 .title' : {
+                    show : true,
+                },
+                '#page4 .title' : {
+                    transform : 'translateY(0em)',
+                },
                 '#card_seq2 .card2' : {
                     up : '4em',
                     show : true,
@@ -657,28 +674,23 @@ module.exports = g;
                     up : '3em',
                     show : true,
                 },
+                '#gradient2' : {
+                    show : true,
+                },
             },
-            transition : 'all .8s',
+            transitionDuration : '.8s',
         },
         frame5 : {
             prev : {
                 '#page5 .key1' : {
-                    toLeft : 50,
+                    toLeft : 80,
                 },
                 '#page5 .key2' : {
-                    toLeft : 80,
+                    toLeft : 100,
                 }
             },
             next : {
                 //隐藏
-                '#page4 .key1' : {
-                    transition : 'all .8s',
-                    classList :['page5_image_2'], 
-                },
-                '#page4 .key2' : {
-                    transition : 'all .8',
-                    classList :['page5_image_3'], 
-                },
                 '#page4, #page4 .image img' : {
                     hide : true,
                 },
@@ -690,10 +702,25 @@ module.exports = g;
                     up : '3em',
                     hide : true,
                 },
+                '#gradient2' : {
+                    hide : true,
+                },
+                '#page3 .key3' : {
+                    hide : true,
+                },
+                '#page3 .key4' : {
+                    hide : true,
+                },
+                //变形
+                '#page3 .key1' : {
+                    classList : ['page5_image_2'], 
+                },
+                '#page3 .key2' : {
+                    classList : ['page5_image_3'], 
+                },
                 //出现
                 '#page5' : {
                     show : true,
-                    classList : ['gradient3'],
                 },
                 '#page5 .key1' : {
                     transform : 'translate(0px, 0px)',
@@ -713,8 +740,173 @@ module.exports = g;
                     up : '4em',
                     show : true,
                 },
+                '#gradient3' : {
+                    show : true,
+                },
             },
-            transition: 'all .8s',
+            transitionDuration: '.8s',
+        },
+        frame6 : {
+            prev :{
+                '#page6 .image_1' : {
+                    toRight : '3em',
+                },
+                '#page6 .image_2' : {
+                    toRight : '3em',
+                },
+                '#page6 .image_3' : {
+                    toRight : '5em',
+                },
+                '#page6 .image_4' : {
+                    toRight : '5em',
+                },
+                '#page6 .image_5' : {
+                    toRight : '7em',
+                },
+                '#page6 .image_6' : {
+                    toRight : '9em',
+                },
+                '#page6 .image_7' : {
+                    toRight : '11em',
+                },
+                '#page6 .image_8' : {
+                    down : '1em',
+                },
+                '#page6 .image_9' : {
+                    down : '3em',
+                },
+                '#page6 .image_10' : {
+                    down : '5em',
+                },
+                '#page6 .image_11' : {
+                    down : '10em',
+                    toRight : '15em',
+                },
+                '#page6 .image_12 img' : {
+                    width : '20em',
+                },
+                '#page6 .image_13' : {
+                    down : '4em',
+                },
+                '#page6 .image_14' : {
+                    toLeft : '5em',
+                },
+                '#page6 .image_15' : {
+                    toLeft : '4em',
+                },
+                '#page6 .image_16' : {
+                    toLeft : '3em',
+                },
+                '#page6 .image_17' : {
+                    toLeft : '2em',
+                },
+                '#page6 .image_18' : {
+                    toLeft : '1em',
+                },
+            },
+            next : {
+                //隐藏
+                '#page5, #page5 .image img' : {
+                    hide : true,
+                },
+                '#card_seq2 .card3' : {
+                    up : '6em',
+                    hide : true,
+                },
+                '#card_num_b_3' : {
+                    up : '3em',
+                    hide : true,
+                },
+                '#gradient3' : {
+                    hide : true,
+                },
+                //变化
+                '#page3 .key1' : {
+                    'z-index' : 9,
+                    classList : ['page6_box1'], 
+                },
+                '#page3 .key2' : {
+                    classList : ['page6_box2'], 
+                },
+                //出现
+                '#page6' : {
+                    show : true,
+                },
+                '#page6 .image_1' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_2' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_3' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_4' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_5' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_6' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_7' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_8' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_9' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_10' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_11' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_13' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_14' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_15' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_16' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_17' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image_18' : {
+                    transform : 'translate(0px,0px)',
+                },
+                '#page6 .image' : {
+                    show : true,
+                },
+                '#page6 .image_12 img' : {
+                    width : '',
+                },
+                '#card_seq2 .card4' : {
+                    up : '4em',
+                    show : true,
+                    height : '22em',
+                },
+                '#card_num_b_4' : {
+                    up : '3em',
+                    show : true,
+                },
+                '#gradient4' : {
+                    show : true,
+                },
+            },
+            transitionDuration: '1s',
+        },
+        frame7 : {
+            prev : {
+            }
         },
     };
 
@@ -834,8 +1026,8 @@ module.exports = g;
 
         show () {
             this.helper( function() {
-                    this.elemObj.style.visibility = 'visible';
                     this.elemObj.style.opacity = 0;
+                    this.elemObj.style.visibility = 'visible';
                     setTimeout ( () => {
                         this.elemObj.style.opacity = 1;
                     }, 20 );
@@ -952,11 +1144,11 @@ module.exports = g;
         constructor ({
             prev = null, // 变化前的样式。可选。一般在 prev 中配置 transition
             next = null, //
-            transition = '', // 可在此配置默认的 transition 规则，即如果 prev 中找不到 transition 的配置则使用该配置。可选
+            transitionDuration = '', // 可在此配置默认的 transition 规则，即如果 prev 中找不到 transition 的配置则使用该配置。可选
         }) {
             this.prev = prev;
             this.next = next;
-            this.transition = transition;
+            this.transition = transitionDuration;
 
             //this.isMounted = false;
             //this.isRollbacked = false;
@@ -1045,8 +1237,10 @@ module.exports = g;
         mountTransition () {
             for ( var id in this.next ) {
                 this.objDict[id].forEach( ( obj ) => {
-                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition-duration' ) == '0s' ) )
-                        obj.style.transition = this.transition;
+                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition-duration' ) == '0s' ) ) {
+                        obj.style.transitionProperty = 'all';
+                        obj.style.transitionDuration = this.transition;
+                    }
                 } );
             }
         }
@@ -1912,7 +2106,8 @@ setTimeout(function() {
     frame3 = new AnimationGroup( animationConfig.frame3 );
     frame4 = new AnimationGroup( animationConfig.frame4 );
     frame5 = new AnimationGroup( animationConfig.frame5 );
-});
+    frame6 = new AnimationGroup( animationConfig.frame6 );
+}, 500);
 
 // 翻页
 Vue.use( vue_PageTurn, {
@@ -1968,6 +2163,8 @@ Vue.use( vue_PageTurn, {
         ],
         4 : [
             function() {
+                frame6.clearTimer();
+                frame6.rollback();
             },
             function() {
                 frame5.mountPrevStyle();
@@ -1975,7 +2172,17 @@ Vue.use( vue_PageTurn, {
                 frame5.clearTimer();
                 frame5.mountNextStyle();
             }
-        ]
+        ],
+        5 : [
+            function() {
+            },
+            function() {
+                frame6.mountPrevStyle();
+                frame6.backupOldStyle();
+                frame6.clearTimer();
+                frame6.mountNextStyle();
+            }
+        ],
     },
 } );
 

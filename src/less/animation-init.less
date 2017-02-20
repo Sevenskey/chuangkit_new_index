@@ -1,4 +1,22 @@
 /** 动画初始设置 **/
+.no_background {
+    background-color: transparent !important;
+}
+.active_background_b {
+    display: none;
+}
+.gradurl_background {
+    visibility: hidden;
+    transition: opacity .8s;
+}
+
+.page2, .page3, .page4, .page5, .page6, .page7 {
+    visibility: hidden;
+    .image {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
 
 .page1 {
     transition: opacity .3s;
@@ -63,7 +81,7 @@
 }
 
 .image_init_status {
-    visibility: hidden;
+    /*visibility: hidden;*/
 
     .title {
         transform: translateY(2rem);
@@ -110,12 +128,20 @@
 }
 
 .page4 {
+    transition: all 1s;
+    .image {
+        .image_init_status;
+        transition: all 1s;
+    }
+}
+
+.page5 {
     .image {
         .image_init_status;
     }
 }
 
-.page5 {
+.page6 {
     .image {
         .image_init_status;
     }

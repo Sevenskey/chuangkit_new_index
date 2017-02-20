@@ -70,7 +70,8 @@ setTimeout(function() {
     frame3 = new AnimationGroup( animationConfig.frame3 );
     frame4 = new AnimationGroup( animationConfig.frame4 );
     frame5 = new AnimationGroup( animationConfig.frame5 );
-});
+    frame6 = new AnimationGroup( animationConfig.frame6 );
+}, 500);
 
 // 翻页
 Vue.use( vue_PageTurn, {
@@ -126,6 +127,8 @@ Vue.use( vue_PageTurn, {
         ],
         4 : [
             function() {
+                frame6.clearTimer();
+                frame6.rollback();
             },
             function() {
                 frame5.mountPrevStyle();
@@ -133,7 +136,17 @@ Vue.use( vue_PageTurn, {
                 frame5.clearTimer();
                 frame5.mountNextStyle();
             }
-        ]
+        ],
+        5 : [
+            function() {
+            },
+            function() {
+                frame6.mountPrevStyle();
+                frame6.backupOldStyle();
+                frame6.clearTimer();
+                frame6.mountNextStyle();
+            }
+        ],
     },
 } );
 

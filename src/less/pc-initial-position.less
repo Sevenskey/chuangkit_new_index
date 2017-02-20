@@ -15,7 +15,7 @@
             left: 23em;
         }
         .card_num_b_4 {
-            bottom: 3em;
+            bottom: 0em;
             right: 9em;
         }
         .card_num_b_5 {
@@ -97,5 +97,98 @@
     .image_3 {
         top: 7em;
         left: 74em;
+    }
+}
+
+.page6 {
+    @top_distance: 11.5em;
+    @left_distance: 15em;
+
+    /*侧边四个圆角正方形*/
+    .image_1 {
+        top: @top_distance;
+        left: @left_distance;
+    }
+    .image_2 {
+        top: @top_distance;
+        left: 22em;
+    }
+    .image_3 {
+        top: 7em + @top_distance;
+        left: @left_distance;
+    }
+    .image_4 {
+        top: 7em + @top_distance;
+        left: 7em + @left_distance;
+    }
+    /*侧边三个圆角矩形*/
+    .image_5 {
+        top: 7em * 2 + @top_distance;
+        left: @left_distance;
+    }
+    .image_6 {
+        top: 7em * 3 + @top_distance;
+        left: @left_distance;
+    }
+    .image_7 {
+        top: 7em * 4 + @top_distance;
+        left: @left_distance;
+    }
+    /*三个字*/
+    .image_8 {
+        top: 2em + @top_distance;
+        left: 20.5em + @left_distance;
+    }
+    .image_9 {
+        top: 2em + 4.3em + @top_distance;
+        left: 20.5em + @left_distance;
+    }
+    .image_10 {
+        top: 2em + 4.3em * 2 + @top_distance;
+        left: 20.5em + @left_distance;
+    }
+    /*大矩形上的几何图案*/
+    .image_11 {
+        top: 3em + @top_distance;
+        left: 30.5em + @left_distance;
+    }
+    /*大矩形*/
+    .image_12 {
+        top: @top_distance;
+        left: 18em + @left_distance;
+    }
+    .image_13 {
+        top: @top_distance + 25em;
+        left: 64em + @left_distance;
+    }
+    /*小方块*/
+    .image_14 {
+        top: @top_distance - 3.5em;
+        left: 18em + @left_distance;
+    }
+    .image_15 {
+        top: @top_distance - 3.5em;
+        left: 18em + @left_distance + 3.5em;
+    }
+    .image_16 {
+        top: @top_distance - 3.5em;
+        left: 18em + @left_distance + 3.5em * 2;
+    }
+    .image_17 {
+        top: @top_distance - 3.5em;
+        left: 18em + @left_distance + 3.5em * 3;
+    }
+    .image_18 {
+        top: @top_distance - 3.5em;
+        left: 18em + @left_distance + 3.5em * 4;
+    }
+
+    .page6_box1_position {
+        top: @top_distance - 4em;
+        left: @left_distance + 16em;
+    }
+    .page6_box2_position {
+        top: @top_distance - 4em;
+        left: @left_distance - 1.5em;
     }
 }

@@ -102,8 +102,8 @@
 
         show () {
             this.helper( function() {
-                    this.elemObj.style.visibility = 'visible';
                     this.elemObj.style.opacity = 0;
+                    this.elemObj.style.visibility = 'visible';
                     setTimeout ( () => {
                         this.elemObj.style.opacity = 1;
                     }, 20 );
@@ -220,11 +220,11 @@
         constructor ({
             prev = null, // 变化前的样式。可选。一般在 prev 中配置 transition
             next = null, //
-            transition = '', // 可在此配置默认的 transition 规则，即如果 prev 中找不到 transition 的配置则使用该配置。可选
+            transitionDuration = '', // 可在此配置默认的 transition 规则，即如果 prev 中找不到 transition 的配置则使用该配置。可选
         }) {
             this.prev = prev;
             this.next = next;
-            this.transition = transition;
+            this.transition = transitionDuration;
 
             //this.isMounted = false;
             //this.isRollbacked = false;
@@ -313,8 +313,10 @@
         mountTransition () {
             for ( var id in this.next ) {
                 this.objDict[id].forEach( ( obj ) => {
-                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition-duration' ) == '0s' ) )
-                        obj.style.transition = this.transition;
+                    if ( this.transition && ( getComputedStyle( obj, null ).getPropertyValue( 'transition-duration' ) == '0s' ) ) {
+                        obj.style.transitionProperty = 'all';
+                        obj.style.transitionDuration = this.transition;
+                    }
                 } );
             }
         }
