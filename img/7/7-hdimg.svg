@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="184px" height="148px" viewBox="0 0 184 148" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="98.2058383%" y1="100%" x2="0%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#85B9FF" offset="0%"></stop>
+            <stop stop-color="#00D5FF" offset="62.5956633%"></stop>
+            <stop stop-color="#00CDE7" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="131" height="92"></rect>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.510155816   0 0 0 0 0.748432185  0 0 0 0.39526721 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-5" x="0" y="0" width="131" height="92"></rect>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.510155816   0 0 0 0 0.748432185  0 0 0 0.39526721 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-5-Copy" transform="translate(18.000000, 14.000000)">
+            <g id="Group">
+                <g id="Path-6-+-Oval-3-Mask-Copy" transform="translate(0.000000, 20.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <g id="Mask">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <path d="M-3.84132818,79.601156 C-3.84132818,79.601156 8.57746039,51.5505419 50.1504707,71.4353785 C91.7234811,91.3202151 127.197027,12.8160596 142.669901,36.042335" id="Path-6" stroke="#FFFFFF" stroke-width="3" mask="url(#mask-3)"></path>
+                    <ellipse id="Oval-3" stroke="#FFFFFF" stroke-width="3" mask="url(#mask-3)" cx="41.0466667" cy="31.5428571" rx="8.73333333" ry="8.76190476"></ellipse>
+                </g>
+                <g id="Path-6-+-Oval-3-Mask-Copy-2" transform="translate(17.000000, 0.000000)">
+                    <mask id="mask-6" fill="white">
+                        <use xlink:href="#path-5"></use>
+                    </mask>
+                    <g id="Mask">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-5"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    </g>
+                    <path d="M-3.84132818,79.601156 C-3.84132818,79.601156 8.57746039,51.5505419 50.1504707,71.4353785 C91.7234811,91.3202151 127.197027,12.8160596 142.669901,36.042335" id="Path-6" stroke="#FFFFFF" stroke-width="3" mask="url(#mask-6)"></path>
+                    <ellipse id="Oval-3" stroke="#FFFFFF" stroke-width="3" mask="url(#mask-6)" cx="41.0466667" cy="31.5428571" rx="8.73333333" ry="8.76190476"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

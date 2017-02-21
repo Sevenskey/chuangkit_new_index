@@ -192,3 +192,41 @@
         left: @left_distance - 1.5em;
     }
 }
+
+.page7 {
+    @top_distance: 9em;
+    @left_distance: 9em;
+
+    @top_distance2: @top_distance + 6em;
+    @left_distance2: @left_distance + 6em;
+    @public_height: 10.5em;
+    
+    .page7_box {
+        top: @top_distance;
+        left: @left_distance;
+    }
+    .image_jpg {
+        top: @top_distance2;
+        left: @left_distance2;
+    }
+    .image_ppt {
+        top: @top_distance2;
+        left: @left_distance2 + @public_height;
+    }
+    .image_bqtp {
+        top: @top_distance2 + @public_height;
+        left: @left_distance2 + @public_height;
+    }
+    .image_hdimg {
+        top: @top_distance2;
+        left: @left_distance2 + @public_height * 3 + 2em;
+    }
+    .image_pj {
+        top: @top_distance2;
+        left: @left_distance2 + @public_height * 4 + 5em;
+    }
+    .image_tmbj {
+        top: @top_distance2 + @public_height;
+        left: @left_distance2;
+    }
+}

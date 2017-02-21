@@ -71,6 +71,19 @@ setTimeout(function() {
     frame4 = new AnimationGroup( animationConfig.frame4 );
     frame5 = new AnimationGroup( animationConfig.frame5 );
     frame6 = new AnimationGroup( animationConfig.frame6 );
+    frame7 = new AnimationGroup( animationConfig.frame7 );
+
+    //Bugs:
+    //1.点击卡片跳转至对应动画场景时，由于丢失上下文，导致动画出现问题 
+    //2.一部分模块的数据加载是异步的，有可能会导致动画渲染时出现问题
+    
+    //console.log(document.querySelectorAll('.card2'))
+    //document.querySelectorAll('.card2')[1].addEventListener('click', function() {
+                //frame4.mountPrevStyle();
+                //frame4.backupOldStyle();
+                //frame4.clearTimer();
+                //frame4.mountNextStyle();
+            //});
 }, 500);
 
 // 翻页
@@ -110,7 +123,6 @@ Vue.use( vue_PageTurn, {
                 frame3.backupOldStyle();
                 frame3.clearTimer();
                 frame3.mountNextStyle();
-
             }
         ],
         3 : [
@@ -139,12 +151,24 @@ Vue.use( vue_PageTurn, {
         ],
         5 : [
             function() {
+                frame7.clearTimer();
+                frame7.rollback();
             },
             function() {
                 frame6.mountPrevStyle();
                 frame6.backupOldStyle();
                 frame6.clearTimer();
                 frame6.mountNextStyle();
+            }
+        ],
+        6 : [
+            function() {
+            },
+            function() {
+                frame7.mountPrevStyle();
+                frame7.backupOldStyle();
+                frame7.clearTimer();
+                frame7.mountNextStyle();
             }
         ],
     },

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="119px" height="119px" viewBox="0 0 119 119" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="77px" height="77px" viewBox="0 0 77 77" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-    <title>拉 copy</title>
+    <title>Rectangle 8 Copy 8</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <linearGradient x1="0%" y1="0%" x2="96.2586695%" y2="100%" id="linearGradient-1">
+        <linearGradient x1="26.3637906%" y1="31.5220777%" x2="96.2586695%" y2="100%" id="linearGradient-1">
             <stop stop-color="#1DE09E" offset="0%"></stop>
             <stop stop-color="#00E2FF" offset="62.5956633%"></stop>
             <stop stop-color="#00DAFF" offset="100%"></stop>
         </linearGradient>
-        <circle id="path-2" cx="41.5" cy="41.5" r="41.5"></circle>
+        <rect id="path-2" x="18" y="14" width="41" height="41" rx="8"></rect>
         <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
             <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
@@ -17,14 +17,9 @@
         </filter>
     </defs>
     <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="拉-copy" transform="translate(18.000000, 14.000000)">
-            <g id="Oval-5-Copy">
-                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
-                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
-            </g>
-            <text id="拉" font-family="NotoSansHans-Light, Noto Sans S Chinese" font-size="48" font-weight="300" fill="#FFFFFF">
-                <tspan x="18" y="60">拉</tspan>
-            </text>
+        <g id="Rectangle-8-Copy-8">
+            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+            <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
         </g>
     </g>
 </svg>

@@ -377,7 +377,84 @@
         },
         frame7 : {
             prev : {
-            }
+                '#page7 .image_hdimg img' : {
+                    down : '2em',
+                },
+                '#page7 .image_bqtp img' : {
+                    down : '2em',
+                },
+                '#page7 .image_jpg img' : {
+                    down : '2em',
+                },
+                '#page7 .image_pj img' : {
+                    down : '2em',
+                },
+                '#page7 .image_ppt img' : {
+                    down : '2em',
+                },
+                '#page7 .image_tmbj img' : {
+                    down : '2em',
+                },
+            },
+            next : {
+                //隐藏
+                '#page6, #page6 .image img' : {
+                    hide : true,
+                },
+                '#card_seq2 .card4' : {
+                    up : '6em',
+                    hide : true,
+                },
+                '#card_num_b_4' : {
+                    up : '3em',
+                    hide : true,
+                },
+                '#gradient4' : {
+                    hide : true,
+                },
+                '#page3 .key1, #page3 .key2' : {
+                    hide : true,
+                },
+                //出现
+                '#page7' : {
+                    show : true,
+                },
+                '#page7 .image_hdimg img' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '#page7 .image_bqtp img' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '#page7 .image_jpg img' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '#page7 .image_pj img' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '#page7 .image_ppt img' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '#page7 .image_tmbj img' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '.page7 .image, .page7 .title' : {
+                    show : true,
+                    transform : 'translate(0px, 0px)',
+                },
+                '#card_seq2 .card5' : {
+                    up : '4em',
+                    show : true,
+                    height : '22em',
+                },
+                '#card_num_b_5' : {
+                    up : '3em',
+                    show : true,
+                },
+                '#gradient5' : {
+                    show : true,
+                },
+            },
+            transitionDuration: '1s',
         },
     };
 
