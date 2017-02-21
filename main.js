@@ -26,26 +26,45 @@ const animationConfig = requireModules( './animation-config.js' );
 
 
 /***** 部署页面 *****/
+// 动画
+var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7;
+frame1 = new AnimationGroup( animationConfig.frame1 );
 
 // 导航
 Vue.use( beAPlugin( vue_Header ), {
     el : 'header',
+    callback : function() {
+        header = document.getElementById('header');
+    }
 } );
 
 // 卡片
 Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.card.json',
     el : '#card_seq',
+    callback : function() {
+        frame2 = new AnimationGroup( animationConfig.frame2 );
+    },
 });
 // 卡片2 （用于4～7页的动画中）
 Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.card.json',
     el : '#card_seq2',
+    callback : function() {
+        frame3 = new AnimationGroup( animationConfig.frame3 );
+        frame4 = new AnimationGroup( animationConfig.frame4 );
+        frame5 = new AnimationGroup( animationConfig.frame5 );
+        frame6 = new AnimationGroup( animationConfig.frame6 );
+        frame7 = new AnimationGroup( animationConfig.frame7 );
+    },
 });
-// UserFeedback
+//UserFeedback
 //Vue.use( beAPlugin(vue_DataFiller), {
     //url : './data/vue.user-feedback.json',
     //el : '#user_feedback',
+    //callback : function() {
+        //console.log('UserFeedback is OK!');
+    //},
 //});
 
 //// MediumFeedback
@@ -58,33 +77,18 @@ Vue.use( beAPlugin( vue_DataFiller ), {
     //pixel : 17, // 活动圆点移动长度
 //} );
 
-var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7;
-// 动画
-// 等待vue将页面渲染完毕
-// vue渲染是异步，JS的事件循环机制会使在vue还未渲染好模板时就执行下面的 new AnimationGroup 语句，导致出错。故在此引入定时器，以使该语句在下一个事件循环中（或队尾）被执行。但是依然不能绝对确保在vue渲染完毕模板后再执行。
-// 但至少在我这里是work的。。
-setTimeout(function() {
-    header = document.getElementById('header');
-    frame1 = new AnimationGroup( animationConfig.frame1 );
-    frame2 = new AnimationGroup( animationConfig.frame2 );
-    frame3 = new AnimationGroup( animationConfig.frame3 );
-    frame4 = new AnimationGroup( animationConfig.frame4 );
-    frame5 = new AnimationGroup( animationConfig.frame5 );
-    frame6 = new AnimationGroup( animationConfig.frame6 );
-    frame7 = new AnimationGroup( animationConfig.frame7 );
 
-    //Bugs:
-    //1.点击卡片跳转至对应动画场景时，由于丢失上下文，导致动画出现问题 
-    //2.一部分模块的数据加载是异步的，有可能会导致动画渲染时出现问题
-    
-    //console.log(document.querySelectorAll('.card2'))
-    //document.querySelectorAll('.card2')[1].addEventListener('click', function() {
-                //frame4.mountPrevStyle();
-                //frame4.backupOldStyle();
-                //frame4.clearTimer();
-                //frame4.mountNextStyle();
-            //});
-}, 500);
+//Bugs:
+//1.点击卡片跳转至对应动画场景时，由于丢失上下文，导致动画出现问题 
+//2.一部分模块的数据加载是异步的，有可能会导致动画渲染时出现问题
+
+//console.log(document.querySelectorAll('.card2'))
+//document.querySelectorAll('.card2')[1].addEventListener('click', function() {
+            //frame4.mountPrevStyle();
+            //frame4.backupOldStyle();
+            //frame4.clearTimer();
+            //frame4.mountNextStyle();
+        //});
 
 // 翻页
 Vue.use( vue_PageTurn, {

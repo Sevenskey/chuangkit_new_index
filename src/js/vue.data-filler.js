@@ -37,11 +37,12 @@
     class DataFiller {
         constructor ( {
             url = null,
-            el = ''
-
+            el = '',
+            callback = null,
         }, Vue ) {
             this.Vue = Vue;
             this.el = el;
+            this.callback = callback;
 
             if ( el )
                 getData({
@@ -60,7 +61,14 @@
 
                 data : {
                     items : self.data
-                }
+                },
+
+                mounted : function() {
+                    if ( self.callback )
+                        setTimeout( function() {
+                            self.callback();
+                        } );
+                },
             } );
 
         }

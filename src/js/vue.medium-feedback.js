@@ -32,10 +32,12 @@
         constructor ( {
             data = {},
             el = '#medium_feedback',
+            callback = null,
         } = {}, Vue ) {
             this.el = el;
             this.Vue = Vue;
             this.data = data;
+            this.callback = callback;
 
             this.generate();
         }
@@ -60,6 +62,13 @@
                     }
                 },
 
+                mounted : function() {
+                    if ( self.callback )
+                        setTimeout( function() {
+                            self.callback();
+                        } );
+                },
+
             });
         }
     }
@@ -75,6 +84,7 @@
             pt_el = '#mf_page_turn', // 下方圆点
             interval = 1000, // 自动切换速度
             pixel = 17, // 活动圆点移动长度
+            callback = null,
         }, Vue ) {
             this.url = url;
             this.Vue = Vue;
@@ -83,6 +93,7 @@
             this.nextButton = nextButton;
             this.interval = interval;
             this.pixel = pixel;
+            this.callback = callback;
             
             this.launch();
         }
@@ -112,6 +123,7 @@
             this.mf_instance = new MediumFeedback_page( {
                 data : data,
                 el : this.mf_el,
+                callback : this.callback,
             }, this.Vue );
         }
 

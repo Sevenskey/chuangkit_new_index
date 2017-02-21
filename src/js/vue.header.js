@@ -24,13 +24,25 @@
 
     class Header {
         constructor ( {
-            el = 'header,'
+            el = 'header',
+            callback = null,
         }, Vue ) {
             this.Vue = Vue;
+            this.callback = callback;
+
             this.launch();
+            
+            var self = this;
 
             var header = new this.Vue({
                 el : el,
+
+                mounted : function() {
+                    if ( self.callback )
+                        setTimeout( function() {
+                            self.callback();
+                        } );
+                },
             });
         }
 
