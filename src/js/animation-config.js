@@ -456,6 +456,70 @@
             },
             transitionDuration: '1s',
         },
+        frame8 : {
+            prev : {
+            },
+            next : {
+                //隐藏
+                '#page2' : {
+                    hide : true,
+                },
+                //'#page7, #page7 .image img, #page7 .image .title' : {
+                    //hide : true,
+                //},
+                '#card_seq2 .card5' : {
+                    up : '6em',
+                    hide : true,
+                },
+                '#card_num_b_5' : {
+                    up : '3em',
+                    hide : true,
+                },
+                //'#gradient5' : {
+                    //hide : true,
+                //},
+                //变形
+                '#gradient5' : {
+                    up : '100%',
+                },
+                '#page7' : {
+                    up : '100%',
+                },
+                '.user_feedback li:nth-child(1)' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '.user_feedback li:nth-child(2)' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '.user_feedback li:nth-child(3)' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '.user_feedback li:nth-child(4)' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '.user_feedback li:nth-child(5)' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                '.user_feedback li:nth-child(6)' : {
+                    transform : 'translate(0px, 0px)',
+                },
+                //出现
+                '#active_background_w' : {
+                    retrieve : true,
+                },
+                '.page8' : {
+                    transform : 'translateY(0px)',
+                    show : true,
+                },
+                '.user_feedback li' : {
+                    show : true,
+                },
+                '#mouse' : {
+                    show : true,
+                }
+            },
+            transitionDuration : '1s',
+        }
     };
 
     if ( typeof module != 'undefined' )

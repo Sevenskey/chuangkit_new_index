@@ -42,6 +42,7 @@
     margin: 0;
 
     li {
+        background-color: white;
         list-style: none;
         padding: 1.6rem .6rem;
         display: inline-block;
@@ -70,19 +71,6 @@
         border-radius: 50%;
         background-size: cover;
         display: inline-block;
-
-    }
-    .user_feedback_identity {
-        font-size: @uf_identity_size;
-        color: @uf_identity_color;
-        margin-top: .4rem;
-        text-align: left
-
-    }
-    .user_feedback_content {
-        color: @uf_content_color;
-        text-align: left;
-        font-size: @uf_content_size;
 
     }
     .user_feedback_section1 {
@@ -126,6 +114,19 @@
 
         }
     }
+    .user_feedback_identity {
+        font-size: @uf_identity_size;
+        color: @uf_identity_color;
+        margin-top: .4rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+    .user_feedback_content {
+        margin: 1rem 0;
+        color: @uf_content_color;
+        text-align: left;
+        font-size: @uf_content_size;
+    }
 }
 
 .uf_align_left {
@@ -140,6 +141,7 @@
 /**** Medium Feedback ****/
 
 .medium_feedback {
+    background-color: white;
     height: @mf_height;
     width: @mf_width;
     padding: 3.5rem 2.9rem;

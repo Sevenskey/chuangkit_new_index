@@ -27,7 +27,7 @@ const animationConfig = requireModules( './animation-config.js' );
 
 /***** 部署页面 *****/
 // 动画
-var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7;
+var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9;
 frame1 = new AnimationGroup( animationConfig.frame1 );
 
 // 导航
@@ -46,7 +46,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
         frame2 = new AnimationGroup( animationConfig.frame2 );
     },
 });
-// 卡片2 （用于4～7页的动画中）
+// 卡片2 （用于3～7页的动画中）
 Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.card.json',
     el : '#card_seq2',
@@ -59,23 +59,27 @@ Vue.use( beAPlugin( vue_DataFiller ), {
     },
 });
 //UserFeedback
-//Vue.use( beAPlugin(vue_DataFiller), {
-    //url : './data/vue.user-feedback.json',
-    //el : '#user_feedback',
-    //callback : function() {
-        //console.log('UserFeedback is OK!');
-    //},
-//});
+Vue.use( beAPlugin(vue_DataFiller), {
+    url : './data/vue.user-feedback.json',
+    el : '#user_feedback',
+    callback : function() {
+        console.log('UserFeedback is OK!');
+        frame8 = new AnimationGroup( animationConfig.frame8 );
+    },
+});
 
 //// MediumFeedback
-//Vue.use( beAPlugin(vue_MediumFeedback), {
-    //url : './data/vue.medium-feedback.json',
-    //mf_el : '#medium_feedback_main', // medium feedback 主体
-    //nextButton : '#mf_next_button', // 下一页按钮
-    //pt_el : '#mf_page_turn', // 下方圆点
-    //interval : 3000, // 自动切换间隔时间
-    //pixel : 17, // 活动圆点移动长度
-//} );
+Vue.use( beAPlugin(vue_MediumFeedback), {
+    url : './data/vue.medium-feedback.json',
+    mf_el : '#medium_feedback_main', // medium feedback 主体
+    nextButton : '#mf_next_button', // 下一页按钮
+    pt_el : '#mf_page_turn', // 下方圆点
+    interval : 3000, // 自动切换间隔时间
+    pixel : 17, // 活动圆点移动长度
+    callback : function() {
+        console.log( 'MediumFeedback is OK!' );
+    },
+} );
 
 
 //Bugs:
@@ -91,9 +95,19 @@ Vue.use( beAPlugin( vue_DataFiller ), {
         //});
 
 // 翻页
+function upTo ( frame ) {
+        frame.clearTimer();
+        frame.rollback();
+}
+function downTo( frame ) {
+        frame.mountPrevStyle();
+        frame.backupOldStyle();
+        frame.clearTimer();
+        frame.mountNextStyle();
+}
 Vue.use( vue_PageTurn, {
     el : '#page_turn',
-    pageNum : 7,
+    pageNum : 9,
     color : '#00CCCD',
     staticCircleClass : 'static_circle',
     activeCircleClass : 'active_circle',
@@ -107,21 +121,19 @@ Vue.use( vue_PageTurn, {
             frame2.rollback();
         },
         1 :[
-            function() { // 上翻到达
-                frame3.clearTimer();
-                frame3.rollback();
+            function() {
+                upTo( frame3 ); // 上翻到达
             },
             function() { //下翻到达
                 header.className = '';
                 frame2.clearTimer();
                 frame1.mountNextStyle();
                 frame2.mountNextStyle();
-            }
+            },
         ],
         2 : [
             function() {
-                frame4.clearTimer();
-                frame4.rollback();
+                upTo( frame4 );
             },
             function() {
                 frame3.backupOldStyle();
@@ -131,49 +143,42 @@ Vue.use( vue_PageTurn, {
         ],
         3 : [
             function() {
-                frame5.clearTimer();
-                frame5.rollback();
+                upTo( frame5 );
             },
             function() {
-                frame4.mountPrevStyle();
-                frame4.backupOldStyle();
-                frame4.clearTimer();
-                frame4.mountNextStyle();
-            }
+                downTo( frame4 );
+            },
         ],
         4 : [
             function() {
-                frame6.clearTimer();
-                frame6.rollback();
+                upTo( frame6 );
             },
             function() {
-                frame5.mountPrevStyle();
-                frame5.backupOldStyle();
-                frame5.clearTimer();
-                frame5.mountNextStyle();
-            }
+                downTo( frame5 );
+            },
         ],
         5 : [
             function() {
-                frame7.clearTimer();
-                frame7.rollback();
+                upTo( frame7 );
             },
             function() {
-                frame6.mountPrevStyle();
-                frame6.backupOldStyle();
-                frame6.clearTimer();
-                frame6.mountNextStyle();
-            }
+                downTo( frame6 );
+            },
         ],
         6 : [
             function() {
+                upTo( frame8 );
             },
             function() {
-                frame7.mountPrevStyle();
-                frame7.backupOldStyle();
-                frame7.clearTimer();
-                frame7.mountNextStyle();
+                downTo( frame7 );
             }
+        ],
+        7 : [
+            function() {
+            },
+            function() {
+                downTo( frame8 );
+            },
         ],
     },
 } );

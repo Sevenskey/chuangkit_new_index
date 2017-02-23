@@ -7,7 +7,7 @@
 }
 .gradurl_background {
     visibility: hidden;
-    transition: opacity .8s;
+    transition: all .8s;
 }
 
 .page2, .page3, .page4, .page5, .page6, .page7 {
@@ -16,6 +16,18 @@
         opacity: 0;
         visibility: hidden;
     }
+}
+
+.page8 {
+    visibility: hidden;
+
+    .user_feedback li {
+        visibility: hidden;
+    }
+}
+
+.page9 {
+    visibility: hidden;
 }
 
 .page1 {
@@ -146,14 +158,41 @@
         .image_init_status;
     }
 }
-.page6 {
+
+.page7 {
     .image {
         .image_init_status;
     }
 }
 
-.page7 {
-    .image {
-        .image_init_status;
+.page8 {
+    transform: translateY(100%);
+    transition: all 1s;
+
+    .user_feedback {
+        @basic_offset: 4em;
+        @n_basic_offset: 0 - @basic_offset;
+
+        li {
+            transition-delay: .4s;
+            &:nth-child(1) {
+                transform: translateX( @n_basic_offset );
+            }
+            &:nth-child(2) {
+                transform: translateX( @basic_offset );
+            }
+            &:nth-child(3) {
+                transform: translateX( @n_basic_offset * 2 );
+            }
+            &:nth-child(4) {
+                transform: translateX( @basic_offset * 2 );
+            }
+            &:nth-child(5) {
+                transform: translateX( @n_basic_offset * 3 );
+            }
+            &:nth-child(6) {
+                transform: translateX( @basic_offset * 3 );
+            }
+        }
     }
 }
