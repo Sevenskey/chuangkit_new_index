@@ -29,6 +29,7 @@ const animationConfig = requireModules( './animation-config.js' );
 // 动画
 var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9;
 frame1 = new AnimationGroup( animationConfig.frame1 );
+frame9 = new AnimationGroup( animationConfig.frame9 );
 
 // 导航
 Vue.use( beAPlugin( vue_Header ), {
@@ -58,8 +59,8 @@ Vue.use( beAPlugin( vue_DataFiller ), {
         frame7 = new AnimationGroup( animationConfig.frame7 );
     },
 });
-//UserFeedback
-Vue.use( beAPlugin(vue_DataFiller), {
+// UserFeedback
+Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.user-feedback.json',
     el : '#user_feedback',
     callback : function() {
@@ -68,7 +69,7 @@ Vue.use( beAPlugin(vue_DataFiller), {
     },
 });
 
-//// MediumFeedback
+// MediumFeedback
 Vue.use( beAPlugin(vue_MediumFeedback), {
     url : './data/vue.medium-feedback.json',
     mf_el : '#medium_feedback_main', // medium feedback 主体
@@ -80,6 +81,34 @@ Vue.use( beAPlugin(vue_MediumFeedback), {
         console.log( 'MediumFeedback is OK!' );
     },
 } );
+
+// Description
+Vue.use( beAPlugin( vue_DataFiller ), {
+    url : './data/vue.description.json',
+    el : '#description',
+    callback : function() {
+        console.log( 'Description is OK!' );
+    },
+} );
+
+// Links
+Vue.use( beAPlugin( vue_DataFiller ), {
+    url : './data/vue.links.json',
+    el : '#links',
+    callback : function() {
+        console.log( 'Links is OK!' );
+    },
+} );
+
+// Info
+Vue.use( beAPlugin( vue_DataFiller ), {
+    url : './data/vue.info.json',
+    el : '#info',
+    callback : function() {
+        console.log( 'Links is OK!' );
+    },
+} );
+
 
 
 //Bugs:
@@ -175,9 +204,17 @@ Vue.use( vue_PageTurn, {
         ],
         7 : [
             function() {
+                upTo( frame9 );
             },
             function() {
                 downTo( frame8 );
+            },
+        ],
+        8 : [
+            function() {
+            },
+            function() {
+                downTo( frame9 );
             },
         ],
     },

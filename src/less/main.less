@@ -130,17 +130,7 @@ button {
             margin-bottom: 1.8rem;
         }
         button {
-            border: 1px solid @page1_button_color;
-            color: @page1_button_color;
-            background-color: white;
-            font-size: .8rem;
-            padding: .6rem 5rem;
-            transition: all 1s;
-
-            &:hover {
-                color: white;
-                background-color: @page1_button_color;
-            }
+            .public_button;
         }
     }
 
@@ -453,5 +443,103 @@ button {
 .page8 {
     .user_feedback {
         margin-top: 6em;
+    }
+}
+
+.page9 {
+    .medium_feedback {
+        position: absolute;
+        z-index: 3;
+
+        top: 7em;
+        left: 7em;
+    }
+    .content_box {
+        float: right;
+        width: 50%;
+        text-align: center;
+        padding-top: 9em;
+        margin-right: 5em;
+
+        .image_box {
+            position: relative;
+            height: 17em;
+            width: 40em;
+
+            .picture {
+                position: absolute;
+            }
+            .pc {
+                width: 27.5em;
+                top: -1em;
+                left: 7em;
+            }
+            .phone {
+                width: 4.5em;
+                top: 6.7em;
+                left: 5.5em;
+            }
+            .ipad {
+                width: 16em;
+                top: 5em;
+                left: 24em;
+            }
+        }
+        button {
+            .public_button;
+        }
+    }
+
+    .footer {
+        width: 100%;
+        background: @footer_bg_color;
+        height: 30%;
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+        padding: 2em 0;
+        color: @footer_font_color;
+        font-size: @footer_font_size;
+
+        .content {
+            overflow: hidden;
+            margin-bottom: 1em;
+        }
+
+        .content > * {
+            float: left;
+        }
+
+        .info {
+            text-align: center;
+        }
+
+        .content {
+            padding-left: 50%;
+
+            .description {
+                padding: 0 2em;
+                li {
+                    padding: .6em 0;
+
+                    p {
+                        margin-bottom: .3em;
+                    }
+                }
+            }
+
+            .link {
+                float: left;
+                padding: 0 1.6em;
+                
+                li {
+                    padding: .6em 0;
+
+                    a {
+                        color: @footer_font_color;
+                    }
+                }
+            }
+        }
     }
 }

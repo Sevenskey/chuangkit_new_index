@@ -475,6 +475,9 @@
                     up : '3em',
                     hide : true,
                 },
+                '#page3,#page4,#page5,#page6' : {
+                    display : 'none',
+                },
                 //'#gradient5' : {
                     //hide : true,
                 //},
@@ -519,6 +522,47 @@
                 }
             },
             transitionDuration : '1s',
+        },
+        frame9 : {
+            prev : {
+                '#medium_feedback' : {
+                    down : '2em',
+                },
+                '.content_box' : {
+                    down : '2em',
+                },
+                '#footer' : {
+                    down : '30%',
+                },
+            },
+            next : {
+                //隐藏
+                '.page8' : {
+                    hide : true,
+                    up : '3em',
+                },
+                '#user_feedback li' : {
+                    hide : true,
+                },
+                '#mouse' : {
+                    hide : true,
+                },
+                //变形
+                '#medium_feedback' : {
+                    transform : 'translateY(0px)',
+                },
+                '.content_box' : {
+                    transform : 'translateY(0px)',
+                },
+                '#footer' : {
+                    transform : 'translateY(0px)',
+                },
+                //出现
+                '#page9, #medium_feedback, .content_box, #footer' : {
+                    show : true,
+                },
+            },
+            transitionDuration : '.8s',
         }
     };
 

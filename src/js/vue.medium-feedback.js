@@ -128,7 +128,7 @@
         }
 
         openPageTurn ( length, fn ) {
-            this.Vue.use( PageTurn, {
+            PageTurn.install( this.Vue, {
                 el : this.pt_el,
                 pageNum : length,
                 color : '#00CCCD',

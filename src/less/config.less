@@ -31,16 +31,34 @@
 @mf_content_size: 1rem;
 @mf_logo_size: 4rem;
 
-@mf_height: 26rem;
-@mf_width: 19rem;
+@mf_height: 27em;
+@mf_width: 19.5em;
 
 @mf_quotation_font_family: "_(:з」∠)_";
 @mf_quotation_width: .5;
 @mf_quotation_color: #666;
 @mf_next_button_color: #666;
 
+@footer_bg_color: #555;
+@footer_font_color: #aaa;
+@footer_font_size: 12px;
+
+.public_button {
+    border: 1px solid @page1_button_color;
+    color: @page1_button_color;
+    background-color: white;
+    font-size: .8rem;
+    padding: .6rem 5rem;
+    transition: all 1s;
+
+    &:hover {
+        color: white;
+        background-color: @page1_button_color;
+    }
+}
+
 .public_shadow {
-    box-shadow: 0 .125rem 1rem .125rem #eee;
+    box-shadow: 0 .125rem 1rem .125rem rgba(160,160,160, .3);
 }
 
 .card_shadow {

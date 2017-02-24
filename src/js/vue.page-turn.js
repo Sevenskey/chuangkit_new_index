@@ -45,6 +45,7 @@
             this.direction = direction;
             this.preButton = preButton ? document.getElementById(preButton.replace('#','')) : null;
             this.nextButton = nextButton ? document.getElementById(nextButton.replace('#','')) : null;
+            this.autoExecuteFirst = autoExecuteFirst;
 
             this.staticCircleClass = staticCircleClass;
             this.activeCircleClass = activeCircleClass;
@@ -52,9 +53,8 @@
             this.timer_wheel = null;
             this.timer_auto = null;
 
-            this.generate();
 
-            console.log('Page-turn works >w<');
+            this.generate();
         }
 
         invokeFunction ( fun, num, flag ) {
@@ -144,7 +144,7 @@
                                 color : self.color,
                                 myclass : self.activeCircleClass,
                                 pixel : parseFloat( self.pixel ),
-                                dim : typeof self.pixel == 'number' ? self.pixel : self.pixel.replace( /\d*\.\d+|\d+/, '' ),
+                                dim : typeof self.pixel == 'number' ? 'px' : self.pixel.replace( /\d*\.\d+|\d+/, '' ),
                             }
                         },
                         computed : {
