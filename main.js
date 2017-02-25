@@ -105,7 +105,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.info.json',
     el : '#info',
     callback : function() {
-        console.log( 'Links is OK!' );
+        console.log( 'Info is OK!' );
     },
 } );
 
@@ -113,7 +113,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
 
 //Bugs:
 //1.点击卡片跳转至对应动画场景时，由于丢失上下文，导致动画出现问题 
-//2.一部分模块的数据加载是异步的，有可能会导致动画渲染时出现问题
+//2.一部分模块的数据加载是异步的，有可能会导致动画渲染时出现问题（已修复
 
 //console.log(document.querySelectorAll('.card2'))
 //document.querySelectorAll('.card2')[1].addEventListener('click', function() {
@@ -141,7 +141,7 @@ Vue.use( vue_PageTurn, {
     staticCircleClass : 'static_circle',
     activeCircleClass : 'active_circle',
     speed : 200,
-    pixel : '0.9rem',
+    pixel : '1.13em',
     fn : {
         0 : function() {
             header.className = 'transparent_header';

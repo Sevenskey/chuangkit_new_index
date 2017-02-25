@@ -42,9 +42,8 @@
     margin: 0;
 
     li {
-        background-color: white;
         list-style: none;
-        padding: 1.6rem .6rem;
+        padding: 2.13em .8em;
         display: inline-block;
         width: 48%;
         position: relative;
@@ -56,12 +55,12 @@
 
         }
         &:nth-child(even) {
-            top: 1.9rem;
-            padding-left: 1rem
+            padding-left: 1.3em
 
         }
         &:nth-child(odd) {
-            padding-right: 1rem
+            top: 2.53em;
+            padding-right: 1.3em
 
         }
     }
@@ -75,8 +74,8 @@
     }
     .user_feedback_section1 {
         background-color: #fff;
-        padding: .6rem 1.6rem;
-        margin: 0 1.3rem;
+        padding: .8em 2.13em;
+        margin: 0 1.73em;
         width: 54%;
         position: relative;
 
@@ -84,7 +83,7 @@
     }
     .uf_left_float {
         float: left;
-        margin-right: 2.5rem;
+        margin-right: 3.3em;
 
         &:before {
             content: "";
@@ -93,7 +92,7 @@
             width: 40px;
             height: 30px;
             position: absolute;
-            right: -20px;
+            right: -1.67em;
             top: 0
 
         }
@@ -109,7 +108,7 @@
             width: 40px;
             height: 30px;
             position: absolute;
-            left: -20px;
+            left: -1.67em;
             top: 0
 
         }
@@ -117,12 +116,12 @@
     .user_feedback_identity {
         font-size: @uf_identity_size;
         color: @uf_identity_color;
-        margin-top: .4rem;
-        margin-bottom: 1.5rem;
+        margin-top: .53em;
+        margin-bottom: 2em;
         text-align: left;
     }
     .user_feedback_content {
-        margin: 1rem 0;
+        margin: 1.33em 0;
         color: @uf_content_color;
         text-align: left;
         font-size: @uf_content_size;
@@ -152,18 +151,18 @@
 
     .mf_next_button {
         position: absolute;
-        bottom: 2.6rem;
-        right: 2.9rem;
+        bottom: 3.47em;
+        right: 3.87em;
         background-color: @mf_next_button_color;
-        padding: .3rem .6rem;
+        padding: .4em .8em;
         cursor: pointer;
 
         .mf_next_button_triangle {
             width: 0px;
             height: 0px;
-            border-top: .8rem solid transparent;
-            border-bottom: .8rem solid transparent;
-            border-left: 1rem solid #fff;
+            border-top: 1.07em solid transparent;
+            border-bottom: 1.07em solid transparent;
+            border-left: 1.33em solid #fff;
             border-right: 0;
         }
     }
@@ -179,7 +178,7 @@
     }
 
     .medium_feedback_block {
-        height: @mf_height - 1rem;
+        height: @mf_height - 1.33em;
 
         li {
             list-style: none;
@@ -210,8 +209,8 @@
                     font-size: @mf_content_size * 4;
                     font-family: @mf_quotation_font_family;
                     position: relative; 
-                    top: 3rem;
-                    left: 0 - ( @mf_content_size * 4 * @mf_quotation_width );
+                    top: 3em / 4 / @mf_content_size;
+                    left: 0 - ( @mf_content_size * 4 * @mf_quotation_width ) / 4 / @mf_content_size;
                     color: @mf_quotation_color;
                 }
                 &:after {

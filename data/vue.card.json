@@ -12,7 +12,7 @@
         "identify" : "card2",
         "title_z" : "海量素材",
         "title_e" : "Massive material",
-        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "detail" : "创客贴为你提供各种正版免费的素材，包括数十种字体，及海量摄影图片、艺术字、矢量图形，方便你自由创作，提高设计效率。另外也可以上传自己的素材到云端，随时随地使用",
         "below_img" : "./img/2/02-1.svg",
         "above_img" : "./img/2/02-2.svg",
         "tail_img" : "./img/2/02.svg"
@@ -21,7 +21,7 @@
         "identify" : "card3",
         "title_z" : "精致模板",
         "title_e" : "Fine template",
-        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "detail" : "创客贴精心准备了大量精致的模板，为你的作品配色、排版提供专业参考和启发，甚至激发你的设计灵感",
         "below_img" : "./img/2/03-1.svg",
         "above_img" : "./img/2/03-2.svg",
         "tail_img" : "./img/2/03.svg"
@@ -30,7 +30,7 @@
         "identify" : "card4",
         "title_z" : "便捷操作",
         "title_e" : "Easier to use",
-        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "detail" : "通过鼠标的点击和拖拉拽进行设计创作。便捷的交互方式让你花上一杯咖啡的时间即可掌握创客贴的大部分操作",
         "below_img" : "./img/2/04-1.svg",
         "above_img" : "./img/2/04-2.svg",
         "tail_img" : "./img/2/04.svg"
@@ -39,7 +39,7 @@
         "identify" : "card5",
         "title_z" : "多样输出",
         "title_e" : "Multiple output formats",
-        "detail" : "你想要的<br>以及你想不到的<br>这里都有",
+        "detail" : "平台为你提供高清jpg、png、pdf、ppt等格式输出功能，无论是分享还是传输印刷都将轻松实现",
         "below_img" : "./img/2/05-1.svg",
         "above_img" : "./img/2/05-2.svg",
         "tail_img" : "./img/2/05.svg"

@@ -7,7 +7,6 @@
 * Compatibility:
 * Array.isArray() - IE9
 * getComputedStyle() - IE9
-* Line 209 - maybe Chrome only
 *
 * Speed Limitation:
 * Object.keys().forEach()
@@ -20,8 +19,8 @@
 *
 * Orgnization:
 * AnimationGroup < Shortcut
-*                     ^
-*                 FadeInOrOut
+*       ^             ^
+*  TimerHandler > FadeInOrOut
 */
 ;(function( window ){
 

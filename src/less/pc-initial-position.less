@@ -1,5 +1,27 @@
 /*PC端元素初始位置设置*/
 
+
+@media screen and ( min-width: 1300px ) {
+    .page1, .page2, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .page1, .page2, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
+        font-size: 13.5px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .page1, .page2, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
+        font-size: 17.5px;
+    }
+    .page6 {
+        @top_base: 0em;
+    }
+}
+
 .page2 {
     .card_num_b {
         .card_num_b_1 {
@@ -44,6 +66,9 @@
 }
 
 .page3 {
+    @top_base: 0em;
+    @left_base: 0em;
+
     .image_c {
         top: 10em;
         left : 18em;
@@ -101,132 +126,132 @@
 }
 
 .page6 {
-    @top_distance: 11.5em;
-    @left_distance: 15em;
+    @top_base: 11.5em;
+    @left_base: 15em;
 
     /*侧边四个圆角正方形*/
     .image_1 {
-        top: @top_distance;
-        left: @left_distance;
+        top: @top_base;
+        left: @left_base;
     }
     .image_2 {
-        top: @top_distance;
+        top: @top_base;
         left: 22em;
     }
     .image_3 {
-        top: 7em + @top_distance;
-        left: @left_distance;
+        top: 7em + @top_base;
+        left: @left_base;
     }
     .image_4 {
-        top: 7em + @top_distance;
-        left: 7em + @left_distance;
+        top: 7em + @top_base;
+        left: 7em + @left_base;
     }
     /*侧边三个圆角矩形*/
     .image_5 {
-        top: 7em * 2 + @top_distance;
-        left: @left_distance;
+        top: 7em * 2 + @top_base;
+        left: @left_base;
     }
     .image_6 {
-        top: 7em * 3 + @top_distance;
-        left: @left_distance;
+        top: 7em * 3 + @top_base;
+        left: @left_base;
     }
     .image_7 {
-        top: 7em * 4 + @top_distance;
-        left: @left_distance;
+        top: 7em * 4 + @top_base;
+        left: @left_base;
     }
     /*三个字*/
     .image_8 {
-        top: 2em + @top_distance;
-        left: 20.5em + @left_distance;
+        top: 2em + @top_base;
+        left: 20.5em + @left_base;
     }
     .image_9 {
-        top: 2em + 4.3em + @top_distance;
-        left: 20.5em + @left_distance;
+        top: 2em + 4.3em + @top_base;
+        left: 20.5em + @left_base;
     }
     .image_10 {
-        top: 2em + 4.3em * 2 + @top_distance;
-        left: 20.5em + @left_distance;
+        top: 2em + 4.3em * 2 + @top_base;
+        left: 20.5em + @left_base;
     }
     /*大矩形上的几何图案*/
     .image_11 {
-        top: 3em + @top_distance;
-        left: 30.5em + @left_distance;
+        top: 3em + @top_base;
+        left: 30.5em + @left_base;
     }
     /*大矩形*/
     .image_12 {
-        top: @top_distance;
-        left: 18em + @left_distance;
+        top: @top_base;
+        left: 18em + @left_base;
     }
     .image_13 {
-        top: @top_distance + 25em;
-        left: 64em + @left_distance;
+        top: @top_base + 25em;
+        left: 64em + @left_base;
     }
     /*小方块*/
     .image_14 {
-        top: @top_distance - 3.5em;
-        left: 18em + @left_distance;
+        top: @top_base - 3.5em;
+        left: 18em + @left_base;
     }
     .image_15 {
-        top: @top_distance - 3.5em;
-        left: 18em + @left_distance + 3.5em;
+        top: @top_base - 3.5em;
+        left: 18em + @left_base + 3.5em;
     }
     .image_16 {
-        top: @top_distance - 3.5em;
-        left: 18em + @left_distance + 3.5em * 2;
+        top: @top_base - 3.5em;
+        left: 18em + @left_base + 3.5em * 2;
     }
     .image_17 {
-        top: @top_distance - 3.5em;
-        left: 18em + @left_distance + 3.5em * 3;
+        top: @top_base - 3.5em;
+        left: 18em + @left_base + 3.5em * 3;
     }
     .image_18 {
-        top: @top_distance - 3.5em;
-        left: 18em + @left_distance + 3.5em * 4;
+        top: @top_base - 3.5em;
+        left: 18em + @left_base + 3.5em * 4;
     }
 
     .page6_box1_position {
-        top: @top_distance - 4em;
-        left: @left_distance + 16em;
+        top: @top_base - 4em;
+        left: @left_base + 16em;
     }
     .page6_box2_position {
-        top: @top_distance - 4em;
-        left: @left_distance - 1.5em;
+        top: @top_base - 4em;
+        left: @left_base - 1.5em;
     }
 }
 
 .page7 {
-    @top_distance: 9em;
-    @left_distance: 9em;
+    @top_base: 9em;
+    @left_base: 9em;
 
-    @top_distance2: @top_distance + 6em;
-    @left_distance2: @left_distance + 6em;
+    @top_base2: @top_base + 6em;
+    @left_base2: @left_base + 6em;
     @public_height: 10.5em;
     
     .page7_box {
-        top: @top_distance;
-        left: @left_distance;
+        top: @top_base;
+        left: @left_base;
     }
     .image_jpg {
-        top: @top_distance2;
-        left: @left_distance2;
+        top: @top_base2;
+        left: @left_base2;
     }
     .image_ppt {
-        top: @top_distance2;
-        left: @left_distance2 + @public_height;
+        top: @top_base2;
+        left: @left_base2 + @public_height;
     }
     .image_bqtp {
-        top: @top_distance2 + @public_height;
-        left: @left_distance2 + @public_height;
+        top: @top_base2 + @public_height;
+        left: @left_base2 + @public_height;
     }
     .image_hdimg {
-        top: @top_distance2;
-        left: @left_distance2 + @public_height * 3 + 2em;
+        top: @top_base2;
+        left: @left_base2 + @public_height * 3 + 2em;
     }
     .image_pj {
-        top: @top_distance2;
-        left: @left_distance2 + @public_height * 4 + 5em;
+        top: @top_base2;
+        left: @left_base2 + @public_height * 4 + 5em;
     }
     .image_tmbj {
-        top: @top_distance2 + @public_height;
-        left: @left_distance2;
+        top: @top_base2 + @public_height;
+        left: @left_base2;
     }
 }

@@ -130,7 +130,7 @@
     }
 
     // 该写法并不妥善。
-    // 这种写法相当于重写了Vue中安装插件时所做的工作。因此使得每一个准插件类在调用此函数后都可以注册称为插件。相当于扩展了一种在一个页面重复使用一个插件的方法。
+    // 这种写法相当于重写了Vue中安装插件时所做的工作。因此使得每一个准插件类在调用此函数后都可以注册成为插件。相当于扩展了一种在一个页面重复使用一个插件的方法。
     // 但这只是基于这恰好与 Vue.use 阻止重复注册的实现相同，如果在Vue的未来版本中更换了实现，则该函数实现的功能失效。
     function beAPlugin ( plugin ) {
         plugin.installed = false;
@@ -1119,7 +1119,6 @@ module.exports = g;
 * Compatibility:
 * Array.isArray() - IE9
 * getComputedStyle() - IE9
-* Line 209 - maybe Chrome only
 *
 * Speed Limitation:
 * Object.keys().forEach()
@@ -1132,8 +1131,8 @@ module.exports = g;
 *
 * Orgnization:
 * AnimationGroup < Shortcut
-*                     ^
-*                 FadeInOrOut
+*       ^             ^
+*  TimerHandler > FadeInOrOut
 */
 ;(function( window ){
 
@@ -2361,7 +2360,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
     url : './data/vue.info.json',
     el : '#info',
     callback : function() {
-        console.log( 'Links is OK!' );
+        console.log( 'Info is OK!' );
     },
 } );
 
@@ -2369,7 +2368,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
 
 //Bugs:
 //1.点击卡片跳转至对应动画场景时，由于丢失上下文，导致动画出现问题 
-//2.一部分模块的数据加载是异步的，有可能会导致动画渲染时出现问题
+//2.一部分模块的数据加载是异步的，有可能会导致动画渲染时出现问题（已修复
 
 //console.log(document.querySelectorAll('.card2'))
 //document.querySelectorAll('.card2')[1].addEventListener('click', function() {
@@ -2397,7 +2396,7 @@ Vue.use( vue_PageTurn, {
     staticCircleClass : 'static_circle',
     activeCircleClass : 'active_circle',
     speed : 200,
-    pixel : '0.9rem',
+    pixel : '1.13em',
     fn : {
         0 : function() {
             header.className = 'transparent_header';
