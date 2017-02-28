@@ -7,11 +7,8 @@
 ## 运行
 
 ```
-# 打包JS源文件
+# 打包和编译JS及CSS
 npm run build
-
-# 编译less文件
-make
 
 # 部署到本地，端口为2333
 # 单元测试：localhost:2333/test

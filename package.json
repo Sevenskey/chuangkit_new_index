@@ -19,7 +19,7 @@
     "webpack": "^2.2.0"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "make es5 && make css",
     "server": "http-server ./ -p 2333"
   },
   "repository": {
