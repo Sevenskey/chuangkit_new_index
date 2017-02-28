@@ -31,6 +31,15 @@ var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, fram
 frame1 = new AnimationGroup( animationConfig.frame1 );
 frame9 = new AnimationGroup( animationConfig.frame9 );
 
+//Test
+document.getElementById('start_btn').addEventListener( 'click', function() {
+
+                header.className = '';
+                frame2.clearTimer();
+                frame1.mountNextStyle();
+                frame2.mountNextStyle();
+} );
+
 // 导航
 Vue.use( beAPlugin( vue_Header ), {
     el : 'header',
@@ -82,12 +91,12 @@ Vue.use( beAPlugin(vue_MediumFeedback), {
     },
 } );
 
-// Description
+// Marketing
 Vue.use( beAPlugin( vue_DataFiller ), {
-    url : './data/vue.description.json',
-    el : '#description',
+    url : './data/vue.marketing.json',
+    el : '#marketing',
     callback : function() {
-        console.log( 'Description is OK!' );
+        console.log( 'Marketing is OK!' );
     },
 } );
 
@@ -134,10 +143,12 @@ function downTo( frame ) {
         frame.clearTimer();
         frame.mountNextStyle();
 }
+
+const chuangkitBlue = '#07aefc';
 Vue.use( vue_PageTurn, {
     el : '#page_turn',
     pageNum : 9,
-    color : '#00CCCD',
+    color : chuangkitBlue,
     staticCircleClass : 'static_circle',
     activeCircleClass : 'active_circle',
     speed : 200,
@@ -148,6 +159,8 @@ Vue.use( vue_PageTurn, {
             frame1.clearTimer();
             frame1.rollback();
             frame2.rollback();
+
+            this.changeColor( chuangkitBlue );
         },
         1 :[
             function() {
@@ -157,7 +170,10 @@ Vue.use( vue_PageTurn, {
                 header.className = '';
                 frame2.clearTimer();
                 frame1.mountNextStyle();
+                frame2.backupOldStyle();
                 frame2.mountNextStyle();
+
+                this.changeColor( '#fff' );
             },
         ],
         2 : [
@@ -197,6 +213,8 @@ Vue.use( vue_PageTurn, {
         6 : [
             function() {
                 upTo( frame8 );
+
+                this.changeColor( '#fff' );
             },
             function() {
                 downTo( frame7 );
@@ -208,6 +226,8 @@ Vue.use( vue_PageTurn, {
             },
             function() {
                 downTo( frame8 );
+
+                this.changeColor( chuangkitBlue );
             },
         ],
         8 : [

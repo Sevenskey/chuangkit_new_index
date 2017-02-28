@@ -53,10 +53,21 @@
             this.timer_wheel = null;
             this.timer_auto = null;
 
+            this.vueInstance = null;
+
 
             this.generate();
         }
 
+        changeColor ( newColor ) {
+            this.vueInstance.color = newColor;
+        }
+
+        changeCurrent ( newCurrent ) {
+            this.vueInstance.current = newCurrent;
+        }
+
+        // 执行用户函数
         invokeFunction ( fun, num, flag ) {
             var type = typeof fun;
             
@@ -64,22 +75,22 @@
                 switch ( typeof fun[num] ) {
                     case 'object': 
                         if ( flag > 0 )
-                            fun[num][1]();
+                            fun[num][1].call( this );
                         else
-                            fun[num][0]();
+                            fun[num][0].call( this );
                         break;
-                    case 'function': fun[num](); break;
-                    default: console.log( '第' + num + '页没有可执行的函数qwq' );
+                    case 'function': fun[num].call( this ); break;
+                    default: console.log( '第' + num + 1 + '页没有可执行的函数qwq' );
                 }
             else if ( type == 'function' )
-                fun();
+                fun.call( this );
             else
                 console.log( '没有可执行的函数qwq' );
         }
 
         generate () {
             var self = this;
-            new self.Vue ({
+            self.vueInstance = new self.Vue ({
                 el : self.el,
 
                 data : {
@@ -99,8 +110,8 @@
 
                 // 创建之初构建好模板
                 created : function () {
-                    var staticTemplate = '<static-circle></static-circle>',
-                        activeTemplate = '<active-circle :current="current"></active-circle>';
+                    var staticTemplate = '<static-circle :color="color"></static-circle>',
+                        activeTemplate = '<active-circle :current="current" :color="color"></active-circle>';
 
                     this.el.innerHTML += activeTemplate;
 
@@ -129,19 +140,18 @@
                 components : {
                     'static-circle' : {
                         template : '<li :style="{borderColor:color}" :class="[myclass]"></li>',
+                        props : ['color'],
                         data : function() {
                             return {
-                                color : self.color,
                                 myclass : self.staticCircleClass,
                             }
                         }
                     },
                     'active-circle' : {
                         template : '<li :style="style" :class="[myclass]"></li>',
-                        props : ['current'],
+                        props : ['current', 'color'],
                         data : function() {
                             return {
-                                color : self.color,
                                 myclass : self.activeCircleClass,
                                 pixel : parseFloat( self.pixel ),
                                 dim : typeof self.pixel == 'number' ? 'px' : self.pixel.replace( /\d*\.\d+|\d+/, '' ),

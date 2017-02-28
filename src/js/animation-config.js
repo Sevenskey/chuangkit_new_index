@@ -7,18 +7,21 @@
                     opacity : 1,
                 },
                 '#blue_banner' : {
-                    transform : 'translateY(-30px)',
+                    transform : 'translateY(-10px)',
                     opacity : 1,
                 },
             },
             next : {
-                '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
-                    //up : 300,
+                '#blue_banner' : {
+                    transform : 'translateY(-300px)',
+                    hide : true,
+                },
+                '#slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
                     transform : 'translateY(-300px)',
                     hide : true,
                 },
                 '#page1' : {
-                    delete : true,
+                    hide : true,
                 },
                 '#active_background_w' : {
                     delete : true,

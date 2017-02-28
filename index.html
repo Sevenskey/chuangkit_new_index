@@ -16,7 +16,8 @@
     <ul id="page_turn" class="page_turn page_turn_index"></ul>
 
     <div class="mouse" id="mouse">
-        <img src="./img/1/mouse.svg" alt="">
+        <img class="mouse1" src="./img/1/mouse.svg" alt="">
+        <img class="mouse2" src="./img/1/mouse2.svg" alt="">
     </div>
 
     <div id="active_background_w" class="active_background active_background_w"></div>
@@ -36,15 +37,14 @@
             <div id="start_btn" class="start_btn">
                 <button>开启设计</button>
             </div>
-        </div>
-        
-        <div id="page1_icons" class="page1_icons">
-            <img src="./img/1/icon1.svg" alt="">
-            <img src="./img/1/icon2.svg" alt="">
-            <img src="./img/1/icon3.svg" alt="">
+
+            <div id="page1_icons" class="page1_icons">
+                <img src="./img/1/icon1.svg" alt="">
+                <img src="./img/1/icon2.svg" alt="">
+                <img src="./img/1/icon3.svg" alt="">
+            </div>
         </div>
 
-        
     </section>
 
     <section id="page2" class="page2">
@@ -57,23 +57,25 @@
         </div>
 
         <ul id="card_seq2" class="card_seq card_seq2">
-            <li v-for="item in items" class="card image_shadow" :class="item.identify">
-                <div class="card_header">
-                    <div class="card_title">
-                        <h1>{{item.title_z}}</h1>
-                        <h2>{{item.title_e}}</h2>
+            <div class="container">
+                <li v-for="item in items" class="card image_shadow" :class="item.identify">
+                    <div class="card_header">
+                        <div class="card_title">
+                            <h1>{{item.title_z}}</h1>
+                            <h2>{{item.title_e}}</h2>
+                        </div>
+                        <div class="card_image">
+                            <img class="below" :src="item.below_img" alt="">
+                            <img class="above" :src="item.above_img" alt="">
+                        </div>
                     </div>
-                    <div class="card_image">
-                        <img class="below" :src="item.below_img" alt="">
-                        <img class="above" :src="item.above_img" alt="">
+                    <div class="card_tail">
+                        <p class="card_detail">
+                        {{ item.detail }}
+                        </p>
                     </div>
-                </div>
-                <div class="card_tail">
-                    <p class="card_detail">
-                    {{ item.detail }}
-                    </p>
-                </div>
-            </li>
+                </li>
+            </div>
         </ul>
         
         <ul id="card_seq" class="card_seq">
@@ -99,179 +101,189 @@
     </section>
 
     <div id="page3" class="page3">
-        <div class="image image_c key1">
-            <img src="./img/3/3-2.svg" alt="">
-            <div class="title">
-                <p>自定义尺寸</p>
-                <p>Custom size</p>
+        <div class="container">
+            <div class="image image_c key1">
+                <img src="./img/3/3-2.svg" alt="">
+                <div class="title">
+                    <p>自定义尺寸</p>
+                    <p>Custom size</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_a">
-            <img src="./img/3/3-1.svg" alt="">
-            <div class="title">
-                <p>广告印刷</p>
-                <p>Advertising printing</p>
+            <div class="image image_a">
+                <img src="./img/3/3-1.svg" alt="">
+                <div class="title">
+                    <p>广告印刷</p>
+                    <p>Advertising printing</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_s key2">
-            <img src="./img/3/3-3.svg" alt="">
-            <div class="title">
-                <p>社交媒体</p>
-                <p>Social media</p>
+            <div class="image image_s key2">
+                <img src="./img/3/3-3.svg" alt="">
+                <div class="title">
+                    <p>社交媒体</p>
+                    <p>Social media</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_w key3">
-            <img src="./img/3/3-4.svg" alt="">
-            <div class="title">
-                <p>工作文档</p>
-                <p>Work document</p>
+            <div class="image image_w key3">
+                <img src="./img/3/3-4.svg" alt="">
+                <div class="title">
+                    <p>工作文档</p>
+                    <p>Work document</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_l key4">
-            <img src="./img/3/3-5.svg" alt="">
-            <div class="title">
-                <p>生活</p>
-                <p>Life</p>
+            <div class="image image_l key4">
+                <img src="./img/3/3-5.svg" alt="">
+                <div class="title">
+                    <p>生活</p>
+                    <p>Life</p>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="page4" class="page4">
-        <div class="image image_v key2">
-            <img src="./img/4/4-2.svg" alt="">
-            <div class="title">
-                <p>矢量图</p>
-                <p>Vector diagram</p>
+        <div class="container">
+            <div class="image image_v key2">
+                <img src="./img/4/4-2.svg" alt="">
+                <div class="title">
+                    <p>矢量图</p>
+                    <p>Vector diagram</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_p key1">
-            <img src="./img/4/4-1.svg" alt="">
-            <div class="title">
-                <p>摄影图片</p>
-                <p>Photography</p>
+            <div class="image image_p key1">
+                <img src="./img/4/4-1.svg" alt="">
+                <div class="title">
+                    <p>摄影图片</p>
+                    <p>Photography</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_a key3">
-            <img src="./img/4/4-3.svg" alt="">
-            <div class="title">
-                <p>艺术字</p>
-                <p>Art font</p>
+            <div class="image image_a key3">
+                <img src="./img/4/4-3.svg" alt="">
+                <div class="title">
+                    <p>艺术字</p>
+                    <p>Art font</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_t key4">
-            <img src="./img/4/4-4.svg" alt="">
-            <div class="title">
-                <p>字体</p>
-                <p>Typeface</p>
+            <div class="image image_t key4">
+                <img src="./img/4/4-4.svg" alt="">
+                <div class="title">
+                    <p>字体</p>
+                    <p>Typeface</p>
+                </div>
             </div>
         </div>
     </div>
     
     <div id="page5" class="page5">
-        <div class="image image_1">
-            <img src="./img/5/5-1.svg" alt="">
-        </div>
-        <div class="image image_2 key1">
-            <img src="./img/5/5-2.svg" alt="">
-        </div>
-        <div class="image image_3 key2">
-            <img src="./img/5/5-3.svg" alt="">
+        <div class="container">
+            <div class="image image_1">
+                <img src="./img/5/5-1.svg" alt="">
+            </div>
+            <div class="image image_2 key1">
+                <img src="./img/5/5-2.svg" alt="">
+            </div>
+            <div class="image image_3 key2">
+                <img src="./img/5/5-3.svg" alt="">
+            </div>
         </div>
     </div>
 
     <div id="page6" class="page6">
-        <div class="image image_1">
-            <img src="./img/6/6-1.svg" alt="">
-        </div>
-        <div class="image image_2">
-            <img src="./img/6/6-2.svg" alt="">
-        </div>
-        <div class="image image_3">
-            <img src="./img/6/6-3.svg" alt="">
-        </div>
-        <div class="image image_4">
-            <img src="./img/6/6-4.svg" alt="">
-        </div>
-        <div class="image image_5">
-            <img src="./img/6/6-5.png" alt="">
-        </div>
-        <div class="image image_6">
-            <img src="./img/6/6-6.png" alt="">
-        </div>
-        <div class="image image_7">
-            <img src="./img/6/6-7.png" alt="">
-        </div>
-        <div class="image image_8">
-            <img src="./img/6/6-8.svg" alt="">
-        </div>
-        <div class="image image_9">
-            <img src="./img/6/6-9.svg" alt="">
-        </div>
-        <div class="image image_10">
-            <img src="./img/6/6-10.svg" alt="">
-        </div>
-        <div class="image image_11">
-            <img src="./img/6/6-11.svg" alt="">
-        </div>
-        <div class="image image_12">
-            <img src="./img/6/6-12.svg" alt="">
-        </div>
-        <div class="image image_13">
-            <img src="./img/6/6-13.svg" alt="">
-        </div>
-        <div class="image image_14">
-            <img src="./img/6/6-14.svg" alt="">
-        </div>
-        <div class="image image_15">
-            <img src="./img/6/6-15.svg" alt="">
-        </div>
-        <div class="image image_16">
-            <img src="./img/6/6-16.svg" alt="">
-        </div>
-        <div class="image image_17">
-            <img src="./img/6/6-17.svg" alt="">
-        </div>
-        <div class="image image_18">
-            <img src="./img/6/6-18.svg" alt="">
+        <div class="container">
+            <div class="image image_1">
+                <img src="./img/6/6-1.svg" alt="">
+            </div>
+            <div class="image image_2">
+                <img src="./img/6/6-2.svg" alt="">
+            </div>
+            <div class="image image_3">
+                <img src="./img/6/6-3.svg" alt="">
+            </div>
+            <div class="image image_4">
+                <img src="./img/6/6-4.svg" alt="">
+            </div>
+            <div class="image image_5">
+                <img src="./img/6/6-5.png" alt="">
+            </div>
+            <div class="image image_6">
+                <img src="./img/6/6-6.png" alt="">
+            </div>
+            <div class="image image_7">
+                <img src="./img/6/6-7.png" alt="">
+            </div>
+            <div class="image image_8">
+                <img src="./img/6/6-8.svg" alt="">
+            </div>
+            <div class="image image_9">
+                <img src="./img/6/6-9.svg" alt="">
+            </div>
+            <div class="image image_10">
+                <img src="./img/6/6-10.svg" alt="">
+            </div>
+            <div class="image image_11">
+                <img src="./img/6/6-11.svg" alt="">
+            </div>
+            <div class="image image_12">
+                <img src="./img/6/6-12.svg" alt="">
+            </div>
+            <div class="image image_13">
+                <img src="./img/6/6-13.svg" alt="">
+            </div>
+            <div class="image image_14">
+                <img src="./img/6/6-14.svg" alt="">
+            </div>
+            <div class="image image_15">
+                <img src="./img/6/6-15.svg" alt="">
+            </div>
+            <div class="image image_16">
+                <img src="./img/6/6-16.svg" alt="">
+            </div>
+            <div class="image image_17">
+                <img src="./img/6/6-17.svg" alt="">
+            </div>
+            <div class="image image_18">
+                <img src="./img/6/6-18.svg" alt="">
+            </div>
         </div>
     </div>
 
     <div class="page7" id="page7">
-        <div class="image page7_box"></div>
-        <div class="image image_bqtp">
-            <img src="./img/7/7-bqtp.svg" alt="">
-            <div class="title">
-                <p>标清图片</p>
+        <div class="container">
+            <div class="image page7_box"></div>
+            <div class="image image_bqtp">
+                <img src="./img/7/7-bqtp.svg" alt="">
+                <div class="title">
+                    <p>标清图片</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_hdimg">
-            <img src="./img/7/7-hdimg.svg" alt="">
-            <div class="title">
-                <p>高清图片</p>
+            <div class="image image_hdimg">
+                <img src="./img/7/7-hdimg.svg" alt="">
+                <div class="title">
+                    <p>高清图片</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_jpg">
-            <img src="./img/7/7-jpg.svg" alt="">
-            <div class="title">
-                <p>JPG</p>
+            <div class="image image_jpg">
+                <img src="./img/7/7-jpg.svg" alt="">
+                <div class="title">
+                    <p>JPG</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_pj">
-            <img src="./img/7/7-pj.svg" alt="">
-            <div class="title">
-                <p>自动拼接</p>
+            <div class="image image_pj">
+                <img src="./img/7/7-pj.svg" alt="">
+                <div class="title">
+                    <p>自动拼接</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_ppt">
-            <img src="./img/7/7-ppt.svg" alt="">
-            <div class="title">
-                <p>PPT</p>
+            <div class="image image_ppt">
+                <img src="./img/7/7-ppt.svg" alt="">
+                <div class="title">
+                    <p>PPT</p>
+                </div>
             </div>
-        </div>
-        <div class="image image_tmbj">
-            <img src="./img/7/7-tmbj.png" alt="">
-            <div class="title">
-                <p>PNG</p>
+            <div class="image image_tmbj">
+                <img src="./img/7/7-tmbj.png" alt="">
+                <div class="title">
+                    <p>PNG</p>
+                </div>
             </div>
         </div>
     </div>
@@ -295,52 +307,57 @@
     </div>
 
     <div class="page9" id="page9">
-        <!--[>Vue只绑定data的属性<]-->
-        <div id="medium_feedback" class="medium_feedback">
-            <div id="medium_feedback_main">
-                <ul class="medium_feedback_block">
-                    <li :key="index" v-for="(item, index) in items" > 
-                        <transition name="medium_logo_fade">
-                            <img class="medium_feedback_logo" :src="item.logo" :alt="item.mediumName" v-if="current === index">
-                        </transition>
-                        <transition name="medium_content_fade">
-                        <div class="medium_feedback_section1" v-if="current === index"> 
-                            <h5 class="medium_feedback_title">{{item.title}}</h5>
-                            <p class="medium_feedback_content">{{item.content}}</p>
-                        </div>
-                        </transition>
-                    </li>
-                </ul>
+        <div class="container">
+            <!--[>Vue只绑定data的属性<]-->
+            <div id="medium_feedback" class="medium_feedback">
+                <div id="medium_feedback_main">
+                    <ul class="medium_feedback_block">
+                        <li :key="index" v-for="(item, index) in items" > 
+                            <transition name="medium_logo_fade">
+                                <img class="medium_feedback_logo" :src="item.logo" :alt="item.mediumName" v-if="current === index">
+                            </transition>
+                            <transition name="medium_content_fade">
+                            <div class="medium_feedback_section1" v-if="current === index"> 
+                                <h5 class="medium_feedback_title">{{item.title}}</h5>
+                                <p class="medium_feedback_content">{{item.content}}</p>
+                            </div>
+                            </transition>
+                        </li>
+                    </ul>
+                </div>
+                <!--这里还有个动画，不过现在本大爷不想写-->
+                <div id="mf_next_button" class="mf_next_button">
+                    <div class="mf_next_button_triangle"></div>
+                </div>
+                <ul id="mf_page_turn" class="page_turn mf_page_turn"></ul>
             </div>
-            <!--这里还有个动画，不过现在本大爷不想写-->
-            <div id="mf_next_button" class="mf_next_button">
-                <div class="mf_next_button_triangle"></div>
-            </div>
-            <ul id="mf_page_turn" class="page_turn mf_page_turn"></ul>
-        </div>
 
-        <div class="content_box">
-            <div class="image_box">
-                <img class="picture pc" src="./img/9/pc.jpg" alt="">
-                <img class="picture phone" src="./img/9/phone.png" alt="">
-                <img class="picture ipad" src="./img/9/ipad.png" alt="">
+            <div class="content_box">
+                <div class="image_box">
+                    <img class="picture pc" src="./img/9/pc.jpg" alt="">
+                    <img class="picture phone" src="./img/9/phone.png" alt="">
+                    <img class="picture ipad" src="./img/9/ipad.png" alt="">
+                </div>
+                
+                <button>开启设计</button>
             </div>
-            
-            <button>开启设计</button>
         </div>
 
         <div class="footer" id="footer">
             <div class="content">
-                <div class="qrcode">
-                    <img src="" alt="">
-                </div>
-                <ul id="description" class="description">
-                    <li v-for="item in items">
-                        <p>{{item.title}}</p>
-                        <p>{{item.email}}</p>
-                    </li>
-                </ul>
 
+                <div id="marketing" class="marketing">
+                    <div class="qrcode">
+                        <img :src="items[0].qrcode" alt="">
+                    </div>
+                    <ul class="description">
+                        <li v-for="item in items[0].market">
+                            <p>{{item.title}}</p>
+                            <p>{{item.email}}</p>
+                        </li>
+                    </ul>
+                </div>
+                
                 <div id="links" class="links">
                     <ul class="link" v-for="set in items">
                         <li v-for="item in set">
@@ -351,10 +368,16 @@
             </div>
 
             <div id="info" class="info">
-                <div v-for="item in items">
-                    {{item.copyright}} 
-                    {{item.domain_record}}
+                <div>
+                    {{items[0].copyright}} 
+                    {{items[0].domain_record}}
                 </div>
+
+                <div class="designer">
+                    Design by 
+                    <a :href="items[0].designer.website" target="_blank">{{items[0].designer.name}}</a>
+                </div>
+                
             </div>
             
         </div>
