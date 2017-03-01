@@ -47,6 +47,18 @@ button {
 }
 
 .mouse {
+    @keyframes mouse-circle-scale {
+        100% {
+            transform: translateX(-50%) scale(1.6);
+            opacity: 0;
+        }
+    }
+    @keyframes mouse-wheel-slide {
+        100% {
+            transform: translateY(0px);
+            opacity: 0;
+        }
+    }
     text-align: center;
     z-index: 20;
     position: fixed;
@@ -57,15 +69,41 @@ button {
     opacity: 0;
     transition: all 1.3s;
 
+    .mouse_content, .mouse_circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.07em;
+        height: 3.07em;
+        position: absolute;
+        left: 50%;
+        top: -3em;
+    }
+    .mouse_content {
+        transform: translateX(-50%);
+    }
+    .mouse_circle {
+        border: 1px solid #ddd;
+        border-radius: 50%;
+
+        transform: translateX(-50%);
+        transform-origin: 50% 50%;
+
+        animation: mouse-circle-scale 3s infinite;
+    }
+
     .mouse1 {
+        /*left: 50%;*/
         max-height: 50px;
         height: 3.07em;
     }
     .mouse2 {
         position: absolute;
         left: 50%;
-        transform: translateX(-1px);
+        transform: translateY(4px);
         top: 40%;
+
+        animation: mouse-wheel-slide 3s infinite;
     }
 }
 
