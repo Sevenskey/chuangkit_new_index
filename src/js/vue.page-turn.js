@@ -14,7 +14,7 @@
         constructor ({
             el = '#page_turn',
             pageNum = 5, // 页面数量
-            color = '#00CCCD', // 颜色
+            color = '#07aefc', // 颜色
             speed = 300, // 翻页延迟（建议不要低于150）
             staticCircleClass = 'static_circle', // 如果要为标识添加样式则在该处注册样式所在的class
             activeCircleClass = 'active_circle', // 活动标识

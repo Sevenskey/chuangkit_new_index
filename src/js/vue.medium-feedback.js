@@ -131,7 +131,6 @@
             PageTurn.install( this.Vue, {
                 el : this.pt_el,
                 pageNum : length,
-                color : '#00CCCD',
                 staticCircleClass : 'static_circle',
                 activeCircleClass : 'active_circle',
                 speed : 200,

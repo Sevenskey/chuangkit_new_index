@@ -5,6 +5,6 @@ const Vue = require( '../../node_modules/vue/dist/vue.min.js' );
 const beAPlugin = tools.beAPlugin;
 
 Vue.use( beAPlugin( Test ), {
-    url : '../../test_data/vue.user-feedback.json',
+    url : '../../data/vue.user-feedback.json',
     el : '#user_feedback',
 });

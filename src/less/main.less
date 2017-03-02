@@ -36,13 +36,13 @@ button {
     position: fixed;
     right: 0;
     top: 45%;
-    margin-right: 2.93em;
+    margin-right: 2.1975em;
 
     li {
-        width: .6em;
-        height: .6em;
-        border-width: 0.13em;
-        margin: .53em 0;
+        width: 0.45em;
+        height: 0.45em;
+        border-width: 0.0975em;
+        margin: 0.3975em 0;
     }
 }
 
@@ -55,17 +55,17 @@ button {
     }
     @keyframes mouse-wheel-slide {
         100% {
-            transform: translateY(0px);
+            transform: translateY(-2px) translateX(-50%);
             opacity: 0;
         }
     }
     text-align: center;
     z-index: 20;
     position: fixed;
-    bottom: 2.67em;
+    bottom: 2.0025em;
     width: 100%;
 
-    transform: translateY(3.3em);
+    transform: translateY(2.475em);
     opacity: 0;
     transition: all 1.3s;
 
@@ -73,11 +73,11 @@ button {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 3.07em;
-        height: 3.07em;
+        width: 2.3025em;
+        height: 2.3025em;
         position: absolute;
         left: 50%;
-        top: -3em;
+        top: -2.25em;
     }
     .mouse_content {
         transform: translateX(-50%);
@@ -89,21 +89,21 @@ button {
         transform: translateX(-50%);
         transform-origin: 50% 50%;
 
-        animation: mouse-circle-scale 3s infinite;
+        animation: mouse-circle-scale 2s infinite;
     }
 
     .mouse1 {
         /*left: 50%;*/
         max-height: 50px;
-        height: 3.07em;
+        height: 2.3025em;
     }
     .mouse2 {
         position: absolute;
         left: 50%;
-        transform: translateY(4px);
+        transform: translateY(2px) translateX(-50%);
         top: 40%;
 
-        animation: mouse-wheel-slide 3s infinite;
+        animation: mouse-wheel-slide 2s infinite;
     }
 }
 
@@ -163,28 +163,28 @@ button {
     .blue_banner {
         background-image: url(../img/1/blue_banner.svg);
         width: 100%;
-        height: 18em;
-        background-size: 119.7em;
+        height: 13.5em;
+        background-size: 89.775em;
         position: absolute;
         top: 0;
     }
 
     .slogan {
         position: relative;
-        top: 4.5em;
+        top: 3.375em;
         text-align: center;
 
         h1 {
-            margin: 1em 0 .27em 0;
+            margin: 2.1em 0 0.2025em 0;
             font-size: @page1_h1_size;
             color: @page1_h1_color;
-            letter-spacing: .1em;
+            letter-spacing: 0.075em;
         }
         h2 {
             font-size: @page1_h2_size;
             color: @page1_h2_color;
-            letter-spacing: .67em;
-            margin-bottom: 2.4em;
+            letter-spacing: 0.5025em;
+            margin-bottom: 2.2em;
         }
         button {
             .public_button;
@@ -193,12 +193,12 @@ button {
 
     .page1_icons {
         text-align: center;
-        padding: 3.8em 0 2.4em 0;
+        padding: 3.15em 0 2em 0;
 
         img {
             max-height: 150px;
-            height: 8em;
-            margin: 0 2.7em;
+            height: 6.0em;
+            margin: 0 2.025em;
         }
     }
 }
@@ -208,7 +208,7 @@ button {
 
     .card_num_b {
         img {
-            width: 11em;
+            width: 8.25em;
             z-index: 12;
             position: absolute;
         }
@@ -233,14 +233,14 @@ button {
         .card {
             overflow: hidden;
             display: inline-block;
-            width: 17.3em;
-            height: 26em;
+            width: 12.975em;
+            height: 19.5em;
             border-radius: 3px;
-            margin: 0 1.3em;
+            margin: 0 0.975em;
             cursor: pointer;
             background-repeat: no-repeat;
             background-image: @white_stone;
-            background-size: 133.3em;
+            background-size: 99.975em;
             background-position: 20%;
             background-color: white;
 
@@ -248,7 +248,7 @@ button {
 
             &:hover {
                 .below {
-                    transform: translateX(2.67em);
+                    transform: translateX(2.0025em);
                 }
                 .card_tail img {
                     opacity: 1;
@@ -263,12 +263,12 @@ button {
             .card_title {
                 position: absolute;
                 z-index: 5;
-                margin: 1.6em;
+                margin: 1.2em;
             
                 h1 {
                     color: white;
                     font-size: @page2_card_title_size_z;
-                    margin-bottom: .27em;
+                    margin-bottom: 0.2025em;
                 }
                 h2 {
                     color: white;
@@ -278,8 +278,8 @@ button {
 
             .card_image {
                 position: relative;
-                left: -6.53em;
-                top: -4.67em;
+                left: -4.8975em;
+                top: -3.5025em;
                 height: 100%;
 
                 img {
@@ -287,8 +287,8 @@ button {
                     width: 168%;
                 }
                 .above {
-                    left: -1.07em;
-                    top: -.93em;
+                    left: -0.8025em;
+                    top: -0.6975em;
                 }
                 .below {
                     transition: all .5s;
@@ -299,7 +299,7 @@ button {
         .card_tail {
             height: 70%;
             position: relative;
-            padding: 2em;
+            padding: 1.5em;
 
             p {
                 line-height: 160%;
@@ -311,8 +311,8 @@ button {
                 opacity: .5;
                 width: 50%;
                 position: absolute;
-                bottom: -1.87em;
-                right: -1.33em;
+                bottom: -1.4025em;
+                right: -0.9975em;
                 transition: all .5s;
             }
         }
@@ -497,7 +497,7 @@ button {
 
 .page8 {
     .user_feedback {
-        margin-top: -2em;
+        margin-top: -1.5em;
     }
 }
 
@@ -514,27 +514,27 @@ button {
 
         .image_box {
             position: relative;
-            height: 17em;
-            width: 40em;
-            margin-bottom: 6.5em;
+            height: 12.75em;
+            width: 30.0em;
+            margin-bottom: 4.875em;
 
             .picture {
                 position: absolute;
             }
             .pc {
-                width: 35.5em;
-                top: -1em;
-                left: 7em;
+                width: 26.625em;
+                top: -0.75em;
+                left: 5.25em;
             }
             .phone {
-                width: 6em;
-                top: 8.7em;
-                left: 5.5em;
+                width: 4.5em;
+                top: 6.525em;
+                left: 4.125em;
             }
             .ipad {
-                width: 20em;
-                top: 8em;
-                left: 29em;
+                width: 15.0em;
+                top: 6.0em;
+                left: 21.75em;
             }
         }
         button {
@@ -548,7 +548,7 @@ button {
         position: absolute;
         z-index: 2;
         bottom: 0;
-        padding: 2em 0;
+        padding: 1.5em 0;
         color: @footer_font_color;
         font-size: @footer_font_size;
 
@@ -563,7 +563,7 @@ button {
 
         .content {
             overflow: hidden;
-            margin-bottom: 1em;
+            margin-bottom: 0.75em;
         }
 
         .content > * {
@@ -585,22 +585,22 @@ button {
             padding-left: 50%;
 
             .description {
-                padding: 0 2em;
+                padding: 0 1.5em;
                 li {
-                    padding: .6em 0;
+                    padding: 0.45em 0;
 
                     p {
-                        margin-bottom: .3em;
+                        margin-bottom: 0.225em;
                     }
                 }
             }
 
             .link {
                 float: left;
-                padding: 0 1.6em;
+                padding: 0 1.2em;
                 
                 li {
-                    padding: .6em 0;
+                    padding: 0.45em 0;
                 }
             }
         }

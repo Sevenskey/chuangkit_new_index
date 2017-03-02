@@ -32,13 +32,13 @@ frame1 = new AnimationGroup( animationConfig.frame1 );
 frame9 = new AnimationGroup( animationConfig.frame9 );
 
 //Test
-document.getElementById('start_btn').addEventListener( 'click', function() {
+//document.getElementById('start_btn').addEventListener( 'click', function() {
 
-                header.className = '';
-                frame2.clearTimer();
-                frame1.mountNextStyle();
-                frame2.mountNextStyle();
-} );
+                //header.className = '';
+                //frame2.clearTimer();
+                //frame1.mountNextStyle();
+                //frame2.mountNextStyle();
+//} );
 
 // 导航
 Vue.use( beAPlugin( vue_Header ), {
@@ -152,7 +152,7 @@ Vue.use( vue_PageTurn, {
     staticCircleClass : 'static_circle',
     activeCircleClass : 'active_circle',
     speed : 200,
-    pixel : '1.13em',
+    pixel : '0.85em',
     fn : {
         0 : function() {
             header.className = 'transparent_header';

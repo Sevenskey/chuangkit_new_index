@@ -43,7 +43,7 @@
 
     li {
         list-style: none;
-        padding: 2.13em .8em;
+        padding: 1.5975em 0.6em;
         display: inline-block;
         width: 48%;
         position: relative;
@@ -55,12 +55,12 @@
 
         }
         &:nth-child(even) {
-            padding-left: 1.3em
+            padding-left: 0.975em
 
         }
         &:nth-child(odd) {
-            top: 2.53em;
-            padding-right: 1.3em
+            top: 1.8975em;
+            padding-right: 0.975em
 
         }
     }
@@ -74,8 +74,8 @@
     }
     .user_feedback_section1 {
         background-color: #fff;
-        padding: .8em 2.13em;
-        margin: 0 1.73em;
+        padding: 0.6em 1.5975em;
+        margin: 0 1.2975em;
         width: 54%;
         position: relative;
 
@@ -83,8 +83,11 @@
     }
     .uf_left_float {
         float: left;
-        margin-right: 3.3em;
+        margin-right: 2.475em;
 
+        .user_feedback_identity {
+            text-align: right;
+        }
         &:before {
             content: "";
             display: block;
@@ -92,7 +95,7 @@
             width: 40px;
             height: 30px;
             position: absolute;
-            right: -1.67em;
+            right: -1.2525em;
             top: 0
 
         }
@@ -108,7 +111,7 @@
             width: 40px;
             height: 30px;
             position: absolute;
-            left: -1.67em;
+            left: -1.2525em;
             top: 0
 
         }
@@ -116,12 +119,12 @@
     .user_feedback_identity {
         font-size: @uf_identity_size;
         color: @uf_identity_color;
-        margin-top: .53em;
-        margin-bottom: 2em;
+        margin-top: 0.3975em;
+        margin-bottom: 1.5em;
         text-align: left;
     }
     .user_feedback_content {
-        margin: 1.33em 0;
+        margin: 0.9975em 0;
         color: @uf_content_color;
         text-align: left;
         font-size: @uf_content_size;
@@ -143,7 +146,7 @@
     background-color: white;
     height: @mf_height;
     width: @mf_width;
-    padding: 4.5em 3.9em;
+    padding: 3.375em 2.925em;
     position: relative;
     box-sizing: content-box;
 
@@ -151,18 +154,18 @@
 
     .mf_next_button {
         position: absolute;
-        bottom: 3.47em;
-        right: 3.87em;
+        bottom: 2.6025em;
+        right: 2.9025em;
         background-color: @mf_next_button_color;
-        padding: .4em .8em;
+        padding: 0.3em 0.6em;
         cursor: pointer;
 
         .mf_next_button_triangle {
             width: 0px;
             height: 0px;
-            border-top: 1.07em solid transparent;
-            border-bottom: 1.07em solid transparent;
-            border-left: 1.33em solid #fff;
+            border-top: 0.8025em solid transparent;
+            border-bottom: 0.8025em solid transparent;
+            border-left: 0.9975em solid #fff;
             border-right: 0;
         }
     }
@@ -178,7 +181,7 @@
     }
 
     .medium_feedback_block {
-        height: @mf_height - 1.33em;
+        height: @mf_height - 0.9975em;
 
         li {
             list-style: none;
@@ -189,26 +192,26 @@
             }
 
             .medium_feedback_title {
-                margin: 1em 0 1.5em 0;
+                margin: 0.75em 0 1.125em 0;
                 font-size: @mf_title_size;
                 color: @mf_title_color;
             }
 
             .medium_feedback_content {
-                margin: 1.5em 0 1em 0;
+                margin: 1.125em 0 0.75em 0;
                 font-size: @mf_content_size;
                 color: @mf_content_color;
-                padding-right: 2em;
+                padding-right: 1.5em;
             }
 
             .medium_feedback_section1 {
-                padding-top: 5em;
+                padding-top: 3.75em;
 
                 &:before, &:after {
                     content: "";
                     max-width: 36px;
-                    width: 2em;
-                    height: 2em;
+                    width: 1.5em;
+                    height: 1.5em;
                     display: block;
                     background-size: 100%;
                     background-repeat: no-repeat;
@@ -242,16 +245,16 @@
 }
 
 @media screen and (max-width: 1080px) {
-    html {
-        font-size: 23px;
-    }
+    /*html {*/
+        /*font-size: 23px;*/
+    /*}*/
 
     .user_feedback {
         li {
             width: 100%;
             padding: .5rem .6rem;
 
-            &:nth-child(even) {
+            &:nth-child(odd) {
                 top: 0
             }
             &:nth-child(even) {

@@ -68,9 +68,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-;(function() {
+;(function( window ) {
     var tools = {
         getData : getData,
         ajax : ajax,
@@ -129,6 +129,9 @@
         };
     }
 
+    // 该写法并不妥善。
+    // 这种写法相当于重写了Vue中安装插件时所做的工作。因此使得每一个准插件类在调用此函数后都可以注册成为插件。相当于扩展了一种在一个页面重复使用一个插件的方法。
+    // 但这只是基于这恰好与 Vue.use 阻止重复注册的实现相同，如果在Vue的未来版本中更换了实现，则该函数实现的功能失效。
     function beAPlugin ( plugin ) {
         plugin.installed = false;
         plugin.install = function ( externalVue, config ) {
@@ -136,15 +139,21 @@
                 return ;
             else {
                 plugin.installed = true;
-                new plugin ( config, externalVue );
+                if ( config )
+                    new plugin ( config, externalVue );
+                else
+                    new plugin ( externalVue );
             }
         }
 
         return plugin;
     }
 
-    module.exports = tools;
-})()
+    if ( true )
+        module.exports = tools;
+    else
+        window.tools = tools;
+})( window )
 
 
 
@@ -166,11 +175,13 @@ update:Ct,destroy:function(e){Ct(e,So)}},Io=Object.create(null),jo=[Oo,Eo],No={c
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/*User Feedback
+/*DataFiller
 * Coding by Sun
 * Email: sevenskey@163.com
 * Build since: 2017-1-24
-* Latest update: 2017-1-28
+* Latest update: 2017-2-19
+* ChangeLog:
+* 更名为DataFiller - 2017-2-19
 *
 * Dependency:
 * js/tools.js/getData
@@ -190,25 +201,33 @@ update:Ct,destroy:function(e){Ct(e,So)}},Io=Object.create(null),jo=[Oo,Eo],No={c
 */
 
 ;(function( window ) {
+    
+    if ( true ) {
+        var tools = __webpack_require__( 0 );
+        var getData = tools.getData;
+    } else if ( window ) {
+        var getData = window.tools.getData;
+    } else {
+        throw( new Error( '当前可能不是浏览器环境qwq' ) );
+    }
 
-    var tools = __webpack_require__( 0 );
-    var getData = tools.getData;
-
-    class UserFeedback {
+    class DataFiller {
         constructor ( {
             url = null,
-            el = '#user_feedback'
-
+            el = '',
+            callback = null,
         }, Vue ) {
             this.Vue = Vue;
             this.el = el;
+            this.callback = callback;
 
-            getData({
-                url : url,
-            }, ( data ) => {
-                this.data = data;
-                this.generate();
-            });
+            if ( el )
+                getData({
+                    url : url,
+                }, ( data ) => {
+                    this.data = data;
+                    this.generate();
+                });
         }
 
         generate () {
@@ -219,13 +238,23 @@ update:Ct,destroy:function(e){Ct(e,So)}},Io=Object.create(null),jo=[Oo,Eo],No={c
 
                 data : {
                     items : self.data
-                }
+                },
+
+                mounted : function() {
+                    if ( self.callback )
+                        setTimeout( function() {
+                            self.callback();
+                        } );
+                },
             } );
 
         }
     }
 
-    module.exports = UserFeedback;
+    if ( true )
+        module.exports = DataFiller;
+    else
+        window.DataFiller = DataFiller;
 
 })( window )
 
@@ -268,7 +297,7 @@ const Vue = __webpack_require__( 1 );
 const beAPlugin = tools.beAPlugin;
 
 Vue.use( beAPlugin( Test ), {
-    url : '../../test_data/vue.user-feedback.json',
+    url : '../../data/vue.user-feedback.json',
     el : '#user_feedback',
 });
 
