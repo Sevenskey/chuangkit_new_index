@@ -1,6 +1,6 @@
 [
     {
-        "qrcode" : "",
+        "qrcode" : "./img/9/qrcode.jpg",
         "market" : [{
             "title" : "联合推广",
             "email" : "market@chuangkit.com"
