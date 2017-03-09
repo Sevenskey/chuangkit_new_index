@@ -7,10 +7,15 @@
 ## 运行
 
 ```
-# 打包和编译JS及CSS
-npm run build
+# 打包和编译PC端JS及CSS
+npm run build-pc
+
+# 打包和编译移动端JS及CSS
+npm run build-phone
 
 # 部署到本地，端口为2333
+# PC端：localhost:2333
+# 移动端：localhost:2333/index.phone.html
 # 单元测试：localhost:2333/test
 npm run server
 ```

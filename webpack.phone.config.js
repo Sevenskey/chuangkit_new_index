@@ -4,11 +4,11 @@ const _ROOT_ = './';
 const _BIN_ = 'bin/' ;
 const _SRC_ = 'src/';
 
-const _ENTRY_FILENAME_ = 'main.js';
+const _ENTRY_FILENAME_ = 'phone.entry.js';
 
 const _ENTRY_ = _ROOT_ + _ENTRY_FILENAME_;
 const _OBJ_PATH_ = _ROOT_ + _BIN_;
-const _OBJ_ = 'chuangkit.index.bundle.js';
+const _OBJ_ = 'chuangkit.index.phone.bundle.js';
 
 module.exports = {
     entry : _ENTRY_,

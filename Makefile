@@ -1,14 +1,33 @@
-CC := lessc
-DIR := ./src/less/
-SOURCE := main.less
-OBJ := ./bin/chuangkit.index.style.min.css
-PLUGIN := clean-css
+LESSCC := lessc
+ES5CC := babel
 
-css:
-	$(CC) --$(PLUGIN) $(DIR)$(SOURCE) $(OBJ)
+OBJ := ./bin/
 
-es5:	js_bundle
-	babel ./bin/chuangkit.index.bundle.js --out-file ./bin/chuangkit.index.bundle.js
+PCCSS := $(OBJ)chuangkit.index.pc.style.css
+PHONECSS := $(OBJ)chuangkit.index.phone.style.css
+PCES5 := $(OBJ)chuangkit.index.pc.bundle.js
+PHONEES5 := $(OBJ)chuangkit.index.phone.bundle.js
 
-js_bundle:
-	webpack
+PCLESS := ./src/less/pc.entry.less
+PHONELESS := ./src/less/phone.entry.less
+LESSPLUGIN := clean-css
+
+
+pccss:
+	$(LESSCC) --$(LESSPLUGIN) $(PCLESS) $(PCCSS)
+
+phonecss :
+	$(LESSCC) --$(LESSPLUGIN) $(PHONELESS) $(PHONECSS)
+
+
+pces5:	pces6
+	$(ES5CC) $(PCES5) --out-file $(PCES5)
+
+phonees5: phonees6
+	$(ES5CC) $(PHONEES5) --out-file $(PHONEES5)
+
+pces6:
+	webpack --config webpack.pc.config.js
+
+phonees6:
+	webpack --config webpack.phone.config.js

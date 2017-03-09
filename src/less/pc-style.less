@@ -1,5 +1,4 @@
-/*PC端元素初始位置设置*/
-
+/** PC端元素样式 **/
 
 @media screen and ( min-width: 900px ) {
     .page1, .page2, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
@@ -7,7 +6,12 @@
     }
 }
 
-@media screen and ( min-width: 1200px ) {
+@media screen and ( min-width: 1150px ) {
+    .page1, .page2, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
+        font-size: 14.4px;
+    }
+}
+@media screen and ( min-width: 1290px ) {
     .page1, .page2, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
         font-size: 16px;
     }
@@ -28,7 +32,82 @@
     }
 }
 
+.page_turn_index {
+    margin-right: 2.2em;
+}
+
+.page1 {
+    .blue_banner {
+        height: 13.5em;
+        background-size: 89.775em;
+    }
+    .slogan {
+        top: 3.375em;
+        text-align: center;
+
+        h1 {
+            margin: 2.1em 0 0.2025em 0;
+            font-size: @page1_h1_size;
+            color: @page1_h1_color;
+            letter-spacing: 0.075em;
+        }
+        h2 {
+            font-size: @page1_h2_size;
+            color: @page1_h2_color;
+            letter-spacing: 0.5025em;
+            margin-bottom: 2.2em;
+        }
+        button {
+            .public_button;
+        }
+    }
+
+    .page1_icons {
+        padding: 3.15em 0 2em 0;
+
+        img {
+            height: 6.0em;
+            margin: 0 2.025em;
+        }
+    }
+}
+
 .page2 {
+    .card_seq {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .card {
+            margin: 0 0.975em;
+            width: 12.975em;
+            height: 19.5em;
+        }
+
+        .card_header {
+
+            h1 {
+                font-size: @page2_card_title_size_z;
+                margin-bottom: 0.2025em;
+            }
+            h2 {
+                font-size: @page2_card_title_size_e;
+            }
+
+            .card_image {
+                left: -4.8975em;
+                top: -3.5025em;
+            }
+        }
+
+        .card_tail {
+            p {
+                color: @page2_detail_color;
+                font-size: @page2_card_title_size_z;
+            }
+        }
+    }
     @top_base: -18.75em;
     @left_base: -1.5em;
     @bottom_base: 0.0em;
@@ -283,5 +362,21 @@
     .medium_feedback {
         left: 6.75em;
         top: @top_base;
+    }
+
+    .footer {
+        .content {
+            padding-left: 50%;
+        }
+
+        .info {
+            margin-top: 2em;
+
+            .designer {
+                position: absolute;
+                top: 0;
+                left: 65%;
+            }
+        }
     }
 }

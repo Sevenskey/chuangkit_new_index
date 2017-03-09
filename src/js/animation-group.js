@@ -483,14 +483,13 @@
 
         // 变身！
         mountNextStyle () {
-            //if ( ! this.isMounted ) {
-                this.mountStyle( this.styleSet );
+            this.mountStyle( this.styleSet );
+            setTimeout( () => {
                 this.executeShortcut( this.shortcutSet );
+            }, 0 );
+            setTimeout( () => {
                 this.mountClass( this.classSet );
-            //}
-
-            //this.isMounted = true;
-            //this.isRollbacked = false;
+            }, 0 );
         }
 
         // 备份旧的样式类
@@ -512,8 +511,10 @@
                     temp = this.oldStyleSet[tagName] = {};
                     obj = this.objDict[tagName][0];
                 }, function( property, styleObj, tagName ) {
-                    if ( property != 'transition' )
+                    if ( property != 'transition' && obj != null && typeof obj == 'object' )
                         temp[property] = getComputedStyle( obj, null ).getPropertyValue( property );
+                    else
+                        console.log( property, obj, tagName );
                 } );
         }
 
@@ -535,18 +536,13 @@
 
         // 回滚！
         rollback () {
-            //if ( ! this.isRollbacked ) {
-                this.executeShortcut ( this.dscBackupSet );
+            this.executeShortcut ( this.dscBackupSet );
 
-                // 由于当元素的 display 为非 none 时，即元素已经出现在页面中时， transition 才起作用，故该处设置一个定时器，使 transition 起作用
-                setTimeout( () => {
-                    this.mountStyle( this.oldStyleSet );
-                    this.mountClass( this.classSetPrev, this.classSet );
-                }, 0 );
-            //}
-
-            //this.isMounted = false;
-            //this.isRollbacked = true;
+            // 由于当元素的 display 为非 none 时，即元素已经出现在页面中时， transition 才起作用，故该处设置一个定时器，使 transition 起作用
+            setTimeout( () => {
+                this.mountStyle( this.oldStyleSet );
+                this.mountClass( this.classSetPrev, this.classSet );
+            }, 0 );
         }
 
         // 遍历一个多层键值对组的一二层内容

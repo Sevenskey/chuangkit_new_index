@@ -3046,10 +3046,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     //},
                     //变形
                     '#gradient5': {
-                        up: '100%'
+                        up: '1000px'
                     },
                     '#page7': {
-                        up: '100%'
+                        up: '1000px'
                     },
                     '.user_feedback li:nth-child(1)': {
                         transform: 'translate(0px, 0px)'
@@ -3703,14 +3703,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'mountNextStyle',
                 value: function mountNextStyle() {
-                    //if ( ! this.isMounted ) {
-                    this.mountStyle(this.styleSet);
-                    this.executeShortcut(this.shortcutSet);
-                    this.mountClass(this.classSet);
-                    //}
+                    var _this11 = this;
 
-                    //this.isMounted = true;
-                    //this.isRollbacked = false;
+                    this.mountStyle(this.styleSet);
+                    setTimeout(function () {
+                        _this11.executeShortcut(_this11.shortcutSet);
+                    }, 0);
+                    setTimeout(function () {
+                        _this11.mountClass(_this11.classSet);
+                    }, 0);
                 }
 
                 // 备份旧的样式类
@@ -3718,12 +3719,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'backupOldClass',
                 value: function backupOldClass() {
-                    var _this11 = this;
+                    var _this12 = this;
 
                     this.oldClassSet = {};
 
                     Object.keys(this.classSet).forEach(function (id) {
-                        _this11.oldClassSet[id] = _this11.objDict[id][0].className.split(' ');
+                        _this12.oldClassSet[id] = _this12.objDict[id][0].className.split(' ');
                     });
                 }
 
@@ -3739,7 +3740,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         temp = this.oldStyleSet[tagName] = {};
                         obj = this.objDict[tagName][0];
                     }, function (property, styleObj, tagName) {
-                        if (property != 'transition') temp[property] = getComputedStyle(obj, null).getPropertyValue(property);
+                        if (property != 'transition' && obj != null && (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) == 'object') temp[property] = getComputedStyle(obj, null).getPropertyValue(property);else console.log(property, obj, tagName);
                     });
                 }
 
@@ -3765,20 +3766,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'rollback',
                 value: function rollback() {
-                    var _this12 = this;
+                    var _this13 = this;
 
-                    //if ( ! this.isRollbacked ) {
                     this.executeShortcut(this.dscBackupSet);
 
                     // 由于当元素的 display 为非 none 时，即元素已经出现在页面中时， transition 才起作用，故该处设置一个定时器，使 transition 起作用
                     setTimeout(function () {
-                        _this12.mountStyle(_this12.oldStyleSet);
-                        _this12.mountClass(_this12.classSetPrev, _this12.classSet);
+                        _this13.mountStyle(_this13.oldStyleSet);
+                        _this13.mountClass(_this13.classSetPrev, _this13.classSet);
                     }, 0);
-                    //}
-
-                    //this.isMounted = false;
-                    //this.isRollbacked = true;
                 }
 
                 // 遍历一个多层键值对组的一二层内容
@@ -3788,16 +3784,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'twoLeveTraverse',
                 value: function twoLeveTraverse(obj1, callback1, callback2) {
-                    var _this13 = this;
+                    var _this14 = this;
 
                     var temp1, temp2;
 
                     Object.keys(obj1).forEach(function (obj1key) {
                         temp1 = obj1[obj1key];
-                        if (callback1) callback1.call(_this13, obj1key);
+                        if (callback1) callback1.call(_this14, obj1key);
 
                         Object.keys(temp1).forEach(function (obj2key) {
-                            if (callback2) callback2.call(_this13, obj2key, temp1, obj1key);
+                            if (callback2) callback2.call(_this14, obj2key, temp1, obj1key);
                         });
                     });
                 }
@@ -3877,7 +3873,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var DataFiller = function () {
             function DataFiller(_ref6, Vue) {
-                var _this14 = this;
+                var _this15 = this;
 
                 var _ref6$url = _ref6.url,
                     url = _ref6$url === undefined ? null : _ref6$url,
@@ -3895,8 +3891,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 if (el) getData({
                     url: url
                 }, function (data) {
-                    _this14.data = data;
-                    _this14.generate();
+                    _this15.data = data;
+                    _this15.generate();
                 });
             }
 
@@ -4252,14 +4248,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _createClass(MediumFeedback, [{
                 key: 'launch',
                 value: function launch() {
-                    var _this15 = this;
+                    var _this16 = this;
 
                     getData({
                         url: this.url
                     }, function (data) {
-                        _this15.openMediumPage(data);
-                        _this15.openPageTurn(data.length, function () {
-                            _this15.ctrlmfPage();
+                        _this16.openMediumPage(data);
+                        _this16.openPageTurn(data.length, function () {
+                            _this16.ctrlmfPage();
                         });
                     });
                 }

@@ -1,5 +1,5 @@
 ;(function( window ) {
-    const animationConfig = {
+    const animationConfig_pc = {
         frame1 : {
             prev : {
                 '#slogan h1, #slogan h2, #slogan #start_btn, #page1_icons, #mouse' : {
@@ -46,9 +46,6 @@
                 '#page2' : {
                     show : true,
                 },
-                //'#mouse' : {
-                    //hide : true,
-                //}
             },
         },
         frame3 : {
@@ -486,10 +483,10 @@
                 //},
                 //变形
                 '#gradient5' : {
-                    up : '100%',
+                    up : '1000px',
                 },
                 '#page7' : {
-                    up : '100%',
+                    up : '1000px',
                 },
                 '.user_feedback li:nth-child(1)' : {
                     transform : 'translate(0px, 0px)',
@@ -570,8 +567,8 @@
     };
 
     if ( typeof module != 'undefined' )
-        module.exports = animationConfig;
+        module.exports = animationConfig_pc;
     else
-        window.animationConfig = animationConfig;
+        window.animationConfig_pc = animationConfig_pc;
 
 })( window )

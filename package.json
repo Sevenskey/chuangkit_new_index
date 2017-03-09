@@ -19,7 +19,8 @@
     "webpack": "^2.2.0"
   },
   "scripts": {
-    "build": "make es5 && make css",
+    "build-pc": "make pccss && make pces5",
+    "build-phone": "make phonecss && make phonees5",
     "server": "http-server ./ -p 2333"
   },
   "repository": {
