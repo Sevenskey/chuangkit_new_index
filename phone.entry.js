@@ -134,6 +134,7 @@ Vue.use( vue_PageTurn, {
     activeCircleClass : 'active_circle',
     speed : 200,
     pixel : '0.85em',
+    touch : true,
     fn : {
         0 : function() {
             //header.className = 'transparent_header';

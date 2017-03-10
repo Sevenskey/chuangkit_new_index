@@ -83,7 +83,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /******/__webpack_require__.p = "";
 
     /******/ // Load entry module and return exports
-    /******/return __webpack_require__(__webpack_require__.s = 14);
+    /******/return __webpack_require__(__webpack_require__.s = 15);
     /******/
 })(
 /************************************************************************/
@@ -120,7 +120,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var xhttp = new XMLHttpRequest();
 
             var _success = function success() {},
-                _error = function error() {};
+                error = function error() {};
 
             var _data = data || null;
 
@@ -128,7 +128,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     _success(xhttp.response);
                 } else if (xhttp.readyState == 4) {
-                    _error(xhttp.status);
+                    error(xhttp.status);
                 }
             };
 
@@ -140,10 +140,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     _success = f || _success;
                     return this;
                 },
-                error: function error(f) {
-                    _error = f || _success;
+                error: function (_error) {
+                    function error(_x3) {
+                        return _error.apply(this, arguments);
+                    }
+
+                    error.toString = function () {
+                        return _error.toString();
+                    };
+
+                    return error;
+                }(function (f) {
+                    error = f || _success;
                     return this;
-                }
+                })
             };
         }
 
@@ -170,6 +180,66 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /* 1 */
 /***/function (module, exports, __webpack_require__) {
 
+    /*TouchSlide
+    * Coding by Sun
+    * Email: sevenskey@163.com
+    * Build since: 2017-3-10
+    * Latest update: 2017-3-10
+    *
+    */
+
+    ;(function (window) {
+        var TouchSlide = function () {
+            function TouchSlide(_ref2) {
+                var _ref2$el = _ref2.el,
+                    el = _ref2$el === undefined ? document.body : _ref2$el,
+                    _ref2$fn = _ref2.fn,
+                    fn = _ref2$fn === undefined ? null : _ref2$fn;
+
+                _classCallCheck(this, TouchSlide);
+
+                this.el = el;
+                this.fn = fn;
+
+                this.sy = 0;
+                this.ey = 0;
+
+                this.bind();
+            }
+
+            _createClass(TouchSlide, [{
+                key: 'bind',
+                value: function bind() {
+                    var self = this;
+
+                    this.el.addEventListener('touchstart', function (event) {
+                        self.sy = event.changedTouches[0].clientY;
+                    });
+
+                    this.el.addEventListener('touchend', function (event) {
+                        self.ey = event.changedTouches[0].clientY;
+
+                        if (self.fn) self.fn(self.sy - self.ey);
+                    });
+                }
+            }, {
+                key: 'getdiff',
+                value: function getdiff() {
+                    return self.sy - self.ey;
+                }
+            }]);
+
+            return TouchSlide;
+        }();
+
+        if (true) module.exports = TouchSlide;else window.TouchSlide = TouchSlide;
+    })(window);
+
+    /***/
+},
+/* 2 */
+/***/function (module, exports, __webpack_require__) {
+
     /*Page Turn Plugin
     * Coding by Sun
     * Email: sevenskey@163.com
@@ -181,43 +251,54 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     */
 
     ;(function (window) {
+
+        if (true) {
+            var TouchSlide = __webpack_require__(1);
+        } else if (window) {
+            var TouchSlide = window.TouchSlide;
+        } else {
+            throw new error('当前可能不是浏览器环境qwq');
+        }
+
         var PageTurn = function () {
             function PageTurn() {
-                var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                    _ref2$el = _ref2.el,
-                    el = _ref2$el === undefined ? '#page_turn' : _ref2$el,
-                    _ref2$pageNum = _ref2.pageNum,
-                    pageNum = _ref2$pageNum === undefined ? 5 : _ref2$pageNum,
-                    _ref2$color = _ref2.color,
-                    color = _ref2$color === undefined ? '#07aefc' : _ref2$color,
-                    _ref2$speed = _ref2.speed,
-                    speed = _ref2$speed === undefined ? 300 : _ref2$speed,
-                    _ref2$staticCircleCla = _ref2.staticCircleClass,
-                    staticCircleClass = _ref2$staticCircleCla === undefined ? 'static_circle' : _ref2$staticCircleCla,
-                    _ref2$activeCircleCla = _ref2.activeCircleClass,
-                    activeCircleClass = _ref2$activeCircleCla === undefined ? 'active_circle' : _ref2$activeCircleCla,
-                    _ref2$fn = _ref2.fn,
-                    fn = _ref2$fn === undefined ? null : _ref2$fn,
-                    _ref2$pixel = _ref2.pixel,
-                    pixel = _ref2$pixel === undefined ? 12 : _ref2$pixel,
-                    _ref2$keyboard = _ref2.keyboard,
-                    keyboard = _ref2$keyboard === undefined ? true : _ref2$keyboard,
-                    _ref2$wheel = _ref2.wheel,
-                    wheel = _ref2$wheel === undefined ? true : _ref2$wheel,
-                    _ref2$preButton = _ref2.preButton,
-                    preButton = _ref2$preButton === undefined ? null : _ref2$preButton,
-                    _ref2$nextButton = _ref2.nextButton,
-                    nextButton = _ref2$nextButton === undefined ? null : _ref2$nextButton,
-                    _ref2$tailToHead = _ref2.tailToHead,
-                    tailToHead = _ref2$tailToHead === undefined ? false : _ref2$tailToHead,
-                    _ref2$auto = _ref2.auto,
-                    auto = _ref2$auto === undefined ? false : _ref2$auto,
-                    _ref2$interval = _ref2.interval,
-                    interval = _ref2$interval === undefined ? 1000 : _ref2$interval,
-                    _ref2$direction = _ref2.direction,
-                    direction = _ref2$direction === undefined ? 'top' : _ref2$direction,
-                    _ref2$autoExecuteFirs = _ref2.autoExecuteFirst,
-                    autoExecuteFirst = _ref2$autoExecuteFirs === undefined ? false : _ref2$autoExecuteFirs;
+                var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                    _ref3$el = _ref3.el,
+                    el = _ref3$el === undefined ? '#page_turn' : _ref3$el,
+                    _ref3$pageNum = _ref3.pageNum,
+                    pageNum = _ref3$pageNum === undefined ? 5 : _ref3$pageNum,
+                    _ref3$color = _ref3.color,
+                    color = _ref3$color === undefined ? '#07aefc' : _ref3$color,
+                    _ref3$speed = _ref3.speed,
+                    speed = _ref3$speed === undefined ? 300 : _ref3$speed,
+                    _ref3$staticCircleCla = _ref3.staticCircleClass,
+                    staticCircleClass = _ref3$staticCircleCla === undefined ? 'static_circle' : _ref3$staticCircleCla,
+                    _ref3$activeCircleCla = _ref3.activeCircleClass,
+                    activeCircleClass = _ref3$activeCircleCla === undefined ? 'active_circle' : _ref3$activeCircleCla,
+                    _ref3$fn = _ref3.fn,
+                    fn = _ref3$fn === undefined ? null : _ref3$fn,
+                    _ref3$pixel = _ref3.pixel,
+                    pixel = _ref3$pixel === undefined ? 12 : _ref3$pixel,
+                    _ref3$keyboard = _ref3.keyboard,
+                    keyboard = _ref3$keyboard === undefined ? true : _ref3$keyboard,
+                    _ref3$wheel = _ref3.wheel,
+                    wheel = _ref3$wheel === undefined ? true : _ref3$wheel,
+                    _ref3$preButton = _ref3.preButton,
+                    preButton = _ref3$preButton === undefined ? null : _ref3$preButton,
+                    _ref3$nextButton = _ref3.nextButton,
+                    nextButton = _ref3$nextButton === undefined ? null : _ref3$nextButton,
+                    _ref3$tailToHead = _ref3.tailToHead,
+                    tailToHead = _ref3$tailToHead === undefined ? false : _ref3$tailToHead,
+                    _ref3$auto = _ref3.auto,
+                    auto = _ref3$auto === undefined ? false : _ref3$auto,
+                    _ref3$interval = _ref3.interval,
+                    interval = _ref3$interval === undefined ? 1000 : _ref3$interval,
+                    _ref3$direction = _ref3.direction,
+                    direction = _ref3$direction === undefined ? 'top' : _ref3$direction,
+                    _ref3$autoExecuteFirs = _ref3.autoExecuteFirst,
+                    autoExecuteFirst = _ref3$autoExecuteFirs === undefined ? false : _ref3$autoExecuteFirs,
+                    _ref3$touch = _ref3.touch,
+                    touch = _ref3$touch === undefined ? false : _ref3$touch;
 
                 var Vue = arguments[1];
 
@@ -239,6 +320,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.preButton = preButton ? document.getElementById(preButton.replace('#', '')) : null;
                 this.nextButton = nextButton ? document.getElementById(nextButton.replace('#', '')) : null;
                 this.autoExecuteFirst = autoExecuteFirst;
+                this.touch = touch;
 
                 this.staticCircleClass = staticCircleClass;
                 this.activeCircleClass = activeCircleClass;
@@ -355,7 +437,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
                 }
 
-                // 绑定键盘和鼠标滚轮
+                // 绑定各种监听事件
 
             }, {
                 key: 'bindEvent',
@@ -386,6 +468,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 fn(1);break;
                         }
                     });
+
+                    if (this.touch) {
+                        var touchHandle = new TouchSlide({
+                            fn: fn
+                        });
+                    }
 
                     if (this.preButton) this.preButton.addEventListener('click', function () {
                         fn(-1);
@@ -421,7 +509,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 2 */
+/* 3 */
 /***/function (module, exports, __webpack_require__) {
 
     /* WEBPACK VAR INJECTION */(function (global) {
@@ -2420,25 +2508,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, Ue.compile = Qr, Ue;
         });
         /* WEBPACK VAR INJECTION */
-    }).call(exports, __webpack_require__(4));
+    }).call(exports, __webpack_require__(5));
 
     /***/
 },
-/* 3 */
+/* 4 */
 /***/function (module, exports, __webpack_require__) {
 
     var map = {
-        "./active-background.js": 5,
-        "./animation-group.js": 6,
-        "./config.js": 7,
-        "./pc-animation-config.js": 8,
-        "./phone-animation-config.js": 9,
+        "./active-background.js": 6,
+        "./animation-group.js": 7,
+        "./config.js": 8,
+        "./pc-animation-config.js": 9,
+        "./phone-animation-config.js": 10,
         "./tools.js": 0,
-        "./virtual-dom.js": 10,
-        "./vue.data-filler.js": 11,
-        "./vue.header.js": 12,
-        "./vue.medium-feedback.js": 13,
-        "./vue.page-turn.js": 1
+        "./touch-slide.js": 1,
+        "./virtual-dom.js": 11,
+        "./vue.data-filler.js": 12,
+        "./vue.header.js": 13,
+        "./vue.medium-feedback.js": 14,
+        "./vue.page-turn.js": 2
     };
     function webpackContext(req) {
         return __webpack_require__(webpackContextResolve(req));
@@ -2454,11 +2543,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
     webpackContext.resolve = webpackContextResolve;
     module.exports = webpackContext;
-    webpackContext.id = 3;
+    webpackContext.id = 4;
 
     /***/
 },
-/* 4 */
+/* 5 */
 /***/function (module, exports) {
 
     var g;
@@ -2484,7 +2573,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 5 */
+/* 6 */
 /***/function (module, exports, __webpack_require__) {
 
     /*Active Background
@@ -2500,13 +2589,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     ;(function () {
         var ActiveBackground = function () {
             function ActiveBackground() {
-                var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                    _ref3$el = _ref3.el,
-                    el = _ref3$el === undefined ? 'active_background' : _ref3$el,
-                    _ref3$sensitivity = _ref3.sensitivity,
-                    sensitivity = _ref3$sensitivity === undefined ? 50 : _ref3$sensitivity,
-                    _ref3$scope = _ref3.scope,
-                    scope = _ref3$scope === undefined ? 10 : _ref3$scope;
+                var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                    _ref4$el = _ref4.el,
+                    el = _ref4$el === undefined ? 'active_background' : _ref4$el,
+                    _ref4$sensitivity = _ref4.sensitivity,
+                    sensitivity = _ref4$sensitivity === undefined ? 50 : _ref4$sensitivity,
+                    _ref4$scope = _ref4.scope,
+                    scope = _ref4$scope === undefined ? 10 : _ref4$scope;
 
                 _classCallCheck(this, ActiveBackground);
 
@@ -2563,7 +2652,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 6 */
+/* 7 */
 /***/function (module, exports, __webpack_require__) {
 
     /*Animation Group
@@ -2628,15 +2717,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
         var FadeInOrOut = function () {
-            function FadeInOrOut(_ref4) {
-                var _ref4$elemObj = _ref4.elemObj,
-                    elemObj = _ref4$elemObj === undefined ? null : _ref4$elemObj,
-                    _ref4$delay = _ref4.delay,
-                    delay = _ref4$delay === undefined ? 1 : _ref4$delay,
-                    _ref4$mode = _ref4.mode,
-                    mode = _ref4$mode === undefined ? 'hide' : _ref4$mode,
-                    _ref4$timerHandler = _ref4.timerHandler,
-                    timerHandler = _ref4$timerHandler === undefined ? null : _ref4$timerHandler;
+            function FadeInOrOut(_ref5) {
+                var _ref5$elemObj = _ref5.elemObj,
+                    elemObj = _ref5$elemObj === undefined ? null : _ref5$elemObj,
+                    _ref5$delay = _ref5.delay,
+                    delay = _ref5$delay === undefined ? 1 : _ref5$delay,
+                    _ref5$mode = _ref5.mode,
+                    mode = _ref5$mode === undefined ? 'hide' : _ref5$mode,
+                    _ref5$timerHandler = _ref5.timerHandler,
+                    timerHandler = _ref5$timerHandler === undefined ? null : _ref5$timerHandler;
 
                 _classCallCheck(this, FadeInOrOut);
 
@@ -2836,13 +2925,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }();
 
         var AnimationGroup = function () {
-            function AnimationGroup(_ref5) {
-                var _ref5$prev = _ref5.prev,
-                    prev = _ref5$prev === undefined ? null : _ref5$prev,
-                    _ref5$next = _ref5.next,
-                    next = _ref5$next === undefined ? null : _ref5$next,
-                    _ref5$transitionDurat = _ref5.transitionDuration,
-                    transitionDuration = _ref5$transitionDurat === undefined ? '' : _ref5$transitionDurat;
+            function AnimationGroup(_ref6) {
+                var _ref6$prev = _ref6.prev,
+                    prev = _ref6$prev === undefined ? null : _ref6$prev,
+                    _ref6$next = _ref6.next,
+                    next = _ref6$next === undefined ? null : _ref6$next,
+                    _ref6$transitionDurat = _ref6.transitionDuration,
+                    transitionDuration = _ref6$transitionDurat === undefined ? '' : _ref6$transitionDurat;
 
                 _classCallCheck(this, AnimationGroup);
 
@@ -3253,11 +3342,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 7 */
+/* 8 */
 /***/function (module, exports) {
 
     /***/},
-/* 8 */
+/* 9 */
 /***/function (module, exports, __webpack_require__) {
 
     ;(function (window) {
@@ -3826,7 +3915,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 9 */
+/* 10 */
 /***/function (module, exports, __webpack_require__) {
 
     ;(function (window) {
@@ -3970,14 +4059,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 10 */
+/* 11 */
 /***/function (module, exports) {
 
     ;(function () {})();
 
     /***/
 },
-/* 11 */
+/* 12 */
 /***/function (module, exports, __webpack_require__) {
 
     /*DataFiller
@@ -4017,15 +4106,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         var DataFiller = function () {
-            function DataFiller(_ref6, Vue) {
+            function DataFiller(_ref7, Vue) {
                 var _this15 = this;
 
-                var _ref6$url = _ref6.url,
-                    url = _ref6$url === undefined ? null : _ref6$url,
-                    _ref6$el = _ref6.el,
-                    el = _ref6$el === undefined ? '' : _ref6$el,
-                    _ref6$callback = _ref6.callback,
-                    callback = _ref6$callback === undefined ? null : _ref6$callback;
+                var _ref7$url = _ref7.url,
+                    url = _ref7$url === undefined ? null : _ref7$url,
+                    _ref7$el = _ref7.el,
+                    el = _ref7$el === undefined ? '' : _ref7$el,
+                    _ref7$callback = _ref7.callback,
+                    callback = _ref7$callback === undefined ? null : _ref7$callback;
 
                 _classCallCheck(this, DataFiller);
 
@@ -4070,7 +4159,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 12 */
+/* 13 */
 /***/function (module, exports, __webpack_require__) {
 
     /**
@@ -4103,11 +4192,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }();
 
         var Header = function () {
-            function Header(_ref7, Vue) {
-                var _ref7$el = _ref7.el,
-                    el = _ref7$el === undefined ? 'header' : _ref7$el,
-                    _ref7$callback = _ref7.callback,
-                    callback = _ref7$callback === undefined ? null : _ref7$callback;
+            function Header(_ref8, Vue) {
+                var _ref8$el = _ref8.el,
+                    el = _ref8$el === undefined ? 'header' : _ref8$el,
+                    _ref8$callback = _ref8.callback,
+                    callback = _ref8$callback === undefined ? null : _ref8$callback;
 
                 _classCallCheck(this, Header);
 
@@ -4263,7 +4352,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 13 */
+/* 14 */
 /***/function (module, exports, __webpack_require__) {
 
     /* Medium Feedback
@@ -4292,19 +4381,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     ;(function (window) {
         var tools = __webpack_require__(0);
-        var PageTurn = __webpack_require__(1);
+        var PageTurn = __webpack_require__(2);
 
         var getData = tools.getData;
 
         var MediumFeedback_page = function () {
             function MediumFeedback_page() {
-                var _ref8 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                    _ref8$data = _ref8.data,
-                    data = _ref8$data === undefined ? {} : _ref8$data,
-                    _ref8$el = _ref8.el,
-                    el = _ref8$el === undefined ? '#medium_feedback' : _ref8$el,
-                    _ref8$callback = _ref8.callback,
-                    callback = _ref8$callback === undefined ? null : _ref8$callback;
+                var _ref9 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                    _ref9$data = _ref9.data,
+                    data = _ref9$data === undefined ? {} : _ref9$data,
+                    _ref9$el = _ref9.el,
+                    el = _ref9$el === undefined ? '#medium_feedback' : _ref9$el,
+                    _ref9$callback = _ref9.callback,
+                    callback = _ref9$callback === undefined ? null : _ref9$callback;
 
                 var Vue = arguments[1];
 
@@ -4357,21 +4446,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // Page Turn 关注 Medium Feedback 的 current 属性
 
         var MediumFeedback = function () {
-            function MediumFeedback(_ref9, Vue) {
-                var _ref9$url = _ref9.url,
-                    url = _ref9$url === undefined ? '' : _ref9$url,
-                    _ref9$mf_el = _ref9.mf_el,
-                    mf_el = _ref9$mf_el === undefined ? '#medium_feedback' : _ref9$mf_el,
-                    _ref9$nextButton = _ref9.nextButton,
-                    nextButton = _ref9$nextButton === undefined ? '#mf_next_button' : _ref9$nextButton,
-                    _ref9$pt_el = _ref9.pt_el,
-                    pt_el = _ref9$pt_el === undefined ? '#mf_page_turn' : _ref9$pt_el,
-                    _ref9$interval = _ref9.interval,
-                    interval = _ref9$interval === undefined ? 1000 : _ref9$interval,
-                    _ref9$pixel = _ref9.pixel,
-                    pixel = _ref9$pixel === undefined ? 17 : _ref9$pixel,
-                    _ref9$callback = _ref9.callback,
-                    callback = _ref9$callback === undefined ? null : _ref9$callback;
+            function MediumFeedback(_ref10, Vue) {
+                var _ref10$url = _ref10.url,
+                    url = _ref10$url === undefined ? '' : _ref10$url,
+                    _ref10$mf_el = _ref10.mf_el,
+                    mf_el = _ref10$mf_el === undefined ? '#medium_feedback' : _ref10$mf_el,
+                    _ref10$nextButton = _ref10.nextButton,
+                    nextButton = _ref10$nextButton === undefined ? '#mf_next_button' : _ref10$nextButton,
+                    _ref10$pt_el = _ref10.pt_el,
+                    pt_el = _ref10$pt_el === undefined ? '#mf_page_turn' : _ref10$pt_el,
+                    _ref10$interval = _ref10.interval,
+                    interval = _ref10$interval === undefined ? 1000 : _ref10$interval,
+                    _ref10$pixel = _ref10.pixel,
+                    pixel = _ref10$pixel === undefined ? 17 : _ref10$pixel,
+                    _ref10$callback = _ref10.callback,
+                    callback = _ref10$callback === undefined ? null : _ref10$callback;
 
                 _classCallCheck(this, MediumFeedback);
 
@@ -4452,7 +4541,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     /***/
 },
-/* 14 */
+/* 15 */
 /***/function (module, exports, __webpack_require__) {
 
     /***** 移动端JS入口 *****/
@@ -4460,10 +4549,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /***** 请求依赖 *****/
 
     // 设置模块请求目录
-    var requireModules = __webpack_require__(3);
+    var requireModules = __webpack_require__(4);
 
     // 请求库
-    var Vue = __webpack_require__(2);
+    var Vue = __webpack_require__(3);
 
     // 请求模块
     var ActiveBackground = requireModules('./active-background.js');
@@ -4588,6 +4677,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         activeCircleClass: 'active_circle',
         speed: 200,
         pixel: '0.85em',
+        touch: true,
         fn: {
             0: function _() {
                 //header.className = 'transparent_header';

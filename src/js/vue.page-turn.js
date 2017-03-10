@@ -10,6 +10,14 @@
 
 ;(function(window) {
 
+    if ( typeof module != 'undefined' ) {
+        var TouchSlide = require( './touch-slide.js' );
+    } else if ( window ) {
+        var TouchSlide = window.TouchSlide;
+    } else {
+        throw( new error( '当前可能不是浏览器环境qwq' ) );
+    }
+
     class PageTurn {
         constructor ({
             el = '#page_turn',
@@ -29,6 +37,7 @@
             interval = 1000, // 自动播放时间间隔
             direction = 'top', 
             autoExecuteFirst = false, //是否自动执行第一个函数
+            touch = false, // 是否开启触摸监听
         } = {}, Vue) {
             this.num = pageNum;
             this.color = color;
@@ -46,6 +55,7 @@
             this.preButton = preButton ? document.getElementById(preButton.replace('#','')) : null;
             this.nextButton = nextButton ? document.getElementById(nextButton.replace('#','')) : null;
             this.autoExecuteFirst = autoExecuteFirst;
+            this.touch = touch;
 
             this.staticCircleClass = staticCircleClass;
             this.activeCircleClass = activeCircleClass;
@@ -167,7 +177,7 @@
             });
         }
 
-        // 绑定键盘和鼠标滚轮
+        // 绑定各种监听事件
         bindEvent ( fn ) {
             if ( this.wheel )
                 document.body.addEventListener('wheel', ( event ) => {
@@ -194,6 +204,12 @@
                             fn( 1 ); break;
                     }
                 });
+
+            if ( this.touch ) {
+                var touchHandle = new TouchSlide({
+                    fn : fn,
+                });
+            }
 
             if ( this.preButton )
                 this.preButton.addEventListener( 'click' ,function () {
