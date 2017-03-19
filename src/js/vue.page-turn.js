@@ -38,6 +38,7 @@
             direction = 'top', 
             autoExecuteFirst = false, //是否自动执行第一个函数
             touch = false, // 是否开启触摸监听
+            lockTime = 1000,
         } = {}, Vue) {
             this.num = pageNum;
             this.color = color;
@@ -56,6 +57,7 @@
             this.nextButton = nextButton ? document.getElementById(nextButton.replace('#','')) : null;
             this.autoExecuteFirst = autoExecuteFirst;
             this.touch = touch;
+            this.lockTime = lockTime;
 
             this.staticCircleClass = staticCircleClass;
             this.activeCircleClass = activeCircleClass;
@@ -64,6 +66,9 @@
             this.timer_auto = null;
 
             this.vueInstance = null;
+
+            this.lockTimer = null;
+            this.lock = 0; // 事件触发锁。如果该变量为1，则不允许触发current变化的操作。
 
 
             this.generate();
@@ -132,15 +137,25 @@
                 // 待模板渲染完毕后添加各种监听
                 mounted : function() {
                     self.bindEvent( ( flag ) => {
-                        if ( flag > 0 && this.current < this.num-1 )
-                            this.current++;
-                        else if ( flag < 0 && this.current > 0 )
-                            this.current--;
-                        else if ( self.tailToHead && flag > 0 && this.current == this.num-1 )
-                            this.current = 0;
-                        else if ( self.tailToHead && flag < 0 && this.current == 0 )
-                            this.current = this.num - 1;
-                    });
+                        if ( ! self.lock ) {
+                            self.lock = 1;
+
+                            if ( flag > 0 && this.current < this.num-1 )
+                                this.current++;
+                            else if ( flag < 0 && this.current > 0 )
+                                this.current--;
+                            else if ( self.tailToHead && flag > 0 && this.current == this.num-1 )
+                                this.current = 0;
+                            else if ( self.tailToHead && flag < 0 && this.current == 0 )
+                                this.current = this.num - 1;
+                        }
+
+                        if ( ! self.lockTimer )
+                            self.lockTimer = setTimeout( function() {
+                                self.lock = 0;
+                                self.lockTimer = null;
+                            }, self.lockTime );
+                    } );
 
                     // 默认自动调用第一个用户函数
                     if ( self.fn && self.autoExecuteFirst )

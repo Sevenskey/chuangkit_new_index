@@ -1,13 +1,19 @@
+
 /** PC动画初始设置 **/
 .no_background {
     background-color: transparent !important;
 }
 .active_background_b {
-    display: none;
+    /*display: none;*/
+    visibility: hidden;
 }
 .gradurl_background {
     visibility: hidden;
     transition: all .8s;
+}
+
+.mouse {
+    opacity: 0;
 }
 
 .page2, .page3, .page4, .page5, .page6, .page7 {
@@ -17,7 +23,6 @@
         visibility: hidden;
     }
 }
-
 
 .page8 {
     visibility: hidden;
@@ -38,7 +43,7 @@
         transition: all .7s;
     }
     h1 {
-        transform: translateY(2.475em);
+        transform: translateY(1em);
         opacity: 0;
         transition: all .7s;
     }
@@ -60,23 +65,29 @@
 
 .page2 {
     transition: opacity .9s;
+    .card_seq {
+        .card {
+            transform: translateY(15em);
+        }
+    }
     .card {
         visibility: hidden;
+        opacity: 0;
     }
     .card1 {
-        transition: all .6s;
+        transition: all .5s;
     }
     .card2 {
-        transition: all .7s;
+        transition: all .6s;
     }
     .card3 {
-        transition: all .8s;
+        transition: all .7s;
     }
     .card4 {
-        transition: all .9s;
+        transition: all .8s;
     }
     .card5 {
-        transition: all 1s;
+        transition: all .9s;
     }
     .card_num_b {
         img {
@@ -101,6 +112,13 @@
         visibility: hidden;
         transition: all .6s;
         transition-delay: .6s;
+    }
+}
+
+.box_set {
+    /*visibility: hidden;*/
+    .image {
+        visibility: hidden;
     }
 }
 
@@ -167,6 +185,19 @@
     .image {
         .image_init_status;
     }
+
+    .image img {
+        transform: translateY(1.5em);
+    }
+
+    .page7-elem-show {
+        img {
+            .elem-show;
+        }
+        .title {
+            .elem-show;
+        }
+    }
 }
 
 .page8 {
@@ -205,5 +236,106 @@
 
     .medium_feedback, .footer, .content_box {
         visibility: hidden;
+    }
+}
+
+/* 动画 */
+.opacity0 {
+    opacity: 0 !important;
+}
+.opacity1 {
+    opacity: 1 !important;
+}
+.visibilityhidden {
+    visibility: hidden !important;
+}
+.visibilityvisible {
+    visibility: visible !important;
+}
+.translate0 {
+    transform: translate(0px, 0px);
+}
+.translateY0 {
+    transform: translateY(0px);
+}
+.translateX0 {
+    transform: translateX(0px);
+}
+
+.elem-show {
+    visibility: visible;
+    transform: translateY(0em);
+    opacity: 1;
+}
+
+.mouse-show {
+    .elem-show;
+
+    transform: translateY(-1em);
+}
+
+.page1 {
+    .page1-elem-show {
+        .elem-show;
+    }
+    .page1-elem-hide {
+        transform: translateY(-2em);
+    }
+}
+
+.page2 {
+    .card_seq {
+        .page2-elem-show {
+            .elem-show;
+        }
+        .page2-elem-hide {
+            transform: translateY(-15.75em);
+        }
+        .page2-card-switch {
+            transform: translate( 2.75em, 6.75em );
+            height: 15.75em !important;
+        }
+        .card1-hide {
+            transform: translate( 2.75em, 1.5em );
+        }
+    }
+    .card_num_b_1_show {
+        transform: translateY(-1.5em);
+    }
+    .card_num_b_1_hide {
+        transform: translateY(-2.25em);
+    }
+}
+
+.page3 {
+    .image {
+        .title_show {
+            .elem-show;
+        }
+    }
+}
+
+.page4 {
+}
+
+.page7 {
+}
+.page7-hide, .gradient5-hide {
+    transform: translateY(-1000px) !important;
+}
+
+.page8 {
+    .page8-elem-show {
+        .translate0 !important;
+    }
+}
+.page8-hide {
+    transform: translateY(-2.25em);
+}
+
+.page9 {
+    .page9-elem-show {
+        /*.translateY0 !important;*/
+        .elem-show !important;
     }
 }

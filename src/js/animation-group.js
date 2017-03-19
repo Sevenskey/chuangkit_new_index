@@ -93,18 +93,23 @@
 
         hide () {
             this.helper( function() {
-                    this.elemObj.style.opacity = 0;
+                    //this.elemObj.style.opacity = 0;
+                    this.updateClass( this.elemObj, 'opacity0', 'opacity1' );
                 }, function() {
-                    this.elemObj.style.visibility = 'hidden';
+                    //this.elemObj.style.visibility = 'hidden';
+                    this.updateClass( this.elemObj, 'visibilityhidden', 'visibilityvisible' );
                 } );
         }
 
         show () {
             this.helper( function() {
-                    this.elemObj.style.opacity = 0;
-                    this.elemObj.style.visibility = 'visible';
+                    //this.updateClass( this.elemObj, 'opacity0', 'opacity1' );
+                    this.updateClass( this.elemObj, 'visibilityvisible', 'visibilityhidden' );
+                    //this.elemObj.style.opacity = 0;
+                    //this.elemObj.style.visibility = 'visible';
                     setTimeout ( () => {
-                        this.elemObj.style.opacity = 1;
+                        //this.elemObj.style.opacity = 1;
+                        this.updateClass( this.elemObj, 'opacity1', 'opacity0' );
                     }, 20 );
                 }, null );
         }
@@ -115,6 +120,11 @@
                 this.timerHandler.push( setTimeout( () => {
                     cbInside.call( this );
                 }, delay | this.delay ) );
+        }
+
+        updateClass ( obj, add, remove ) {
+            var re = new RegExp('\\ *' + remove, 'g');
+            obj.className = ( obj.className + ' ' + add ).replace( re, '' );
         }
     }
     

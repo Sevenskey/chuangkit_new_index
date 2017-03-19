@@ -27,7 +27,7 @@ phonees5: phonees6
 	$(ES5CC) $(PHONEES5) --out-file $(PHONEES5)
 
 pces6:
-	webpack --config webpack.pc.config.js
+	webpack --config webpack.pc.config.js 
 
 phonees6:
 	webpack --config webpack.phone.config.js

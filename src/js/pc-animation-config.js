@@ -2,90 +2,78 @@
     const animationConfig_pc = {
         frame1 : {
             prev : {
-                '#slogan h1, #slogan h2, #slogan #start_btn, #page1_icons, #mouse' : {
-                    transform : 'translateY(0px)',
-                    opacity : 1,
+                '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
+                    classList : ['page1-elem-show'],
                 },
-                '#blue_banner' : {
-                    transform : 'translateY(-10px)',
-                    opacity : 1,
+                '#mouse' : {
+                    classList : ['mouse-show'],
                 },
             },
             next : {
-                '#blue_banner' : {
-                    transform : 'translateY(-300px)',
+                '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
                     hide : true,
+                    classList : ['page1-elem-hide'],
                 },
-                '#slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
-                    transform : 'translateY(-300px)',
+                '#page1, #active_background_w' : {
                     hide : true,
-                },
-                '#page1' : {
-                    hide : true,
-                },
-                '#active_background_w' : {
-                    delete : true,
                 },
             },
             transitionDuration : '.7s'
         },
         frame2 : {
             prev : {
-                '#card_seq .card' : {
-                    transform : 'translateY(250px)',
-                },
             },
             next : {
                 '#card_seq .card' : {
-                    transform : 'translateY(0px)',
                     show : true,
+                    classList : ['page2-elem-show'],
                 },
-                '#active_background_b' : {
-                    retrieve : true,
-                },
-                '#page2' : {
+                '#active_background_b, #page2' : {
                     show : true,
                 },
             },
         },
         frame3 : {
             prev : {
+                '#box_set .key1' : {
+                    classList : ['page3_image_c'],
+                },
+                '#box_set .key2' : {
+                    classList : ['page3_image_s'],
+                },
+                '#box_set .key3' : {
+                    classList : ['page3_image_w'],
+                },
+                '#box_set .key4' : {
+                    classList : ['page3_image_l'],
+                },
+                '#box_set .other' : {
+                    classList : ['page3_image_a'],
+                },
             },
             next : {
                 //隐藏
-                '#active_background_b' : {
-                    delete : true,
-                },
-                '#card_seq .card2, #card_seq .card3, #card_seq .card4, #card_seq .card5' : {
-                    up : '15.75em',
+                '#active_background_b, #card_seq .card1 .card_tail img' : {
                     hide : true,
                 },
-                '#card_seq .card1 .card_tail img' : {
-                    opacity : 0,
+                '#card_seq .card2, #card_seq .card3, #card_seq .card4, #card_seq .card5' : {
+                    hide : true,
+                    classList : ['page2-elem-hide'],
                 },
                 //变形
                 '#card_seq .card1' : {
-                    down : '6.75em',
-                    toRight : '2.25em',
-                    height : '15.75em',
-                    classList : ['image_shadow'],
+                    classList : ['image_shadow', 'page2-card-switch'],
                 },
                 //出现
                 '#card_num_b_1' : {
                     show : true,
-                    up : '1.5em',
-                },
-                '#page3 .image' : {
-                    show : true,
+                    classList : ['card_num_b_1_show'],
                 },
                 '#page3 .title' : {
-                    transform : 'translateY(0px)',
+                    classList : ['title_show'],
                     show : true,
                 },
-                '#page3' : {
-                    show : true,
-                },
-                '#gradient1' : {
+                '#page3, #gradient1, #page3 .image, #box_set .image' : {
                     show : true,
                 },
             },
@@ -100,38 +88,34 @@
                     hide : true,
                 },
                 '#card_seq .card1' : {
-                    up : '4.5em',
+                    classList : ['card1-hide'],
                     hide : true,
                 },
                 '#card_num_b_1' : {
-                    up : '2.25em',
+                    classList : ['card_num_b_1_hide'],
                     hide : true,
                 },
-                '#page3 .image img, #page3 .image .title' : {
+                '#gradient1, #page3 .image img, #page3 .image .title' : {
                     hide : true,
                 },
-                '#gradient1' : {
+                '#box_set .other' : {
                     hide : true,
                 },
                 //变形
-                '#page3 .key1' : {
+                '#box_set .key1' : {
                     classList : ['page4_image_p'],
                 },
-                '#page3 .key2' : {
+                '#box_set .key2' : {
                     classList : ['page4_image_v'], 
                 },
-                '#page3 .key3' : {
+                '#box_set .key3' : {
                     classList : ['page4_image_a'], 
                 },
-                '#page3 .key4' : {
+                '#box_set .key4' : {
                     classList : ['page4_image_t'], 
                 },
                 //出现
-                '#page4' : {
-                    show : true,
-                    //classList : ['gradient2'],
-                },
-                '#page4 .image, #page4 .title' : {
+                '#gradient2, #page4, #page4 .image, #page4 .title' : {
                     show : true,
                 },
                 '#page4 .title' : {
@@ -143,9 +127,6 @@
                 },
                 '#card_num_b_2' : {
                     up : '2.25em',
-                    show : true,
-                },
-                '#gradient2' : {
                     show : true,
                 },
             },
@@ -176,18 +157,22 @@
                 '#gradient2' : {
                     hide : true,
                 },
-                '#page3 .key3' : {
+                '#box_set .key3' : {
                     hide : true,
                 },
-                '#page3 .key4' : {
+                '#box_set .key4' : {
                     hide : true,
                 },
                 //变形
-                '#page3 .key1' : {
+                '#box_set .key1' : {
                     classList : ['page5_image_2'], 
                 },
-                '#page3 .key2' : {
+                '#box_set .key2' : {
                     classList : ['page5_image_3'], 
+                },
+                '#box_set .other' : {
+                    show : true,
+                    classList : ['page5_image_1'],
                 },
                 //出现
                 '#page5' : {
@@ -291,12 +276,15 @@
                 '#gradient3' : {
                     hide : true,
                 },
+                '#box_set .other' : {
+                    hide : true,
+                },
                 //变化
-                '#page3 .key1' : {
-                    'z-index' : 9,
+                '#box_set .key1' : {
+                    //'z-index' : 9,
                     classList : ['page6_box1'], 
                 },
-                '#page3 .key2' : {
+                '#box_set .key2' : {
                     classList : ['page6_box2'], 
                 },
                 //出现
@@ -377,30 +365,9 @@
         },
         frame7 : {
             prev : {
-                '#page7 .image_hdimg img' : {
-                    down : '1.5em',
-                },
-                '#page7 .image_bqtp img' : {
-                    down : '1.5em',
-                },
-                '#page7 .image_jpg img' : {
-                    down : '1.5em',
-                },
-                '#page7 .image_pj img' : {
-                    down : '1.5em',
-                },
-                '#page7 .image_ppt img' : {
-                    down : '1.5em',
-                },
-                '#page7 .image_tmbj img' : {
-                    down : '1.5em',
-                },
             },
             next : {
                 //隐藏
-                '#page6, #page6 .image img' : {
-                    hide : true,
-                },
                 '#card_seq2 .card4' : {
                     up : '4.5em',
                     hide : true,
@@ -409,37 +376,19 @@
                     up : '2.25em',
                     hide : true,
                 },
-                '#gradient4' : {
-                    hide : true,
-                },
-                '#page3 .key1, #page3 .key2' : {
+                '#page6, #page6 .image img, #gradient4, #page3 .key1, #page3 .key2, .box_set .key1, .box_set .key2' : {
                     hide : true,
                 },
                 //出现
-                '#page7' : {
+                '#gradient5, #page7' : {
                     show : true,
                 },
-                '#page7 .image_hdimg img' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '#page7 .image_bqtp img' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '#page7 .image_jpg img' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '#page7 .image_pj img' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '#page7 .image_ppt img' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '#page7 .image_tmbj img' : {
-                    transform : 'translate(0px, 0px)',
+                '#page7 .image img' : {
+                    classList : ['page7-elem-show'],
                 },
                 '.page7 .image, .page7 .title' : {
                     show : true,
-                    transform : 'translate(0px, 0px)',
+                    classList : ['page7-elem-show'],
                 },
                 '#card_seq2 .card5' : {
                     up : '3.0em',
@@ -448,9 +397,6 @@
                 },
                 '#card_num_b_5' : {
                     up : '2.25em',
-                    show : true,
-                },
-                '#gradient5' : {
                     show : true,
                 },
             },
@@ -464,9 +410,6 @@
                 '#page2' : {
                     hide : true,
                 },
-                //'#page7, #page7 .image img, #page7 .image .title' : {
-                    //hide : true,
-                //},
                 '#card_seq2 .card5' : {
                     up : '4.5em',
                     hide : true,
@@ -478,48 +421,21 @@
                 '#page3,#page4,#page5,#page6' : {
                     display : 'none',
                 },
-                //'#gradient5' : {
-                    //hide : true,
-                //},
                 //变形
-                '#gradient5' : {
-                    up : '1000px',
+                '#page7, #gradient5' : {
+                    classList : ['page7-hide'],
                 },
-                '#page7' : {
-                    up : '1000px',
-                },
-                '.user_feedback li:nth-child(1)' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '.user_feedback li:nth-child(2)' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '.user_feedback li:nth-child(3)' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '.user_feedback li:nth-child(4)' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '.user_feedback li:nth-child(5)' : {
-                    transform : 'translate(0px, 0px)',
-                },
-                '.user_feedback li:nth-child(6)' : {
-                    transform : 'translate(0px, 0px)',
+                '#user_feedback li' : {
+                    classList : ['page8-elem-show'],
                 },
                 //出现
-                '#active_background_w' : {
-                    retrieve : true,
-                },
                 '.page8' : {
-                    transform : 'translateY(0px)',
+                    classList : ['translate0'],
                     show : true,
                 },
-                '.user_feedback li' : {
+                '#active_background_w, #user_feedback li' : {
                     show : true,
                 },
-                //'#mouse' : {
-                    //show : true,
-                //}
             },
             transitionDuration : '1s',
         },
@@ -539,7 +455,7 @@
                 //隐藏
                 '.page8' : {
                     hide : true,
-                    up : '2.25em',
+                    classList : ['page8-hide'],
                 },
                 '#user_feedback li' : {
                     hide : true,
@@ -547,18 +463,11 @@
                 '#mouse' : {
                     hide : true,
                 },
-                //变形
-                '#medium_feedback' : {
-                    transform : 'translateY(0px)',
-                },
-                '.content_box' : {
-                    transform : 'translateY(0px)',
-                },
-                '#footer' : {
-                    transform : 'translateY(0px)',
-                },
                 //出现
-                '#page9, #medium_feedback, .content_box, #footer' : {
+                '#medium_feedback, .content_box, #footer' : {
+                    classList : ['page9-elem-show'],
+                },
+                '#page9' : {
                     show : true,
                 },
             },

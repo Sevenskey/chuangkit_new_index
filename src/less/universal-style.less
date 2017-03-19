@@ -49,11 +49,9 @@ button {
     text-align: center;
     z-index: 20;
     position: fixed;
-    bottom: 2.0025em;
+    bottom: 2em;
     width: 100%;
 
-    transform: translateY(2.475em);
-    opacity: 0;
     transition: all 1.3s;
 
     .mouse_content, .mouse_circle {
@@ -110,13 +108,15 @@ button {
 
 /** 页面样式 **/
 
-.page1, .page2, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
+.page {
     width: 100%;
     height: 100%;
     overflow: hidden;
     position: absolute;
+    top: 0;
+    left: 0;
 }
-.page1, .page3, .page4, .page5, .page6, .page7, .page8, .page9 {
+.page {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,13 +133,13 @@ button {
     z-index: 7;
 }
 .page3 {
-    z-index: 1;
+    /*z-index: 1;*/
 }
 .page4 {
-    z-index: 5;
+    /*z-index: 5;*/
 }
 .page5 {
-    z-index: 4;
+    /*z-index: 4;*/
 }
 .page6 {
     z-index: 3;
@@ -216,6 +216,7 @@ button {
         .card_header {
             position: relative;
             height: 30%;
+            /*height: 4.8em;*/
 
             .card_title {
                 position: absolute;
@@ -251,6 +252,7 @@ button {
 
         .card_tail {
             height: 70%;
+            /*height: 13.5em;*/
             position: relative;
             padding: 1.5em;
 
@@ -270,6 +272,27 @@ button {
     }
 }
 
+.page3_image_c {
+    .page3_image_c_size !important;
+    .page3 .image_c !important;
+}
+.page3_image_a {
+    .page3_image_a_size !important;
+    .page3 .image_a !important;
+}
+.page3_image_s {
+    .page3_image_s_size !important;
+    .page3 .image_s !important;
+}
+.page3_image_w {
+    .page3_image_w_size !important;
+    .page3 .image_w !important;
+}
+.page3_image_l {
+    .page3_image_l_size !important;
+    .page3 .image_l !important;
+}
+
 .page4_image_a {
     .page4_image_a_size !important;
     .page4 .image_a !important;
@@ -285,6 +308,10 @@ button {
 .page4_image_t {
     .page4_image_t_size !important;
     .page4 .image_t !important;
+}
+.page5_image_1 {
+    .page5_image_1_size !important;
+    .page5 .image_1 !important;
 }
 .page5_image_2 {
     .page5_image_2_size !important;
@@ -303,12 +330,19 @@ button {
     .page6 .page6_box2_position !important;
 }
 
+.box_set, .page7 {
+    .image {
+        position: absolute;
+        background-color: white;
+
+        .image_shadow;
+    }
+}
+
 .page3, .page4, .page5, .page6, .page7 {
     .image {
         position: absolute;
         text-align: center;
-        background-color: white;
-        .image_shadow;
 
         p {
             font-size: 12px;

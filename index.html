@@ -32,7 +32,7 @@
     <div id="gradient4" class="gradurl_background gradient4"></div>
     <div id="gradient5" class="gradurl_background gradient5"></div>
 
-    <section id="page1" class="page1">
+    <section id="page1" class="page1 page">
         <div id="blue_banner" class="blue_banner"></div>
 
         <div id="slogan" class="slogan">
@@ -51,7 +51,7 @@
 
     </section>
 
-    <section id="page2" class="page2">
+    <section id="page2" class="page2 page">
         <div class="card_num_b">
             <img id="card_num_b_1" class="card_num_b_1" src="./img/3/3-01.svg" alt="">
             <img id="card_num_b_2" class="card_num_b_2" src="./img/4/4-02.svg" alt="">
@@ -104,7 +104,17 @@
         </ul>
     </section>
 
-    <div id="page3" class="page3">
+    <div class="box_set page" id="box_set">
+        <div class="container">
+            <div class="image key1"></div>
+            <div class="image key3"></div>
+            <div class="image key4"></div>
+            <div class="image other"></div>
+            <div class="image key2"></div>
+        </div>
+    </div>
+
+    <div id="page3" class="page3 page">
         <div class="container">
             <div class="image image_c key1">
                 <img src="./img/3/3-2.svg" alt="">
@@ -144,13 +154,13 @@
         </div>
     </div>
 
-    <div id="page4" class="page4">
+    <div id="page4" class="page4 page">
         <div class="container">
-            <div class="image image_v key2">
-                <img src="./img/4/4-2.svg" alt="">
+            <div class="image image_t key4">
+                <img src="./img/4/4-4.svg" alt="">
                 <div class="title">
-                    <p>矢量图</p>
-                    <p>Vector diagram</p>
+                    <p>字体</p>
+                    <p>Typeface</p>
                 </div>
             </div>
             <div class="image image_p key1">
@@ -167,17 +177,17 @@
                     <p>Art font</p>
                 </div>
             </div>
-            <div class="image image_t key4">
-                <img src="./img/4/4-4.svg" alt="">
+            <div class="image image_v key2">
+                <img src="./img/4/4-2.svg" alt="">
                 <div class="title">
-                    <p>字体</p>
-                    <p>Typeface</p>
+                    <p>矢量图</p>
+                    <p>Vector diagram</p>
                 </div>
             </div>
         </div>
     </div>
     
-    <div id="page5" class="page5">
+    <div id="page5" class="page5 page">
         <div class="container">
             <div class="image image_1">
                 <img src="./img/5/5-1.svg" alt="">
@@ -191,7 +201,7 @@
         </div>
     </div>
 
-    <div id="page6" class="page6">
+    <div id="page6" class="page6 page">
         <div class="container">
             <div class="page6_box1"></div>
             <div class="page6_box2"></div>
@@ -253,7 +263,7 @@
         </div>
     </div>
 
-    <div class="page7" id="page7">
+    <div class="page7 page" id="page7">
         <div class="container">
             <div class="image page7_box"></div>
             <div class="image image_bqtp">
@@ -295,7 +305,7 @@
         </div>
     </div>
     
-    <div class="page8" id="page8">
+    <div class="page8 page" id="page8">
         <ul id="user_feedback" class="user_feedback">
             <li v-for="item in items" :class="{
                 uf_align_left: item.position,
@@ -313,7 +323,7 @@
         </ul>
     </div>
 
-    <div class="page9" id="page9">
+    <div class="page9 page" id="page9">
         <div class="container">
             <!--[>Vue只绑定data的属性<]-->
             <div id="medium_feedback" class="medium_feedback">
