@@ -84,9 +84,6 @@
             },
             next : {
                 //隐藏
-                '#page3 .image_a' : {
-                    hide : true,
-                },
                 '#card_seq .card1' : {
                     classList : ['card1-hide'],
                     hide : true,
@@ -95,10 +92,7 @@
                     classList : ['card_num_b_1_hide'],
                     hide : true,
                 },
-                '#gradient1, #page3 .image img, #page3 .image .title' : {
-                    hide : true,
-                },
-                '#box_set .other' : {
+                '#gradient1, #page3 .image img, #page3 .image .title, #page3 .image_a, #box_set .other' : {
                     hide : true,
                 },
                 //变形
@@ -143,7 +137,7 @@
             },
             next : {
                 //隐藏
-                '#page4, #page4 .image img' : {
+                '#gradient2, #page4, #page4 .image img, #box_set .key4, #box_set .key3' : {
                     hide : true,
                 },
                 '#card_seq2 .card2' : {
@@ -152,15 +146,6 @@
                 },
                 '#card_num_b_2' : {
                     up : '2.25em',
-                    hide : true,
-                },
-                '#gradient2' : {
-                    hide : true,
-                },
-                '#box_set .key3' : {
-                    hide : true,
-                },
-                '#box_set .key4' : {
                     hide : true,
                 },
                 //变形
@@ -175,7 +160,7 @@
                     classList : ['page5_image_1'],
                 },
                 //出现
-                '#page5' : {
+                '#gradient3, #page5, #page5 .image' : {
                     show : true,
                 },
                 '#page5 .key1' : {
@@ -183,9 +168,6 @@
                 },
                 '#page5 .key2' : {
                     transform : 'translate(0px, 0px)',
-                },
-                '#page5 .image' : {
-                    show : true,
                 },
                 '#card_seq2 .card3' : {
                     up : '3.0em',
@@ -196,69 +178,11 @@
                     up : '3.0em',
                     show : true,
                 },
-                '#gradient3' : {
-                    show : true,
-                },
             },
             transitionDuration: '.8s',
         },
         frame6 : {
             prev :{
-                '#page6 .image_1' : {
-                    toRight : '2.25em',
-                },
-                '#page6 .image_2' : {
-                    toRight : '2.25em',
-                },
-                '#page6 .image_3' : {
-                    toRight : '3.75em',
-                },
-                '#page6 .image_4' : {
-                    toRight : '3.75em',
-                },
-                '#page6 .image_5' : {
-                    toRight : '5.25em',
-                },
-                '#page6 .image_6' : {
-                    toRight : '6.75em',
-                },
-                '#page6 .image_7' : {
-                    toRight : '8.25em',
-                },
-                '#page6 .image_8' : {
-                    down : '0.75em',
-                },
-                '#page6 .image_9' : {
-                    down : '2.25em',
-                },
-                '#page6 .image_10' : {
-                    down : '3.75em',
-                },
-                '#page6 .image_11' : {
-                    down : '7.5em',
-                    toRight : '11.25em',
-                },
-                '#page6 .image_12 img' : {
-                    width : '15.0em',
-                },
-                '#page6 .image_13' : {
-                    down : '3.0em',
-                },
-                '#page6 .image_14' : {
-                    toLeft : '3.75em',
-                },
-                '#page6 .image_15' : {
-                    toLeft : '3.0em',
-                },
-                '#page6 .image_16' : {
-                    toLeft : '2.25em',
-                },
-                '#page6 .image_17' : {
-                    toLeft : '1.5em',
-                },
-                '#page6 .image_18' : {
-                    toLeft : '0.75em',
-                },
             },
             next : {
                 //隐藏
@@ -281,72 +205,21 @@
                 },
                 //变化
                 '#box_set .key1' : {
-                    //'z-index' : 9,
                     classList : ['page6_box1'], 
                 },
                 '#box_set .key2' : {
                     classList : ['page6_box2'], 
                 },
                 //出现
-                '#page6' : {
+                '#gradient4, #page6' : {
                     show : true,
-                },
-                '#page6 .image_1' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_2' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_3' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_4' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_5' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_6' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_7' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_8' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_9' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_10' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_11' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_13' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_14' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_15' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_16' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_17' : {
-                    transform : 'translate(0px,0px)',
-                },
-                '#page6 .image_18' : {
-                    transform : 'translate(0px,0px)',
                 },
                 '#page6 .image' : {
                     show : true,
+                    classList : ['page6-elem-show'],
                 },
-                '#page6 .image_12 img' : {
-                    width : '',
+                '#page6 .image_12' : {
+                    classList : ['page6-image12-switch'],
                 },
                 '#card_seq2 .card4' : {
                     up : '3.0em',
@@ -355,9 +228,6 @@
                 },
                 '#card_num_b_4' : {
                     up : '2.25em',
-                    show : true,
-                },
-                '#gradient4' : {
                     show : true,
                 },
             },

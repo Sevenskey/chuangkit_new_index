@@ -141,7 +141,7 @@ function upTo ( frame ) {
 }
 function downTo( frame ) {
         frame.mountPrevStyle();
-        frame.backupOldStyle();
+        //frame.backupOldStyle();
         frame.clearTimer();
         frame.mountNextStyle();
 }
@@ -202,6 +202,7 @@ Vue.use( vue_PageTurn, {
             },
             function() {
                 downTo( frame5 );
+                frame4.clearTimer();
             },
         ],
         5 : [

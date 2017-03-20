@@ -2,7 +2,7 @@
 * Coding by Sun
 * Email: sevenskey@163.com
 * Build since: 2017-2-1
-* Latest update: 2017-2-14
+* Latest update: 2017-3-20
 *
 * Compatibility:
 * Array.isArray() - IE9
@@ -207,17 +207,17 @@
                     mode : mode,
                     timerHandler : self.timerHandler,
                 };
-                var elemStyleObj = getComputedStyle( obj );
+                //var elemStyleObj = getComputedStyle( obj );
 
                 if ( typeof value == 'number' )
                     config.delay = value;
-                else if ( value ) {
-                    config.delay = parseFloat( elemStyleObj.getPropertyValue('transition-delay') ) + parseFloat( elemStyleObj.getPropertyValue('transition-duration') );
-                } else {
+                //else if ( value ) {
+                    //config.delay = ;
+                else {
                     return;
                 }
                 new FadeInOrOut( config );
-            } )
+            } );
         }
 
         getTimerHandler ( arg ) {
@@ -390,7 +390,7 @@
 
         // 将样式和样式类以及 shortcut 分离为三个集合
         separate ( all, styleSet, classSet, shortcutSet ) {
-            var obj, classList;
+            var obj, classList, elemStyleObj;
             
             if ( all )
                 for ( var id in all ) {
@@ -403,9 +403,14 @@
                                 if ( ! shortcutSet[id] )
                                     shortcutSet[id] = {};
 
+                                elemStyleObj = getComputedStyle( this.objDict[id][0] );
+
                                 shortcutSet[id][shortcut] = {
                                     all : all,
-                                    value : obj[shortcut],
+                                    // 为了性能折中的做法
+                                    // 将对时间的计算放在分离这一步而不是每次调用快捷操作时重新计算，可以有效地减少页面样式重新计算次数
+                                    // 但是相对的可能会使时间计算得不准确
+                                    value : obj[shortcut] === true ? parseFloat( elemStyleObj.getPropertyValue('transition-delay') ) + parseFloat( elemStyleObj.getPropertyValue('transition-duration') ) : obj[shortcut],
                                     styleSet : styleSet,
                                     classSet : classSet,
                                 };
