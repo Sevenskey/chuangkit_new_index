@@ -1,15 +1,5 @@
 ;(function( window ) {
     const init_hide_list = [
-        '#active_background_b',
-        '.gradurl_background',
-        '#page2',
-        '#page3',
-        '#page4',
-        '#page5',
-        '#page6',
-        '#page7',
-        '#page8',
-        '#page9',
         '#page8 #user_feedback li',
         '#page2 .card',
         '#page2 .card_num_b img',
@@ -17,6 +7,7 @@
         '#page9 #medium_feedback',
         '#page9 .footer',
         '#page9 .content_box',
+        '.image .title',
     ];
     const init_hide_str = init_hide_list.join(',');
 
@@ -42,8 +33,8 @@
             },
             next : {
                 '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
-                    hide : true,
                     classList : ['page1-elem-hide'],
+                    hide : true,
                 },
                 '#page1, #active_background_w' : {
                     hide : true,
@@ -65,16 +56,16 @@
         },
         frame3 : {
             prev : {
-                '#box_set .key1' : {
+                '#box_set .box1' : {
                     classList : ['page3_image_c'],
                 },
-                '#box_set .key2' : {
+                '#box_set .box2' : {
                     classList : ['page3_image_s'],
                 },
-                '#box_set .key3' : {
+                '#box_set .box3' : {
                     classList : ['page3_image_w'],
                 },
-                '#box_set .key4' : {
+                '#box_set .box4' : {
                     classList : ['page3_image_l'],
                 },
                 '#box_set .other' : {
@@ -95,7 +86,7 @@
                     classList : ['image_shadow', 'page2-card-switch'],
                 },
                 //出现
-                '#page3 .title, #card_num_b_1, #page3, #gradient1, #page3 .image, #box_set .image' : {
+                '#page3 .title, #card_num_b_1, #page3, #gradient1, #page3 .image, #box_set .box' : {
                     show : true,
                 },
                 '#card_num_b_1' : {
@@ -124,23 +115,23 @@
                     hide : true,
                 },
                 //变形
-                '#box_set .key1' : {
+                '#box_set .box1' : {
                     classList : ['page4_image_p'],
                 },
-                '#box_set .key2' : {
+                '#box_set .box2' : {
                     classList : ['page4_image_v'], 
                 },
-                '#box_set .key3' : {
+                '#box_set .box3' : {
                     classList : ['page4_image_a'], 
                 },
-                '#box_set .key4' : {
+                '#box_set .box4' : {
                     classList : ['page4_image_t'], 
                 },
                 //出现
-                '#gradient2, #page4, #page4 .image, #page4 .title, #card_seq2 .card2, #card_num_b_2' : {
+                '#gradient2, #page4, #page4 .image, .page4_image .title, #card_seq2 .card2, #card_num_b_2, #box_set .page4_image' : {
                     show : true,
                 },
-                '#page4 .title' : {
+                '.page4_image .title' : {
                     transform : 'translateY(0.0em)',
                 },
                 '#card_seq2 .card2' : {
@@ -154,16 +145,16 @@
         },
         frame5 : {
             prev : {
-                '#page5 .key1' : {
+                '.page5 .image_2' : {
                     toLeft : 80,
                 },
-                '#page5 .key2' : {
+                '.page5 .image_3' : {
                     toLeft : 100,
                 }
             },
             next : {
                 //隐藏
-                '#gradient2, #page4, #page4 .image img, #box_set .key4, #box_set .key3' : {
+                '#gradient2, #page4, #page4 .image, #box_set .page4_image, #box_set .box4, #box_set .box3' : {
                     hide : true,
                 },
                 '#card_seq2 .card2' : {
@@ -175,10 +166,10 @@
                     hide : true,
                 },
                 //变形
-                '#box_set .key1' : {
+                '#box_set .box1' : {
                     classList : ['page5_image_2'], 
                 },
-                '#box_set .key2' : {
+                '#box_set .box2' : {
                     classList : ['page5_image_3'], 
                 },
                 '#box_set .other' : {
@@ -186,13 +177,13 @@
                     classList : ['page5_image_1'],
                 },
                 //出现
-                '#gradient3, #page5, #page5 .image, #card_seq2 .card3, #card_num_b_3' : {
+                '#gradient3, #page5, #page5 .image, #card_seq2 .card3, #card_num_b_3, #box_set .page5_image' : {
                     show : true,
                 },
-                '#page5 .key1' : {
+                '.page5 .image_2' : {
                     transform : 'translate(0px, 0px)',
                 },
-                '#page5 .key2' : {
+                '.page5 .image_3' : {
                     transform : 'translate(0px, 0px)',
                 },
                 '#card_seq2 .card3' : {
@@ -210,7 +201,7 @@
             },
             next : {
                 //隐藏
-                '#page5, #page5 .image img' : {
+                '#page5, .page5 .page5_image' : {
                     hide : true,
                 },
                 '#card_seq2 .card3' : {
@@ -228,10 +219,10 @@
                     hide : true,
                 },
                 //变化
-                '#box_set .key1' : {
+                '#box_set .box1' : {
                     classList : ['page6_box1'], 
                 },
-                '#box_set .key2' : {
+                '#box_set .box2' : {
                     classList : ['page6_box2'], 
                 },
                 //出现
@@ -270,7 +261,7 @@
                     up : '2.25em',
                     hide : true,
                 },
-                '#page6, #page6 .image img, #gradient4, #page3 .key1, #page3 .key2, .box_set .key1, .box_set .key2' : {
+                '#page6, #page6 .image, #gradient4, #box_set' : {
                     hide : true,
                 },
                 //出现
@@ -312,9 +303,6 @@
                     up : '2.25em',
                     hide : true,
                 },
-                //'#page3,#page4,#page5,#page6' : {
-                    //display : 'none',
-                //},
                 //变形
                 '#page7, #gradient5' : {
                     classList : ['page7-hide'],
@@ -335,15 +323,6 @@
         },
         frame9 : {
             prev : {
-                '#medium_feedback' : {
-                    down : '1.5em',
-                },
-                '.content_box' : {
-                    down : '1.5em',
-                },
-                '#footer' : {
-                    down : '30%',
-                },
             },
             next : {
                 //隐藏
@@ -351,15 +330,12 @@
                     hide : true,
                     classList : ['page8-hide'],
                 },
-                '#user_feedback li' : {
-                    hide : true,
-                },
-                '#mouse' : {
+                '#mouse, #user_feedback li' : {
                     hide : true,
                 },
                 //出现
                 '#footer, #page9, #medium_feedback, .content_box' : {
-                    show : true,
+                    show : 1000,
                 },
                 '#medium_feedback, .content_box, #footer' : {
                     classList : ['page9-elem-show'],

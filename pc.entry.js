@@ -83,7 +83,7 @@ Vue.use( beAPlugin( vue_DataFiller ), {
 });
 
 // MediumFeedback
-Vue.use( beAPlugin(vue_MediumFeedback), {
+const mf = new vue_MediumFeedback( {
     url : './data/vue.medium-feedback.json',
     mf_el : '#medium_feedback_main', // medium feedback 主体
     nextButton : '#mf_next_button', // 下一页按钮
@@ -93,7 +93,7 @@ Vue.use( beAPlugin(vue_MediumFeedback), {
     callback : function() {
         console.log( 'MediumFeedback is OK!' );
     },
-} );
+}, Vue );
 
 // Marketing
 Vue.use( beAPlugin( vue_DataFiller ), {
@@ -228,6 +228,7 @@ Vue.use( vue_PageTurn, {
         7 : [
             function() {
                 upTo( frame9 );
+                mf.toggleAutoTimer();
             },
             function() {
                 downTo( frame8 );
@@ -239,6 +240,7 @@ Vue.use( vue_PageTurn, {
             function() {
             },
             function() {
+                mf.toggleAutoTimer();
                 downTo( frame9 );
             },
         ],

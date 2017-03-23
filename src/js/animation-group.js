@@ -2,7 +2,7 @@
 * Coding by Sun
 * Email: sevenskey@163.com
 * Build since: 2017-2-1
-* Latest update: 2017-3-20
+* Latest update: 2017-3-23
 *
 * Compatibility:
 * Array.isArray() - IE9

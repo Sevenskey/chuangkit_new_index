@@ -85,6 +85,7 @@
             interval = 1000, // 自动切换速度
             pixel = 17, // 活动圆点移动长度
             callback = null,
+            auto = false,
         }, Vue ) {
             this.url = url;
             this.Vue = Vue;
@@ -94,6 +95,9 @@
             this.interval = interval;
             this.pixel = pixel;
             this.callback = callback;
+            this.auto = auto;
+
+            this.pageturn = null;
             
             this.launch();
         }
@@ -128,7 +132,7 @@
         }
 
         openPageTurn ( length, fn ) {
-            PageTurn.install( this.Vue, {
+            this.pageturn = new PageTurn( {
                 el : this.pt_el,
                 pageNum : length,
                 staticCircleClass : 'static_circle',
@@ -139,11 +143,15 @@
                 wheel : false,
                 keyboard : false,
                 tailToHead : true,
-                auto : true,
+                auto : this.auto,
                 interval : this.interval,
                 fn : fn,
                 direction : 'left',
-            } );
+            }, this.Vue );
+        }
+        
+        toggleAutoTimer () {
+            this.pageturn.toggleAutoTimer();
         }
     }
 

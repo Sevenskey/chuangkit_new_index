@@ -406,20 +406,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                         // 待模板渲染完毕后添加各种监听
                         mounted: function mounted() {
-                            var _this = this;
-
-                            self.bindEvent(function (flag) {
-                                if (!self.lock) {
-                                    self.lock = 1;
-
-                                    if (flag > 0 && _this.current < _this.num - 1) _this.current++;else if (flag < 0 && _this.current > 0) _this.current--;else if (self.tailToHead && flag > 0 && _this.current == _this.num - 1) _this.current = 0;else if (self.tailToHead && flag < 0 && _this.current == 0) _this.current = _this.num - 1;
-                                }
-
-                                if (!self.lockTimer) self.lockTimer = setTimeout(function () {
-                                    self.lock = 0;
-                                    self.lockTimer = null;
-                                }, self.lockTime);
-                            });
+                            self.bindEvent(self.currentCtrl(self).bind(this));
 
                             // 默认自动调用第一个用户函数
                             if (self.fn && self.autoExecuteFirst) self.invokeFunction(self.fn, 0, 1);
@@ -456,40 +443,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
 
                 // 未修改完
-                //currentCtrl ( flag,  ) {
-                //if ( ! self.lock ) {
-                //self.lock = 1;
 
-                //if ( flag > 0 && this.current < this.num-1 )
-                //this.current++;
-                //else if ( flag < 0 && this.current > 0 )
-                //this.current--;
-                //else if ( self.tailToHead && flag > 0 && this.current == this.num-1 )
-                //this.current = 0;
-                //else if ( self.tailToHead && flag < 0 && this.current == 0 )
-                //this.current = this.num - 1;
-                //}
+            }, {
+                key: 'currentCtrl',
+                value: function currentCtrl(self) {
+                    return function (flag) {
+                        if (!self.lock) {
+                            self.lock = 1;
 
-                //if ( ! self.lockTimer )
-                //self.lockTimer = setTimeout( function() {
-                //self.lock = 0;
-                //self.lockTimer = null;
-                //}, self.lockTime );
-                //}
+                            if (flag > 0 && this.current < this.num - 1) this.current++;else if (flag < 0 && this.current > 0) this.current--;else if (self.tailToHead && flag > 0 && this.current == this.num - 1) this.current = 0;else if (self.tailToHead && flag < 0 && this.current == 0) this.current = this.num - 1;
+                        }
+
+                        if (!self.lockTimer) self.lockTimer = setTimeout(function () {
+                            self.lock = 0;
+                            self.lockTimer = null;
+                        }, self.lockTime);
+                    };
+                }
 
                 // 绑定各种监听事件
 
             }, {
                 key: 'bindEvent',
                 value: function bindEvent(fn) {
-                    var _this2 = this;
+                    var _this = this;
 
                     if (this.wheel) document.body.addEventListener('wheel', function (event) {
                         event = event || window.event;
 
-                        if (_this2.timer_wheel) clearTimeout(_this2.timer_wheel);
+                        if (_this.timer_wheel) clearTimeout(_this.timer_wheel);
 
-                        _this2.timer_wheel = setTimeout(function () {
+                        _this.timer_wheel = setTimeout(function () {
                             fn(event.deltaY);
                         }, 200);
                     });
@@ -528,17 +512,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'launchAutoTimer',
                 value: function launchAutoTimer(fn) {
-                    var _this3 = this;
+                    var _this2 = this;
 
                     this.timer_auto = setTimeout(function () {
                         fn(1);
-                        _this3.launchAutoTimer(fn);
+                        _this2.launchAutoTimer(fn);
                     }, this.interval);
                 }
             }, {
                 key: 'toggleAutoTimer',
                 value: function toggleAutoTimer() {
-                    if (this.timer_auto === null) launchAutoTimer();
+                    if (this.timer_auto === null) this.launchAutoTimer(this.currentCtrl(this).bind(this.vueInstance));else {
+                        clearTimeout(this.timer_auto);
+                        this.timer_auto = null;
+                    }
                 }
             }]);
 
@@ -2674,17 +2661,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'bindEvent',
                 value: function bindEvent(fn) {
-                    var _this4 = this;
+                    var _this3 = this;
 
                     document.body.addEventListener('mousemove', function (event) {
-                        if (_this4.timer) clearTimeout(_this4.timer);
+                        if (_this3.timer) clearTimeout(_this3.timer);
 
-                        _this4.timer = setTimeout(function () {
+                        _this3.timer = setTimeout(function () {
                             event = event || window.event;
                             var x = event.clientX,
                                 y = event.clientY;
                             fn(x, y);
-                        }, _this4.sensitivity);
+                        }, _this3.sensitivity);
                     });
                 }
             }]);
@@ -2704,7 +2691,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     * Coding by Sun
     * Email: sevenskey@163.com
     * Build since: 2017-2-1
-    * Latest update: 2017-3-20
+    * Latest update: 2017-3-23
     *
     * Compatibility:
     * Array.isArray() - IE9
@@ -2811,11 +2798,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: 'vshow',
                 value: function vshow() {
                     this.helper(function () {
-                        var _this5 = this;
+                        var _this4 = this;
 
                         this.updateClass(this.elemObj, 'visibilityvisible', 'visibilityhidden');
                         setTimeout(function () {
-                            _this5.updateClass(_this5.elemObj, 'opacity1', 'opacity0');
+                            _this4.updateClass(_this4.elemObj, 'opacity1', 'opacity0');
                         }, 20);
                     }, null);
                 }
@@ -2832,22 +2819,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: 'show',
                 value: function show() {
                     this.helper(function () {
-                        var _this6 = this;
+                        var _this5 = this;
 
                         this.updateClass(this.elemObj, '', 'displaynone');
                         setTimeout(function () {
-                            _this6.updateClass(_this6.elemObj, 'opacity1', 'opacity0');
+                            _this5.updateClass(_this5.elemObj, 'opacity1', 'opacity0');
                         }, 200);
                     });
                 }
             }, {
                 key: 'helper',
                 value: function helper(cbOutside, cbInside, delay) {
-                    var _this7 = this;
+                    var _this6 = this;
 
                     cbOutside.call(this);
                     if (typeof cbInside == 'function') this.timerHandler.push(setTimeout(function () {
-                        cbInside.call(_this7);
+                        cbInside.call(_this6);
                     }, delay | this.delay + 200));
                 }
             }, {
@@ -3028,7 +3015,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _createClass(AnimationGroup, [{
                 key: 'init',
                 value: function init() {
-                    var _this8 = this;
+                    var _this7 = this;
 
                     if (this.next) {
                         // 生成元素对象字典
@@ -3046,8 +3033,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                         // 备份原有样式和类
                         setTimeout(function () {
-                            _this8.backupOldStyle();
-                            _this8.backupOldClass();
+                            _this7.backupOldStyle();
+                            _this7.backupOldClass();
                         }, 1000);
 
                         // 备份与 next 中对偶的 shortcut
@@ -3088,13 +3075,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'mountTransition',
                 value: function mountTransition() {
-                    var _this9 = this;
+                    var _this8 = this;
 
                     for (var id in this.next) {
                         this.objDict[id].forEach(function (obj) {
-                            if (_this9.transition && getComputedStyle(obj, null).getPropertyValue('transition-duration') == '0s') {
+                            if (_this8.transition && getComputedStyle(obj, null).getPropertyValue('transition-duration') == '0s') {
                                 obj.style.transitionProperty = 'all';
-                                obj.style.transitionDuration = _this9.transition;
+                                obj.style.transitionDuration = _this8.transition;
                             }
                         });
                     }
@@ -3163,7 +3150,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'separate',
                 value: function separate(all, styleSet, classSet, shortcutSet) {
-                    var _this10 = this;
+                    var _this9 = this;
 
                     var obj, classList, elemStyleObj;
 
@@ -3172,7 +3159,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         if (Array.isArray(obj)) classSet[id] = obj;else if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) == 'object') this.checkRepeat(obj, this.shortcut, function (shortcut) {
                             if (!shortcutSet[id]) shortcutSet[id] = {};
 
-                            elemStyleObj = getComputedStyle(_this10.objDict[id][0]);
+                            elemStyleObj = getComputedStyle(_this9.objDict[id][0]);
 
                             shortcutSet[id][shortcut] = {
                                 all: all,
@@ -3235,10 +3222,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'mountClass',
                 value: function mountClass(classSet, removed) {
-                    var _this11 = this;
+                    var _this10 = this;
 
                     Object.keys(classSet).forEach(function (id) {
-                        _this11.objDict[id].forEach(function (elem) {
+                        _this10.objDict[id].forEach(function (elem) {
                             classSet[id].forEach(function (className) {
                                 if (elem.className.indexOf(className) == -1) elem.className += ' ' + className;
                             });
@@ -3246,7 +3233,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
 
                     if (removed) Object.keys(removed).forEach(function (id) {
-                        _this11.objDict[id].forEach(function (elem) {
+                        _this10.objDict[id].forEach(function (elem) {
                             removed[id].forEach(function (className) {
                                 elem.className = elem.className.replace(className, '');
                             });
@@ -3285,14 +3272,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'mountNextStyle',
                 value: function mountNextStyle() {
-                    var _this12 = this;
+                    var _this11 = this;
 
                     this.mountStyle(this.styleSet);
                     setTimeout(function () {
-                        _this12.executeShortcut(_this12.shortcutSet);
+                        _this11.executeShortcut(_this11.shortcutSet);
                     }, 0);
                     setTimeout(function () {
-                        _this12.mountClass(_this12.classSet);
+                        _this11.mountClass(_this11.classSet);
                     }, 100);
                 }
 
@@ -3301,12 +3288,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'backupOldClass',
                 value: function backupOldClass() {
-                    var _this13 = this;
+                    var _this12 = this;
 
                     this.oldClassSet = {};
 
                     Object.keys(this.classSet).forEach(function (id) {
-                        _this13.oldClassSet[id] = _this13.objDict[id][0].className.split(' ');
+                        _this12.oldClassSet[id] = _this12.objDict[id][0].className.split(' ');
                     });
                 }
 
@@ -3348,14 +3335,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'rollback',
                 value: function rollback() {
-                    var _this14 = this;
+                    var _this13 = this;
 
                     this.executeShortcut(this.dscBackupSet);
 
                     // 由于当元素的 display 为非 none 时，即元素已经出现在页面中时， transition 才起作用，故该处设置一个定时器，使 transition 起作用
                     setTimeout(function () {
-                        _this14.mountStyle(_this14.oldStyleSet);
-                        _this14.mountClass(_this14.classSetPrev, _this14.classSet);
+                        _this13.mountStyle(_this13.oldStyleSet);
+                        _this13.mountClass(_this13.classSetPrev, _this13.classSet);
                     }, 0);
                 }
 
@@ -3366,16 +3353,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'twoLeveTraverse',
                 value: function twoLeveTraverse(obj1, callback1, callback2) {
-                    var _this15 = this;
+                    var _this14 = this;
 
                     var temp1, temp2;
 
                     Object.keys(obj1).forEach(function (obj1key) {
                         temp1 = obj1[obj1key];
-                        if (callback1) callback1.call(_this15, obj1key);
+                        if (callback1) callback1.call(_this14, obj1key);
 
                         Object.keys(temp1).forEach(function (obj2key) {
-                            if (callback2) callback2.call(_this15, obj2key, temp1, obj1key);
+                            if (callback2) callback2.call(_this14, obj2key, temp1, obj1key);
                         });
                     });
                 }
@@ -3411,7 +3398,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /***/function (module, exports, __webpack_require__) {
 
     ;(function (window) {
-        var init_hide_list = ['#active_background_b', '.gradurl_background', '#page2', '#page3', '#page4', '#page5', '#page6', '#page7', '#page8', '#page9', '#page8 #user_feedback li', '#page2 .card', '#page2 .card_num_b img', '#box_set .image', '#page9 #medium_feedback', '#page9 .footer', '#page9 .content_box'];
+        var init_hide_list = ['#page8 #user_feedback li', '#page2 .card', '#page2 .card_num_b img', '#box_set .image', '#page9 #medium_feedback', '#page9 .footer', '#page9 .content_box', '.image .title'];
         var init_hide_str = init_hide_list.join(',');
 
         var animationConfig_pc = {
@@ -3434,8 +3421,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 },
                 next: {
                     '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons': {
-                        hide: true,
-                        classList: ['page1-elem-hide']
+                        classList: ['page1-elem-hide'],
+                        hide: true
                     },
                     '#page1, #active_background_w': {
                         hide: true
@@ -3456,16 +3443,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             },
             frame3: {
                 prev: {
-                    '#box_set .key1': {
+                    '#box_set .box1': {
                         classList: ['page3_image_c']
                     },
-                    '#box_set .key2': {
+                    '#box_set .box2': {
                         classList: ['page3_image_s']
                     },
-                    '#box_set .key3': {
+                    '#box_set .box3': {
                         classList: ['page3_image_w']
                     },
-                    '#box_set .key4': {
+                    '#box_set .box4': {
                         classList: ['page3_image_l']
                     },
                     '#box_set .other': {
@@ -3486,7 +3473,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         classList: ['image_shadow', 'page2-card-switch']
                     },
                     //出现
-                    '#page3 .title, #card_num_b_1, #page3, #gradient1, #page3 .image, #box_set .image': {
+                    '#page3 .title, #card_num_b_1, #page3, #gradient1, #page3 .image, #box_set .box': {
                         show: true
                     },
                     '#card_num_b_1': {
@@ -3514,23 +3501,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     //变形
-                    '#box_set .key1': {
+                    '#box_set .box1': {
                         classList: ['page4_image_p']
                     },
-                    '#box_set .key2': {
+                    '#box_set .box2': {
                         classList: ['page4_image_v']
                     },
-                    '#box_set .key3': {
+                    '#box_set .box3': {
                         classList: ['page4_image_a']
                     },
-                    '#box_set .key4': {
+                    '#box_set .box4': {
                         classList: ['page4_image_t']
                     },
                     //出现
-                    '#gradient2, #page4, #page4 .image, #page4 .title, #card_seq2 .card2, #card_num_b_2': {
+                    '#gradient2, #page4, #page4 .image, .page4_image .title, #card_seq2 .card2, #card_num_b_2, #box_set .page4_image': {
                         show: true
                     },
-                    '#page4 .title': {
+                    '.page4_image .title': {
                         transform: 'translateY(0.0em)'
                     },
                     '#card_seq2 .card2': {
@@ -3544,16 +3531,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             },
             frame5: {
                 prev: {
-                    '#page5 .key1': {
+                    '.page5 .image_2': {
                         toLeft: 80
                     },
-                    '#page5 .key2': {
+                    '.page5 .image_3': {
                         toLeft: 100
                     }
                 },
                 next: {
                     //隐藏
-                    '#gradient2, #page4, #page4 .image img, #box_set .key4, #box_set .key3': {
+                    '#gradient2, #page4, #page4 .image, #box_set .page4_image, #box_set .box4, #box_set .box3': {
                         hide: true
                     },
                     '#card_seq2 .card2': {
@@ -3565,10 +3552,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     //变形
-                    '#box_set .key1': {
+                    '#box_set .box1': {
                         classList: ['page5_image_2']
                     },
-                    '#box_set .key2': {
+                    '#box_set .box2': {
                         classList: ['page5_image_3']
                     },
                     '#box_set .other': {
@@ -3576,13 +3563,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         classList: ['page5_image_1']
                     },
                     //出现
-                    '#gradient3, #page5, #page5 .image, #card_seq2 .card3, #card_num_b_3': {
+                    '#gradient3, #page5, #page5 .image, #card_seq2 .card3, #card_num_b_3, #box_set .page5_image': {
                         show: true
                     },
-                    '#page5 .key1': {
+                    '.page5 .image_2': {
                         transform: 'translate(0px, 0px)'
                     },
-                    '#page5 .key2': {
+                    '.page5 .image_3': {
                         transform: 'translate(0px, 0px)'
                     },
                     '#card_seq2 .card3': {
@@ -3599,7 +3586,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 prev: {},
                 next: {
                     //隐藏
-                    '#page5, #page5 .image img': {
+                    '#page5, .page5 .page5_image': {
                         hide: true
                     },
                     '#card_seq2 .card3': {
@@ -3617,10 +3604,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     //变化
-                    '#box_set .key1': {
+                    '#box_set .box1': {
                         classList: ['page6_box1']
                     },
-                    '#box_set .key2': {
+                    '#box_set .box2': {
                         classList: ['page6_box2']
                     },
                     //出现
@@ -3658,7 +3645,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         up: '2.25em',
                         hide: true
                     },
-                    '#page6, #page6 .image img, #gradient4, #page3 .key1, #page3 .key2, .box_set .key1, .box_set .key2': {
+                    '#page6, #page6 .image, #gradient4, #box_set': {
                         hide: true
                     },
                     //出现
@@ -3699,9 +3686,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         up: '2.25em',
                         hide: true
                     },
-                    //'#page3,#page4,#page5,#page6' : {
-                    //display : 'none',
-                    //},
                     //变形
                     '#page7, #gradient5': {
                         classList: ['page7-hide']
@@ -3721,32 +3705,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 transitionDuration: '1s'
             },
             frame9: {
-                prev: {
-                    '#medium_feedback': {
-                        down: '1.5em'
-                    },
-                    '.content_box': {
-                        down: '1.5em'
-                    },
-                    '#footer': {
-                        down: '30%'
-                    }
-                },
+                prev: {},
                 next: {
                     //隐藏
                     '.page8': {
                         hide: true,
                         classList: ['page8-hide']
                     },
-                    '#user_feedback li': {
-                        hide: true
-                    },
-                    '#mouse': {
+                    '#mouse, #user_feedback li': {
                         hide: true
                     },
                     //出现
                     '#footer, #page9, #medium_feedback, .content_box': {
-                        show: true
+                        show: 1000
                     },
                     '#medium_feedback, .content_box, #footer': {
                         classList: ['page9-elem-show']
@@ -3953,7 +3924,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var DataFiller = function () {
             function DataFiller(_ref7, Vue) {
-                var _this16 = this;
+                var _this15 = this;
 
                 var _ref7$url = _ref7.url,
                     url = _ref7$url === undefined ? null : _ref7$url,
@@ -3971,8 +3942,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 if (el) getData({
                     url: url
                 }, function (data) {
-                    _this16.data = data;
-                    _this16.generate();
+                    _this15.data = data;
+                    _this15.generate();
                 });
             }
 
@@ -4306,7 +4277,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     _ref10$pixel = _ref10.pixel,
                     pixel = _ref10$pixel === undefined ? 17 : _ref10$pixel,
                     _ref10$callback = _ref10.callback,
-                    callback = _ref10$callback === undefined ? null : _ref10$callback;
+                    callback = _ref10$callback === undefined ? null : _ref10$callback,
+                    _ref10$auto = _ref10.auto,
+                    auto = _ref10$auto === undefined ? false : _ref10$auto;
 
                 _classCallCheck(this, MediumFeedback);
 
@@ -4318,6 +4291,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.interval = interval;
                 this.pixel = pixel;
                 this.callback = callback;
+                this.auto = auto;
+
+                this.pageturn = null;
 
                 this.launch();
             }
@@ -4328,14 +4304,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _createClass(MediumFeedback, [{
                 key: 'launch',
                 value: function launch() {
-                    var _this17 = this;
+                    var _this16 = this;
 
                     getData({
                         url: this.url
                     }, function (data) {
-                        _this17.openMediumPage(data);
-                        _this17.openPageTurn(data.length, function () {
-                            _this17.ctrlmfPage();
+                        _this16.openMediumPage(data);
+                        _this16.openPageTurn(data.length, function () {
+                            _this16.ctrlmfPage();
                         });
                     });
                 }
@@ -4360,7 +4336,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, {
                 key: 'openPageTurn',
                 value: function openPageTurn(length, fn) {
-                    PageTurn.install(this.Vue, {
+                    this.pageturn = new PageTurn({
                         el: this.pt_el,
                         pageNum: length,
                         staticCircleClass: 'static_circle',
@@ -4371,11 +4347,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         wheel: false,
                         keyboard: false,
                         tailToHead: true,
-                        auto: true,
+                        auto: this.auto,
                         interval: this.interval,
                         fn: fn,
                         direction: 'left'
-                    });
+                    }, this.Vue);
+                }
+            }, {
+                key: 'toggleAutoTimer',
+                value: function toggleAutoTimer() {
+                    this.pageturn.toggleAutoTimer();
                 }
             }]);
 
@@ -4474,7 +4455,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     });
 
     // MediumFeedback
-    Vue.use(beAPlugin(vue_MediumFeedback), {
+    var mf = new vue_MediumFeedback({
         url: './data/vue.medium-feedback.json',
         mf_el: '#medium_feedback_main', // medium feedback 主体
         nextButton: '#mf_next_button', // 下一页按钮
@@ -4484,7 +4465,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         callback: function callback() {
             console.log('MediumFeedback is OK!');
         }
-    });
+    }, Vue);
 
     // Marketing
     Vue.use(beAPlugin(vue_DataFiller), {
@@ -4599,12 +4580,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }],
             7: [function () {
                 upTo(frame9);
+                mf.toggleAutoTimer();
             }, function () {
                 downTo(frame8);
 
                 this.changeColor(chuangkitBlue);
             }],
             8: [function () {}, function () {
+                mf.toggleAutoTimer();
                 downTo(frame9);
             }]
         }

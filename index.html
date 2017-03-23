@@ -25,12 +25,12 @@
     </div>
 
     <div id="active_background_w" class="active_background active_background_w"></div>
-    <div id="active_background_b" class="active_background active_background_b"></div>
-    <div id="gradient1" class="gradurl_background gradient1"></div>
-    <div id="gradient2" class="gradurl_background gradient2"></div>
-    <div id="gradient3" class="gradurl_background gradient3"></div>
-    <div id="gradient4" class="gradurl_background gradient4"></div>
-    <div id="gradient5" class="gradurl_background gradient5"></div>
+    <div id="active_background_b" class="active_background active_background_b displaynone"></div>
+    <div id="gradient1" class="gradurl_background gradient1 displaynone"></div>
+    <div id="gradient2" class="gradurl_background gradient2 displaynone"></div>
+    <div id="gradient3" class="gradurl_background gradient3 displaynone"></div>
+    <div id="gradient4" class="gradurl_background gradient4 displaynone"></div>
+    <div id="gradient5" class="gradurl_background gradient5 displaynone"></div>
 
     <section id="page1" class="page1 page">
         <div id="blue_banner" class="blue_banner"></div>
@@ -51,7 +51,7 @@
 
     </section>
 
-    <section id="page2" class="page2 page">
+    <section id="page2" class="page2 page displaynone">
         <div class="card_num_b">
             <img id="card_num_b_1" class="card_num_b_1" src="./img/3/3-01.svg" alt="">
             <img id="card_num_b_2" class="card_num_b_2" src="./img/4/4-02.svg" alt="">
@@ -104,17 +104,44 @@
         </ul>
     </section>
 
-    <div class="box_set page" id="box_set">
+    <div class="page4 page5 box_set page" id="box_set">
         <div class="container">
-            <div class="image key1"></div>
-            <div class="image key3"></div>
-            <div class="image key4"></div>
-            <div class="image other"></div>
-            <div class="image key2"></div>
+            <div class="image box box1"></div>
+            <div class="image image_p key1 page4_image">
+                <img src="./img/4/4-1.svg" alt="">
+                <div class="title">
+                    <p>摄影图片</p>
+                    <p>Photography</p>
+                </div>
+            </div>
+            <div class="image image_2 key1 page5_image">
+                <img src="./img/5/5-2.svg" alt="">
+            </div>
+            <div class="image box box3"></div>
+            <div class="image image_a key3 page4_image">
+                <img src="./img/4/4-3.svg" alt="">
+                <div class="title">
+                    <p>艺术字</p>
+                    <p>Art font</p>
+                </div>
+            </div>
+            <div class="image box box4"></div>
+            <div class="image other box"></div>
+            <div class="image box box2"></div>
+            <div class="image image_v key2 page4_image">
+                <img src="./img/4/4-2.svg" alt="">
+                <div class="title">
+                    <p>矢量图</p>
+                    <p>Vector diagram</p>
+                </div>
+            </div>
+            <div class="image image_3 key2 page5_image">
+                <img src="./img/5/5-3.svg" alt="">
+            </div>
         </div>
     </div>
 
-    <div id="page3" class="page3 page">
+    <div id="page3" class="page3 page displaynone">
         <div class="container">
             <div class="image image_c key1">
                 <img src="./img/3/3-2.svg" alt="">
@@ -154,54 +181,27 @@
         </div>
     </div>
 
-    <div id="page4" class="page4 page">
+    <div id="page4" class="page4 page displaynone">
         <div class="container">
-            <div class="image image_t key4">
+            <div class="image image_t key4 page4_image">
                 <img src="./img/4/4-4.svg" alt="">
                 <div class="title">
                     <p>字体</p>
                     <p>Typeface</p>
                 </div>
             </div>
-            <div class="image image_p key1">
-                <img src="./img/4/4-1.svg" alt="">
-                <div class="title">
-                    <p>摄影图片</p>
-                    <p>Photography</p>
-                </div>
-            </div>
-            <div class="image image_a key3">
-                <img src="./img/4/4-3.svg" alt="">
-                <div class="title">
-                    <p>艺术字</p>
-                    <p>Art font</p>
-                </div>
-            </div>
-            <div class="image image_v key2">
-                <img src="./img/4/4-2.svg" alt="">
-                <div class="title">
-                    <p>矢量图</p>
-                    <p>Vector diagram</p>
-                </div>
-            </div>
         </div>
     </div>
     
-    <div id="page5" class="page5 page">
+    <div id="page5" class="page5 page displaynone">
         <div class="container">
-            <div class="image image_1">
+            <div class="image image_1 page5_image">
                 <img src="./img/5/5-1.svg" alt="">
-            </div>
-            <div class="image image_2 key1">
-                <img src="./img/5/5-2.svg" alt="">
-            </div>
-            <div class="image image_3 key2">
-                <img src="./img/5/5-3.svg" alt="">
             </div>
         </div>
     </div>
 
-    <div id="page6" class="page6 page">
+    <div id="page6" class="page6 page displaynone">
         <div class="container">
             <div class="image image_1">
                 <img src="./img/6/6-1.svg" alt="">
@@ -260,7 +260,7 @@
         </div>
     </div>
 
-    <div class="page7 page" id="page7">
+    <div class="page7 page displaynone" id="page7">
         <div class="container">
             <div class="image page7_box"></div>
             <div class="image image_bqtp">
@@ -302,7 +302,7 @@
         </div>
     </div>
     
-    <div class="page8 page" id="page8">
+    <div class="page8 page displaynone" id="page8">
         <ul id="user_feedback" class="user_feedback">
             <li v-for="item in items" :class="{
                 uf_align_left: item.position,
@@ -320,7 +320,7 @@
         </ul>
     </div>
 
-    <div class="page9 page" id="page9">
+    <div class="page9 page displaynone" id="page9">
         <div class="container">
             <!--[>Vue只绑定data的属性<]-->
             <div id="medium_feedback" class="medium_feedback">

@@ -71,6 +71,7 @@
             this.lock = 0; // 事件触发锁。如果该变量为1，则不允许触发current变化的操作。
 
 
+
             this.generate();
         }
 
@@ -137,26 +138,7 @@
 
                 // 待模板渲染完毕后添加各种监听
                 mounted : function() {
-                    self.bindEvent( ( flag ) => {
-                        if ( ! self.lock ) {
-                            self.lock = 1;
-
-                            if ( flag > 0 && this.current < this.num-1 )
-                                this.current++;
-                            else if ( flag < 0 && this.current > 0 )
-                                this.current--;
-                            else if ( self.tailToHead && flag > 0 && this.current == this.num-1 )
-                                this.current = 0;
-                            else if ( self.tailToHead && flag < 0 && this.current == 0 )
-                                this.current = this.num - 1;
-                        }
-
-                        if ( ! self.lockTimer )
-                            self.lockTimer = setTimeout( function() {
-                                self.lock = 0;
-                                self.lockTimer = null;
-                            }, self.lockTime );
-                    } );
+                    self.bindEvent( self.currentCtrl( self ).bind(this) );
 
                     // 默认自动调用第一个用户函数
                     if ( self.fn && self.autoExecuteFirst )
@@ -194,26 +176,28 @@
         }
 
         // 未修改完
-        //currentCtrl ( flag,  ) {
-            //if ( ! self.lock ) {
-                //self.lock = 1;
+        currentCtrl ( self ) {
+            return function( flag ) {
+                if ( ! self.lock ) {
+                    self.lock = 1;
 
-                //if ( flag > 0 && this.current < this.num-1 )
-                    //this.current++;
-                //else if ( flag < 0 && this.current > 0 )
-                    //this.current--;
-                //else if ( self.tailToHead && flag > 0 && this.current == this.num-1 )
-                    //this.current = 0;
-                //else if ( self.tailToHead && flag < 0 && this.current == 0 )
-                    //this.current = this.num - 1;
-            //}
+                    if ( flag > 0 && this.current < this.num-1 )
+                        this.current++;
+                    else if ( flag < 0 && this.current > 0 )
+                        this.current--;
+                    else if ( self.tailToHead && flag > 0 && this.current == this.num-1 )
+                        this.current = 0;
+                    else if ( self.tailToHead && flag < 0 && this.current == 0 )
+                        this.current = this.num - 1;
+                }
 
-            //if ( ! self.lockTimer )
-                //self.lockTimer = setTimeout( function() {
-                    //self.lock = 0;
-                    //self.lockTimer = null;
-                //}, self.lockTime );
-        //}
+                if ( ! self.lockTimer )
+                    self.lockTimer = setTimeout( function() {
+                        self.lock = 0;
+                        self.lockTimer = null;
+                    }, self.lockTime );
+            }
+        }
 
         // 绑定各种监听事件
         bindEvent ( fn ) {
@@ -272,7 +256,11 @@
 
         toggleAutoTimer () {
             if ( this.timer_auto === null )
-                launchAutoTimer(  )
+                this.launchAutoTimer( this.currentCtrl( this ).bind( this.vueInstance ) );
+            else {
+                clearTimeout( this.timer_auto );
+                this.timer_auto = null;
+            }
         }
 
     }

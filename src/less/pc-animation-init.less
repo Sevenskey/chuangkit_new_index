@@ -2,13 +2,7 @@
 .no_background {
     background-color: transparent !important;
 }
-.active_background_b {
-    /*display: none;*/
-    /*visibility: hidden;*/
-}
 .gradurl_background {
-    /*display: none;*/
-    /*visibility: hidden;*/
     transition: all .8s;
 }
 
@@ -17,28 +11,9 @@
 }
 
 .page2, .page3, .page4, .page5, .page6, .page7 {
-    /*display: none;*/
-    /*visibility: hidden;*/
     .image {
         opacity: 0;
-        /*display: none;*/
-        /*visibility: hidden;*/
     }
-}
-
-.page8 {
-    /*visibility: hidden;*/
-    /*display: none;*/
-
-    .user_feedback li {
-        /*display: none;*/
-        /*visibility: hidden;*/
-    }
-}
-
-.page9 {
-    /*visibility: hidden;*/
-    /*display: none;*/
 }
 
 .page1 {
@@ -76,8 +51,6 @@
         }
     }
     .card {
-        /*visibility: hidden;*/
-        /*display: none;*/
         opacity: 0;
     }
     .card1 {
@@ -95,17 +68,7 @@
     .card5 {
         transition: all .9s;
     }
-    .card_num_b {
-        img {
-            /*visibility: hidden;*/
-            /*display: none;*/
-        }
-    }
     .card_seq2 {
-        .card {
-            /*visibility: hidden;*/
-            /*display: none;*/
-        }
         .card1 {
             display: none !important;
         }
@@ -116,16 +79,9 @@
 
     .title {
         transform: translateY(2.0025em);
-        visibility: hidden;
+        /*visibility: hidden;*/
         transition: all .6s;
         transition-delay: .6s;
-    }
-}
-
-.box_set {
-    .image {
-        /*visibility: hidden;*/
-        /*display: none;*/
     }
 }
 
@@ -288,9 +244,11 @@
 
 .page9 {
 
-    .medium_feedback, .footer, .content_box {
-        /*visibility: hidden;*/
-        /*display: none;*/
+    .medium_feedback, .content_box {
+        transform: translateY( 1.5em );
+    }
+    .footer {
+        transform: translateY( 10em );
     }
 }
 
@@ -311,25 +269,25 @@
     visibility: visible !important;
 }
 .translate0 {
-    transform: translate(0px, 0px);
+    transform: translate(0px, 0px) !important;
 }
 .translateY0 {
-    transform: translateY(0px);
+    transform: translateY(0px) !important;
 }
 .translateX0 {
-    transform: translateX(0px);
+    transform: translateX(0px) !important;
 }
 
 .elem-show {
     visibility: visible;
-    transform: translateY(0em);
+    transform: translateY(0em) !important;
     /*opacity: 1;*/
 }
 
 .mouse-show {
     .elem-show;
 
-    transform: translateY(-1em);
+    transform: translateY(-1em) !important;
 }
 
 .page1 {
@@ -337,7 +295,7 @@
         .elem-show;
     }
     .page1-elem-hide {
-        transform: translateY(-2em);
+        transform: translateY(-2em) !important;
     }
 }
 
@@ -347,21 +305,21 @@
             .elem-show;
         }
         .page2-elem-hide {
-            transform: translateY(-15.75em);
+            transform: translateY(-15.75em) !important;
         }
         .page2-card-switch {
-            transform: translate( 2.75em, 6.75em );
+            transform: translate( 2.75em, 6.75em ) !important;
             height: 15.75em !important;
         }
         .card1-hide {
-            transform: translate( 2.75em, 1.5em );
+            transform: translate( 2.75em, 1.5em ) !important;
         }
     }
     .card_num_b_1_show {
-        transform: translateY(-1.5em);
+        transform: translateY(-1.5em) !important;
     }
     .card_num_b_1_hide {
-        transform: translateY(-2.25em);
+        transform: translateY(-2.25em) !important;
     }
 }
 
@@ -373,16 +331,13 @@
     }
 }
 
-.page4 {
-}
-
 .page6 {
     .page6-elem-show {
         .elem-show !important;
     }
     .page6-image12-switch {
         img {
-            width: 42.43em;
+            width: 42.43em !important;
         }
     }
 }
@@ -399,7 +354,7 @@
     }
 }
 .page8-hide {
-    transform: translateY(-2.25em);
+    transform: translateY(-2.25em) !important;
 }
 
 .page9 {
