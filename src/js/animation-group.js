@@ -67,64 +67,61 @@
             switch ( this.mode ) {
                 case 'hide' : this.hide(); break;
                 case 'show' : this.show(); break;
-                case 'delete' : this.delete(); break;
-                case 'retrieve' : this.retrieve(); break;
+                case 'vhide' : this.vhide(); break;
+                case 'vshow' : this.vshow(); break;
                 default: console.log( '找不到该模式QAQ' );
             }
         }
 
-        delete () {
+        vhide () {
             this.helper( function() {
-                    this.elemObj.style.opacity = 0;
+                    this.updateClass( this.elemObj, 'opacity0', 'opacity1' );
                 }, function() {
-                    this.elemObj.style.display = 'none';
+                    this.updateClass( this.elemObj, 'visibilityhidden', 'visibilityvisible' );
                 } );
         }
 
-        retrieve () {
+        vshow () {
             this.helper( function() {
-                    this.elemObj.style.display = 'block';
-                    this.elemObj.style.opacity = 0;
+                    this.updateClass( this.elemObj, 'visibilityvisible', 'visibilityhidden' );
                     setTimeout ( () => {
-                        this.elemObj.style.opacity = 1;
+                        this.updateClass( this.elemObj, 'opacity1', 'opacity0' );
                     }, 20 );
                 }, null );
         }
 
         hide () {
             this.helper( function() {
-                    //this.elemObj.style.opacity = 0;
                     this.updateClass( this.elemObj, 'opacity0', 'opacity1' );
                 }, function() {
-                    //this.elemObj.style.visibility = 'hidden';
-                    this.updateClass( this.elemObj, 'visibilityhidden', 'visibilityvisible' );
+                    this.updateClass( this.elemObj, 'displaynone' );
                 } );
         }
 
         show () {
             this.helper( function() {
-                    //this.updateClass( this.elemObj, 'opacity0', 'opacity1' );
-                    this.updateClass( this.elemObj, 'visibilityvisible', 'visibilityhidden' );
-                    //this.elemObj.style.opacity = 0;
-                    //this.elemObj.style.visibility = 'visible';
+                    this.updateClass( this.elemObj, '', 'displaynone' );
                     setTimeout ( () => {
-                        //this.elemObj.style.opacity = 1;
                         this.updateClass( this.elemObj, 'opacity1', 'opacity0' );
-                    }, 20 );
-                }, null );
+                    }, 200 );
+                } );
         }
 
         helper ( cbOutside, cbInside, delay ) {
             cbOutside.call( this );
-            if ( cbInside )
+            if ( typeof cbInside == 'function' )
                 this.timerHandler.push( setTimeout( () => {
                     cbInside.call( this );
-                }, delay | this.delay ) );
+                }, delay | this.delay + 200 ) );
         }
 
         updateClass ( obj, add, remove ) {
-            var re = new RegExp('\\ *' + remove, 'g');
-            obj.className = ( obj.className + ' ' + add ).replace( re, '' );
+            if ( remove ) {
+                var re = new RegExp('\\ *' + remove, 'g');
+                obj.className = ( obj.className + ' ' + add ).replace( re, '' );
+            } else {
+                obj.className = ( obj.className + ' ' + add );
+            }
         }
     }
     
@@ -143,11 +140,11 @@
                 hide : function ( value, id, all, styleSet, classSet ) {
                     self.showOrHidehelper.call( this, value, id, 'hide' );
                 },
-                delete : function ( value, id, all, styleSet, classSet ) {
-                    self.showOrHidehelper.call( this, value, id, 'delete' );
+                vhide : function ( value, id, all, styleSet, classSet ) {
+                    self.showOrHidehelper.call( this, value, id, 'vhide' );
                 },
-                retrieve : function ( value, id, all, styleSet, classSet ) {
-                    self.showOrHidehelper.call( this, value, id, 'retrieve' );
+                vshow : function ( value, id, all, styleSet, classSet ) {
+                    self.showOrHidehelper.call( this, value, id, 'vshow' );
                 },
                 classList : function ( value, id, all, styleSet, classSet ) {
                     if ( Array.isArray( value ) )
@@ -176,8 +173,8 @@
             return {
                 show : 'hide',
                 hide : 'show',
-                delete : 'retrieve',
-                retrieve : 'delete',
+                vhide : 'vshow',
+                vshow : 'vhide',
                 up : 'down',
                 down : 'up',
                 toLeft : 'toRight',
@@ -504,7 +501,7 @@
             }, 0 );
             setTimeout( () => {
                 this.mountClass( this.classSet );
-            }, 0 );
+            }, 100 );
         }
 
         // 备份旧的样式类

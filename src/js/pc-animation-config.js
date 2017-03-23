@@ -1,11 +1,42 @@
 ;(function( window ) {
+    const init_hide_list = [
+        '#active_background_b',
+        '.gradurl_background',
+        '#page2',
+        '#page3',
+        '#page4',
+        '#page5',
+        '#page6',
+        '#page7',
+        '#page8',
+        '#page9',
+        '#page8 #user_feedback li',
+        '#page2 .card',
+        '#page2 .card_num_b img',
+        '#box_set .image',
+        '#page9 #medium_feedback',
+        '#page9 .footer',
+        '#page9 .content_box',
+    ];
+    const init_hide_str = init_hide_list.join(',');
+
     const animationConfig_pc = {
+        init : {
+            prev : {
+                [init_hide_str] : {
+                    hide : true,
+                }
+            },
+            next : {},
+        },
         frame1 : {
             prev : {
                 '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons' : {
+                    show : true,
                     classList : ['page1-elem-show'],
                 },
                 '#mouse' : {
+                    show : true,
                     classList : ['mouse-show'],
                 },
             },
@@ -24,12 +55,11 @@
             prev : {
             },
             next : {
-                '#card_seq .card' : {
+                '#active_background_b, #page2, #card_seq .card' : {
                     show : true,
-                    classList : ['page2-elem-show'],
                 },
-                '#active_background_b, #page2' : {
-                    show : true,
+                '#card_seq .card' : {
+                    classList : ['page2-elem-show'],
                 },
             },
         },
@@ -57,7 +87,7 @@
                     hide : true,
                 },
                 '#card_seq .card2, #card_seq .card3, #card_seq .card4, #card_seq .card5' : {
-                    hide : true,
+                    vhide : true,
                     classList : ['page2-elem-hide'],
                 },
                 //变形
@@ -65,16 +95,14 @@
                     classList : ['image_shadow', 'page2-card-switch'],
                 },
                 //出现
-                '#card_num_b_1' : {
+                '#page3 .title, #card_num_b_1, #page3, #gradient1, #page3 .image, #box_set .image' : {
                     show : true,
+                },
+                '#card_num_b_1' : {
                     classList : ['card_num_b_1_show'],
                 },
                 '#page3 .title' : {
                     classList : ['title_show'],
-                    show : true,
-                },
-                '#page3, #gradient1, #page3 .image, #box_set .image' : {
-                    show : true,
                 },
             },
             transitionDuration : '.8s',
@@ -84,13 +112,13 @@
             },
             next : {
                 //隐藏
-                '#card_seq .card1' : {
-                    classList : ['card1-hide'],
+                '#card_seq .card' : {
                     hide : true,
+                    classList : ['card1-hide'],
                 },
                 '#card_num_b_1' : {
-                    classList : ['card_num_b_1_hide'],
                     hide : true,
+                    classList : ['card_num_b_1_hide'],
                 },
                 '#gradient1, #page3 .image img, #page3 .image .title, #page3 .image_a, #box_set .other' : {
                     hide : true,
@@ -109,7 +137,7 @@
                     classList : ['page4_image_t'], 
                 },
                 //出现
-                '#gradient2, #page4, #page4 .image, #page4 .title' : {
+                '#gradient2, #page4, #page4 .image, #page4 .title, #card_seq2 .card2, #card_num_b_2' : {
                     show : true,
                 },
                 '#page4 .title' : {
@@ -117,11 +145,9 @@
                 },
                 '#card_seq2 .card2' : {
                     up : '3.0em',
-                    show : true,
                 },
                 '#card_num_b_2' : {
                     up : '2.25em',
-                    show : true,
                 },
             },
             transitionDuration : '.8s',
@@ -160,7 +186,7 @@
                     classList : ['page5_image_1'],
                 },
                 //出现
-                '#gradient3, #page5, #page5 .image' : {
+                '#gradient3, #page5, #page5 .image, #card_seq2 .card3, #card_num_b_3' : {
                     show : true,
                 },
                 '#page5 .key1' : {
@@ -171,12 +197,10 @@
                 },
                 '#card_seq2 .card3' : {
                     up : '3.0em',
-                    show : true,
                     height : '16.5em',
                 },
                 '#card_num_b_3' : {
                     up : '3.0em',
-                    show : true,
                 },
             },
             transitionDuration: '.8s',
@@ -222,13 +246,13 @@
                     classList : ['page6-image12-switch'],
                 },
                 '#card_seq2 .card4' : {
-                    up : '3.0em',
                     show : true,
+                    up : '3.0em',
                     height : '16.5em',
                 },
                 '#card_num_b_4' : {
-                    up : '2.25em',
                     show : true,
+                    up : '2.25em',
                 },
             },
             transitionDuration: '1s',
@@ -261,13 +285,13 @@
                     classList : ['page7-elem-show'],
                 },
                 '#card_seq2 .card5' : {
-                    up : '3.0em',
                     show : true,
+                    up : '3.0em',
                     height : '16.5em',
                 },
                 '#card_num_b_5' : {
-                    up : '2.25em',
                     show : true,
+                    up : '2.25em',
                 },
             },
             transitionDuration: '1s',
@@ -288,9 +312,9 @@
                     up : '2.25em',
                     hide : true,
                 },
-                '#page3,#page4,#page5,#page6' : {
-                    display : 'none',
-                },
+                //'#page3,#page4,#page5,#page6' : {
+                    //display : 'none',
+                //},
                 //变形
                 '#page7, #gradient5' : {
                     classList : ['page7-hide'],
@@ -300,8 +324,8 @@
                 },
                 //出现
                 '.page8' : {
-                    classList : ['translate0'],
                     show : true,
+                    classList : ['translate0'],
                 },
                 '#active_background_w, #user_feedback li' : {
                     show : true,
@@ -334,11 +358,11 @@
                     hide : true,
                 },
                 //出现
+                '#footer, #page9, #medium_feedback, .content_box' : {
+                    show : true,
+                },
                 '#medium_feedback, .content_box, #footer' : {
                     classList : ['page9-elem-show'],
-                },
-                '#page9' : {
-                    show : true,
                 },
             },
             transitionDuration : '.8s',

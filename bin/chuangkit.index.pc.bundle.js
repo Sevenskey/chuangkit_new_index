@@ -4,6 +4,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /******/(function (modules) {
@@ -453,6 +455,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
                 }
 
+                // 未修改完
+                //currentCtrl ( flag,  ) {
+                //if ( ! self.lock ) {
+                //self.lock = 1;
+
+                //if ( flag > 0 && this.current < this.num-1 )
+                //this.current++;
+                //else if ( flag < 0 && this.current > 0 )
+                //this.current--;
+                //else if ( self.tailToHead && flag > 0 && this.current == this.num-1 )
+                //this.current = 0;
+                //else if ( self.tailToHead && flag < 0 && this.current == 0 )
+                //this.current = this.num - 1;
+                //}
+
+                //if ( ! self.lockTimer )
+                //self.lockTimer = setTimeout( function() {
+                //self.lock = 0;
+                //self.lockTimer = null;
+                //}, self.lockTime );
+                //}
+
                 // 绑定各种监听事件
 
             }, {
@@ -510,6 +534,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         fn(1);
                         _this3.launchAutoTimer(fn);
                     }, this.interval);
+                }
+            }, {
+                key: 'toggleAutoTimer',
+                value: function toggleAutoTimer() {
+                    if (this.timer_auto === null) launchAutoTimer();
                 }
             }]);
 
@@ -2761,33 +2790,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             this.hide();break;
                         case 'show':
                             this.show();break;
-                        case 'delete':
-                            this.delete();break;
-                        case 'retrieve':
-                            this.retrieve();break;
+                        case 'vhide':
+                            this.vhide();break;
+                        case 'vshow':
+                            this.vshow();break;
                         default:
                             console.log('找不到该模式QAQ');
                     }
                 }
             }, {
-                key: 'delete',
-                value: function _delete() {
+                key: 'vhide',
+                value: function vhide() {
                     this.helper(function () {
-                        this.elemObj.style.opacity = 0;
+                        this.updateClass(this.elemObj, 'opacity0', 'opacity1');
                     }, function () {
-                        this.elemObj.style.display = 'none';
+                        this.updateClass(this.elemObj, 'visibilityhidden', 'visibilityvisible');
                     });
                 }
             }, {
-                key: 'retrieve',
-                value: function retrieve() {
+                key: 'vshow',
+                value: function vshow() {
                     this.helper(function () {
                         var _this5 = this;
 
-                        this.elemObj.style.display = 'block';
-                        this.elemObj.style.opacity = 0;
+                        this.updateClass(this.elemObj, 'visibilityvisible', 'visibilityhidden');
                         setTimeout(function () {
-                            _this5.elemObj.style.opacity = 1;
+                            _this5.updateClass(_this5.elemObj, 'opacity1', 'opacity0');
                         }, 20);
                     }, null);
                 }
@@ -2795,11 +2823,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: 'hide',
                 value: function hide() {
                     this.helper(function () {
-                        //this.elemObj.style.opacity = 0;
                         this.updateClass(this.elemObj, 'opacity0', 'opacity1');
                     }, function () {
-                        //this.elemObj.style.visibility = 'hidden';
-                        this.updateClass(this.elemObj, 'visibilityhidden', 'visibilityvisible');
+                        this.updateClass(this.elemObj, 'displaynone');
                     });
                 }
             }, {
@@ -2808,15 +2834,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.helper(function () {
                         var _this6 = this;
 
-                        //this.updateClass( this.elemObj, 'opacity0', 'opacity1' );
-                        this.updateClass(this.elemObj, 'visibilityvisible', 'visibilityhidden');
-                        //this.elemObj.style.opacity = 0;
-                        //this.elemObj.style.visibility = 'visible';
+                        this.updateClass(this.elemObj, '', 'displaynone');
                         setTimeout(function () {
-                            //this.elemObj.style.opacity = 1;
                             _this6.updateClass(_this6.elemObj, 'opacity1', 'opacity0');
-                        }, 20);
-                    }, null);
+                        }, 200);
+                    });
                 }
             }, {
                 key: 'helper',
@@ -2824,15 +2846,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     var _this7 = this;
 
                     cbOutside.call(this);
-                    if (cbInside) this.timerHandler.push(setTimeout(function () {
+                    if (typeof cbInside == 'function') this.timerHandler.push(setTimeout(function () {
                         cbInside.call(_this7);
-                    }, delay | this.delay));
+                    }, delay | this.delay + 200));
                 }
             }, {
                 key: 'updateClass',
                 value: function updateClass(obj, add, remove) {
-                    var re = new RegExp('\\ *' + remove, 'g');
-                    obj.className = (obj.className + ' ' + add).replace(re, '');
+                    if (remove) {
+                        var re = new RegExp('\\ *' + remove, 'g');
+                        obj.className = (obj.className + ' ' + add).replace(re, '');
+                    } else {
+                        obj.className = obj.className + ' ' + add;
+                    }
                 }
             }]);
 
@@ -2859,11 +2885,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: function hide(value, id, all, styleSet, classSet) {
                             self.showOrHidehelper.call(this, value, id, 'hide');
                         },
-                        delete: function _delete(value, id, all, styleSet, classSet) {
-                            self.showOrHidehelper.call(this, value, id, 'delete');
+                        vhide: function vhide(value, id, all, styleSet, classSet) {
+                            self.showOrHidehelper.call(this, value, id, 'vhide');
                         },
-                        retrieve: function retrieve(value, id, all, styleSet, classSet) {
-                            self.showOrHidehelper.call(this, value, id, 'retrieve');
+                        vshow: function vshow(value, id, all, styleSet, classSet) {
+                            self.showOrHidehelper.call(this, value, id, 'vshow');
                         },
                         classList: function classList(value, id, all, styleSet, classSet) {
                             if (Array.isArray(value)) classSet[id] = value;
@@ -2894,8 +2920,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return {
                         show: 'hide',
                         hide: 'show',
-                        delete: 'retrieve',
-                        retrieve: 'delete',
+                        vhide: 'vshow',
+                        vshow: 'vhide',
                         up: 'down',
                         down: 'up',
                         toLeft: 'toRight',
@@ -3267,7 +3293,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }, 0);
                     setTimeout(function () {
                         _this12.mountClass(_this12.classSet);
-                    }, 0);
+                    }, 100);
                 }
 
                 // 备份旧的样式类
@@ -3385,13 +3411,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /***/function (module, exports, __webpack_require__) {
 
     ;(function (window) {
+        var init_hide_list = ['#active_background_b', '.gradurl_background', '#page2', '#page3', '#page4', '#page5', '#page6', '#page7', '#page8', '#page9', '#page8 #user_feedback li', '#page2 .card', '#page2 .card_num_b img', '#box_set .image', '#page9 #medium_feedback', '#page9 .footer', '#page9 .content_box'];
+        var init_hide_str = init_hide_list.join(',');
+
         var animationConfig_pc = {
+            init: {
+                prev: _defineProperty({}, init_hide_str, {
+                    hide: true
+                }),
+                next: {}
+            },
             frame1: {
                 prev: {
                     '#blue_banner, #slogan h1, #slogan h2, #slogan #start_btn, #page1_icons': {
+                        show: true,
                         classList: ['page1-elem-show']
                     },
                     '#mouse': {
+                        show: true,
                         classList: ['mouse-show']
                     }
                 },
@@ -3409,12 +3446,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             frame2: {
                 prev: {},
                 next: {
-                    '#card_seq .card': {
-                        show: true,
-                        classList: ['page2-elem-show']
-                    },
-                    '#active_background_b, #page2': {
+                    '#active_background_b, #page2, #card_seq .card': {
                         show: true
+                    },
+                    '#card_seq .card': {
+                        classList: ['page2-elem-show']
                     }
                 }
             },
@@ -3442,7 +3478,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     '#card_seq .card2, #card_seq .card3, #card_seq .card4, #card_seq .card5': {
-                        hide: true,
+                        vhide: true,
                         classList: ['page2-elem-hide']
                     },
                     //变形
@@ -3450,16 +3486,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         classList: ['image_shadow', 'page2-card-switch']
                     },
                     //出现
+                    '#page3 .title, #card_num_b_1, #page3, #gradient1, #page3 .image, #box_set .image': {
+                        show: true
+                    },
                     '#card_num_b_1': {
-                        show: true,
                         classList: ['card_num_b_1_show']
                     },
                     '#page3 .title': {
-                        classList: ['title_show'],
-                        show: true
-                    },
-                    '#page3, #gradient1, #page3 .image, #box_set .image': {
-                        show: true
+                        classList: ['title_show']
                     }
                 },
                 transitionDuration: '.8s'
@@ -3468,13 +3502,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 prev: {},
                 next: {
                     //隐藏
-                    '#card_seq .card1': {
-                        classList: ['card1-hide'],
-                        hide: true
+                    '#card_seq .card': {
+                        hide: true,
+                        classList: ['card1-hide']
                     },
                     '#card_num_b_1': {
-                        classList: ['card_num_b_1_hide'],
-                        hide: true
+                        hide: true,
+                        classList: ['card_num_b_1_hide']
                     },
                     '#gradient1, #page3 .image img, #page3 .image .title, #page3 .image_a, #box_set .other': {
                         hide: true
@@ -3493,19 +3527,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         classList: ['page4_image_t']
                     },
                     //出现
-                    '#gradient2, #page4, #page4 .image, #page4 .title': {
+                    '#gradient2, #page4, #page4 .image, #page4 .title, #card_seq2 .card2, #card_num_b_2': {
                         show: true
                     },
                     '#page4 .title': {
                         transform: 'translateY(0.0em)'
                     },
                     '#card_seq2 .card2': {
-                        up: '3.0em',
-                        show: true
+                        up: '3.0em'
                     },
                     '#card_num_b_2': {
-                        up: '2.25em',
-                        show: true
+                        up: '2.25em'
                     }
                 },
                 transitionDuration: '.8s'
@@ -3544,7 +3576,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         classList: ['page5_image_1']
                     },
                     //出现
-                    '#gradient3, #page5, #page5 .image': {
+                    '#gradient3, #page5, #page5 .image, #card_seq2 .card3, #card_num_b_3': {
                         show: true
                     },
                     '#page5 .key1': {
@@ -3555,12 +3587,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     },
                     '#card_seq2 .card3': {
                         up: '3.0em',
-                        show: true,
                         height: '16.5em'
                     },
                     '#card_num_b_3': {
-                        up: '3.0em',
-                        show: true
+                        up: '3.0em'
                     }
                 },
                 transitionDuration: '.8s'
@@ -3605,13 +3635,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         classList: ['page6-image12-switch']
                     },
                     '#card_seq2 .card4': {
-                        up: '3.0em',
                         show: true,
+                        up: '3.0em',
                         height: '16.5em'
                     },
                     '#card_num_b_4': {
-                        up: '2.25em',
-                        show: true
+                        show: true,
+                        up: '2.25em'
                     }
                 },
                 transitionDuration: '1s'
@@ -3643,13 +3673,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         classList: ['page7-elem-show']
                     },
                     '#card_seq2 .card5': {
-                        up: '3.0em',
                         show: true,
+                        up: '3.0em',
                         height: '16.5em'
                     },
                     '#card_num_b_5': {
-                        up: '2.25em',
-                        show: true
+                        show: true,
+                        up: '2.25em'
                     }
                 },
                 transitionDuration: '1s'
@@ -3669,9 +3699,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         up: '2.25em',
                         hide: true
                     },
-                    '#page3,#page4,#page5,#page6': {
-                        display: 'none'
-                    },
+                    //'#page3,#page4,#page5,#page6' : {
+                    //display : 'none',
+                    //},
                     //变形
                     '#page7, #gradient5': {
                         classList: ['page7-hide']
@@ -3681,8 +3711,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     },
                     //出现
                     '.page8': {
-                        classList: ['translate0'],
-                        show: true
+                        show: true,
+                        classList: ['translate0']
                     },
                     '#active_background_w, #user_feedback li': {
                         show: true
@@ -3715,11 +3745,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     //出现
+                    '#footer, #page9, #medium_feedback, .content_box': {
+                        show: true
+                    },
                     '#medium_feedback, .content_box, #footer': {
                         classList: ['page9-elem-show']
-                    },
-                    '#page9': {
-                        show: true
                     }
                 },
                 transitionDuration: '.8s'
@@ -4391,6 +4421,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /***** 部署页面 *****/
     // 动画
     var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9;
+    new AnimationGroup(animationConfig.init);
+    console.log(animationConfig.init);
     frame1 = new AnimationGroup(animationConfig.frame1);
     frame9 = new AnimationGroup(animationConfig.frame9);
 

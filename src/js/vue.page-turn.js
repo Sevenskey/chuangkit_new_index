@@ -82,6 +82,7 @@
             this.vueInstance.current = newCurrent;
         }
 
+
         // 执行用户函数
         invokeFunction ( fun, num, flag ) {
             var type = typeof fun;
@@ -192,6 +193,28 @@
             });
         }
 
+        // 未修改完
+        //currentCtrl ( flag,  ) {
+            //if ( ! self.lock ) {
+                //self.lock = 1;
+
+                //if ( flag > 0 && this.current < this.num-1 )
+                    //this.current++;
+                //else if ( flag < 0 && this.current > 0 )
+                    //this.current--;
+                //else if ( self.tailToHead && flag > 0 && this.current == this.num-1 )
+                    //this.current = 0;
+                //else if ( self.tailToHead && flag < 0 && this.current == 0 )
+                    //this.current = this.num - 1;
+            //}
+
+            //if ( ! self.lockTimer )
+                //self.lockTimer = setTimeout( function() {
+                    //self.lock = 0;
+                    //self.lockTimer = null;
+                //}, self.lockTime );
+        //}
+
         // 绑定各种监听事件
         bindEvent ( fn ) {
             if ( this.wheel )
@@ -245,6 +268,11 @@
                 fn( 1 );
                 this.launchAutoTimer( fn );
             }, this.interval );
+        }
+
+        toggleAutoTimer () {
+            if ( this.timer_auto === null )
+                launchAutoTimer(  )
         }
 
     }

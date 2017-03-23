@@ -30,6 +30,8 @@ const animationConfig = requireModules( './pc-animation-config.js' );
 /***** 部署页面 *****/
 // 动画
 var header, frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9;
+new AnimationGroup( animationConfig.init );
+console.log(animationConfig.init);
 frame1 = new AnimationGroup( animationConfig.frame1 );
 frame9 = new AnimationGroup( animationConfig.frame9 );
 
