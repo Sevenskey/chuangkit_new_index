@@ -135,7 +135,7 @@
                     transform : 'translateY(0.0em)',
                 },
                 '#card_seq2 .card2' : {
-                    up : '3.0em',
+                    classList : ['page2-card-show'],
                 },
                 '#card_num_b_2' : {
                     up : '2.25em',
@@ -158,7 +158,7 @@
                     hide : true,
                 },
                 '#card_seq2 .card2' : {
-                    up : '4.5em',
+                    classList : ['page2-card-hide'],
                     hide : true,
                 },
                 '#card_num_b_2' : {
@@ -187,8 +187,7 @@
                     transform : 'translate(0px, 0px)',
                 },
                 '#card_seq2 .card3' : {
-                    up : '3.0em',
-                    height : '16.5em',
+                    classList : ['page2-card-show', 'page2-card-switch'],
                 },
                 '#card_num_b_3' : {
                     up : '3.0em',
@@ -205,7 +204,7 @@
                     hide : true,
                 },
                 '#card_seq2 .card3' : {
-                    up : '4.5em',
+                    classList : ['page2-card-hide'],
                     hide : true,
                 },
                 '#card_num_b_3' : {
@@ -238,8 +237,7 @@
                 },
                 '#card_seq2 .card4' : {
                     show : true,
-                    up : '3.0em',
-                    height : '16.5em',
+                    classList : ['page2-card-show', 'page2-card-switch'],
                 },
                 '#card_num_b_4' : {
                     show : true,
@@ -254,7 +252,7 @@
             next : {
                 //隐藏
                 '#card_seq2 .card4' : {
-                    up : '4.5em',
+                    classList : ['page2-card-hide'],
                     hide : true,
                 },
                 '#card_num_b_4' : {
@@ -277,8 +275,7 @@
                 },
                 '#card_seq2 .card5' : {
                     show : true,
-                    up : '3.0em',
-                    height : '16.5em',
+                    classList : ['page2-card-show', 'page2-card-switch'],
                 },
                 '#card_num_b_5' : {
                     show : true,
@@ -296,7 +293,7 @@
                     hide : true,
                 },
                 '#card_seq2 .card5' : {
-                    up : '4.5em',
+                    classList : ['page2-card-hide'],
                     hide : true,
                 },
                 '#card_num_b_5' : {

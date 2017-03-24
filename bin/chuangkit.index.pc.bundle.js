@@ -3521,7 +3521,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         transform: 'translateY(0.0em)'
                     },
                     '#card_seq2 .card2': {
-                        up: '3.0em'
+                        classList: ['page2-card-show']
                     },
                     '#card_num_b_2': {
                         up: '2.25em'
@@ -3544,7 +3544,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     '#card_seq2 .card2': {
-                        up: '4.5em',
+                        //up : '4.5em',
+                        classList: ['page2-card-hide'],
                         hide: true
                     },
                     '#card_num_b_2': {
@@ -3573,8 +3574,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         transform: 'translate(0px, 0px)'
                     },
                     '#card_seq2 .card3': {
-                        up: '3.0em',
-                        height: '16.5em'
+                        classList: ['page2-card-show', 'page2-card-switch']
                     },
                     '#card_num_b_3': {
                         up: '3.0em'
@@ -3590,7 +3590,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     '#card_seq2 .card3': {
-                        up: '4.5em',
+                        //up : '4.5em',
+                        classList: ['page2-card-hide'],
                         hide: true
                     },
                     '#card_num_b_3': {
@@ -3623,8 +3624,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     },
                     '#card_seq2 .card4': {
                         show: true,
-                        up: '3.0em',
-                        height: '16.5em'
+                        classList: ['page2-card-show', 'page2-card-switch']
                     },
                     '#card_num_b_4': {
                         show: true,
@@ -3638,7 +3638,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 next: {
                     //隐藏
                     '#card_seq2 .card4': {
-                        up: '4.5em',
+                        //up : '4.5em',
+                        classList: ['page2-card-hide'],
                         hide: true
                     },
                     '#card_num_b_4': {
@@ -3661,8 +3662,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     },
                     '#card_seq2 .card5': {
                         show: true,
-                        up: '3.0em',
-                        height: '16.5em'
+                        classList: ['page2-card-show', 'page2-card-switch']
                     },
                     '#card_num_b_5': {
                         show: true,
@@ -3679,7 +3679,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     '#card_seq2 .card5': {
-                        up: '4.5em',
+                        //up : '4.5em',
+                        classList: ['page2-card-hide'],
                         hide: true
                     },
                     '#card_num_b_5': {
