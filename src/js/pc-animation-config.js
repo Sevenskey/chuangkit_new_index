@@ -232,7 +232,7 @@
                     show : true,
                     classList : ['page6-elem-show'],
                 },
-                '#page6 .image_12' : {
+                '#page6 .image_12 img' : {
                     classList : ['page6-image12-switch'],
                 },
                 '#card_seq2 .card4' : {

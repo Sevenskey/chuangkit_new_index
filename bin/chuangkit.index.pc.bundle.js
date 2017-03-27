@@ -3544,7 +3544,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     '#card_seq2 .card2': {
-                        //up : '4.5em',
                         classList: ['page2-card-hide'],
                         hide: true
                     },
@@ -3590,7 +3589,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     '#card_seq2 .card3': {
-                        //up : '4.5em',
                         classList: ['page2-card-hide'],
                         hide: true
                     },
@@ -3619,7 +3617,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         show: true,
                         classList: ['page6-elem-show']
                     },
-                    '#page6 .image_12': {
+                    '#page6 .image_12 img': {
                         classList: ['page6-image12-switch']
                     },
                     '#card_seq2 .card4': {
@@ -3638,7 +3636,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 next: {
                     //隐藏
                     '#card_seq2 .card4': {
-                        //up : '4.5em',
                         classList: ['page2-card-hide'],
                         hide: true
                     },
@@ -3679,7 +3676,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         hide: true
                     },
                     '#card_seq2 .card5': {
-                        //up : '4.5em',
                         classList: ['page2-card-hide'],
                         hide: true
                     },
